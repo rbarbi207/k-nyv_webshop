@@ -1,0 +1,52 @@
+﻿<Window x:Class="konyv_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:konyv_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="710" Width="718" Background="#D4D5DB"
+        Padding="60">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--hr: stílus, h1: stílus-->
+        <Label  Content="Könyv Nyilvántartás" HorizontalAlignment="Left" Margin="7,2,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Foreground="#0B0B2F" Opacity="0.63" FontWeight="Bold" FontSize="20" FontFamily="Arial" />
+        <Rectangle Fill="#FF5F3463" Height="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" RadiusY="3" RadiusX="3" Margin="1,0,-3,0"/>
+
+        <!--lbl_lang: stílus-->
+        <Image Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="288,4,0,0"  VerticalAlignment="Top" Width="40" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\language icon.png"/>
+        <Label Name="lbl_lang" Cursor="Hand" Grid.Column="1" Content="magyar" HorizontalAlignment="Right" Margin="204,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.296,0.046" Background="{x:Null}" Foreground="#FF3C3C43" Opacity="0.6" Width="102" FontSize="18" FontFamily="Arial" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="lbl_lang_MouseLeave" MouseDown="lbl_lang_MouseDown"/>
+
+        <Rectangle HorizontalAlignment="Left" Height="405" Grid.Row="1" VerticalAlignment="Top" Width="290" Fill="#E6E6E6" Grid.RowSpan="6" Margin="12,25,0,0" RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="69" Grid.Row="7" VerticalAlignment="Bottom" Width="290" Fill="#E6E6E6" Margin="12,10,0,0" RadiusX="10" RadiusY="10"/>
+
+        <!--searchbar, stílus: image, rectangle -->
+        <Rectangle Name="rectangle" HorizontalAlignment="Left" Height="33" Margin="27,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="222" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Image Name="img_sort"  HorizontalAlignment="Left" Cursor="Hand" Height="24" Margin="260,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="24" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\sorticon.png" MouseEnter="Image_MouseEnter" MouseLeave="img_sort_MouseLeave" MouseDown="img_sort_MouseDown"/>
+
+
+
+
+    </Grid>
+</Window>

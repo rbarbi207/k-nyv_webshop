@@ -1,0 +1,16 @@
+
+  [
+    {
+      "Title": "Cím 1",
+      "Author": "Szerző 1",
+      "Year": "2000.01.01.",
+      "Paper": true
+    },
+    {
+      "Title": "Egri csillagok",
+      "Author": "Gárdonyi Géza",
+      "Year": 1901,
+      "Paper": False
+    }
+  ]
+
