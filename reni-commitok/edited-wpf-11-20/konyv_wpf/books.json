@@ -4,13 +4,85 @@
       "Title": "Cím 1",
       "Author": "Szerző 1",
       "Year": "2000.01.01.",
-      "Paper": true
+      "Paper": "true"
     },
     {
-      "Title": "Egri csillagok",
+      "Title": "Egri csillagok ",
       "Author": "Gárdonyi Géza",
-      "Year": 1901,
-      "Paper": False
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
+    },
+    {
+      "Title": "Egri csillagok ",
+      "Author": "Gárdonyi Géza",
+      "Year": "2000.01.01.",
+      "Paper": "False"
     }
   ]
 

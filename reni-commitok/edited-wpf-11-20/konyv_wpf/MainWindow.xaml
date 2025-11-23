@@ -5,48 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:konyv_wpf"
         mc:Ignorable="d"
+        Name="window"
         Title="MainWindow" Height="710" Width="718" Background="#D4D5DB"
-        Padding="60">
+        Padding="60" >
     <Window.Resources>
         <ResourceDictionary Source="Styles.xaml"/>
+
     </Window.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="20,26,20,14">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="8*" />
 
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="25*" />
         </Grid.ColumnDefinitions>
 
         <!--hr: stílus, h1: stílus-->
-        <Label  Content="Könyv Nyilvántartás" HorizontalAlignment="Left" Margin="7,2,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Foreground="#0B0B2F" Opacity="0.63" FontWeight="Bold" FontSize="20" FontFamily="Arial" />
-        <Rectangle Fill="#FF5F3463" Height="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" RadiusY="3" RadiusX="3" Margin="1,0,-3,0"/>
+        <Label Name="h1"  Content="Könyv Nyilvántartás" HorizontalAlignment="Left" Margin="7,-10,0,0" VerticalAlignment="Top" Grid.Column="0" Foreground="#0B0B2F" Opacity="0.63" FontWeight="Bold" FontSize="20" FontFamily="Arial" />
+        <Rectangle Fill="#FF5F3463" Height="5" Grid.ColumnSpan="3" VerticalAlignment="Bottom" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" RadiusY="3" RadiusX="3" Margin="1,0,-3,0"/>
 
         <!--lbl_lang: stílus-->
-        <Image Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="288,4,0,0"  VerticalAlignment="Top" Width="40" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\language icon.png"/>
-        <Label Name="lbl_lang" Cursor="Hand" Grid.Column="1" Content="magyar" HorizontalAlignment="Right" Margin="204,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.296,0.046" Background="{x:Null}" Foreground="#FF3C3C43" Opacity="0.6" Width="102" FontSize="18" FontFamily="Arial" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="lbl_lang_MouseLeave" MouseDown="lbl_lang_MouseDown"/>
+        <Image Grid.Column="2" HorizontalAlignment="Right" Height="25"  VerticalAlignment="Top" Width="40" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\language icon.png" Margin="0,-7,0,0"/>
+        <Label Name="lbl_lang" Cursor="Hand" Grid.Column="2" Content="magyar" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.296,0.046" Background="{x:Null}" Foreground="#FF3C3C43" Opacity="0.6" Width="102" FontSize="18" FontFamily="Arial" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="lbl_lang_MouseLeave" MouseDown="lbl_lang_MouseDown" Margin="0,-10,3,0"/>
 
-        <Rectangle HorizontalAlignment="Left" Height="405" Grid.Row="1" VerticalAlignment="Top" Width="290" Fill="#E6E6E6" Grid.RowSpan="6" Margin="12,25,0,0" RadiusX="10" RadiusY="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="69" Grid.Row="7" VerticalAlignment="Bottom" Width="290" Fill="#E6E6E6" Margin="12,10,0,0" RadiusX="10" RadiusY="10"/>
+        <Rectangle Name="rct_list"  Height="441" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch"  Fill="#FFC1BCC8" Grid.RowSpan="2" Margin="0,0,26,0" RadiusX="10" RadiusY="10" Grid.ColumnSpan="2"/>
+
 
         <!--searchbar, stílus: image, rectangle -->
-        <Rectangle Name="rectangle" HorizontalAlignment="Left" Height="33" Margin="27,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="222" Fill="White" RadiusX="10" RadiusY="10"/>
-        <Image Name="img_sort"  HorizontalAlignment="Left" Cursor="Hand" Height="24" Margin="260,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="24" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\sorticon.png" MouseEnter="Image_MouseEnter" MouseLeave="img_sort_MouseLeave" MouseDown="img_sort_MouseDown"/>
+        <Rectangle Name="rectangle" HorizontalAlignment="Left" Height="38"  Grid.Row="1"  Margin="28,23,0,0" VerticalAlignment="Top" Width="241" Fill="White" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
+        <Image Name="img_sort"  HorizontalAlignment="Left" Cursor="Hand" Height="27" Margin="280,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="43" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\sorticon.png" MouseEnter="Image_MouseEnter" MouseLeave="img_sort_MouseLeave" MouseDown="img_sort_MouseDown" Grid.RowSpan="2"/>
 
+        <Border CornerRadius="10" BorderBrush="White" BorderThickness="1" Background="White" Padding="2" Margin="25,38,25,34" Grid.Row="2">
+            <ListBox x:Name="lbx_books"
+                Padding="10"
+                BorderBrush="{x:Null}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="7,7,-3,-3">
 
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" >
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#1d152e"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="Bd"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="10"
+                                        Padding="{TemplateBinding Padding}"
+                                        BorderThickness="1"        >
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFEDEDED"/>
+                                            <Setter Property="Foreground" Value="#FF827690"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFA190BF"/>
+                                            <Setter Property="Foreground" Value="#FF32253C"/>
+                                            <Setter TargetName="Bd" Property="BorderBrush" Value="#FFA190BF"/>
+                                            <Setter TargetName="Bd" Property="BorderThickness" Value="1"/>
+                                            <Setter TargetName="Bd" Property="CornerRadius" Value="10"/>
 
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <StackPanel Height="100" Width="100"/>
+
+            </ListBox>
+        </Border>
+
+        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="33" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" GotFocus="tbx_searchbar_GotFocus" MouseDown="tbx_searchbar_MouseDown" TextChanged="tbx_searchbar_TextChanged"  />
+
+        <Rectangle Name="rct_error" HorizontalAlignment="Stretch" Height="120" Grid.Row="3" VerticalAlignment="Stretch"  Fill="#FFC1BCC8" Margin="0,13,0,0" RadiusX="10" RadiusY="10"/>
+        <Border Name="border_error" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="5" Grid.Row="3" CornerRadius="10" Margin="20,20,20,20" >
+            <TextBlock Name="tbk_error" Grid.Row="3" TextWrapping="Wrap" Background="White" Text="" Padding="10,10,10,12" Margin="-1,0,0,0" />
+        </Border>
+        <Image HorizontalAlignment="Left" Height="31"  Margin="35,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="25" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\searchicon.png" Grid.RowSpan="2"/>
 
     </Grid>
+
 </Window>
