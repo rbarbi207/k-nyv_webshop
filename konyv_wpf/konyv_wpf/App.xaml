@@ -1,7 +1,7 @@
-﻿<Application x:Class="konyv_wpf.App"
+﻿<Application x:Class="konyv_webshop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:konyv_wpf"
+             xmlns:local="clr-namespace:konyv_webshop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
