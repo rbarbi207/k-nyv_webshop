@@ -268,23 +268,13 @@ namespace konyv_wpf
             return filteredBooks;
         } 
 
-        //megcsinálni v
-        private void tbx_searchbar_GotFocus(object sender, RoutedEventArgs e)
+
+        private void tbx_searchbar_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            tbx_searchbar.Text = "";
-
-            PrintSortedBooks(books,false);
-        }
-
-        private void tbx_searchbar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
             tbx_searchbar.Text = " ";
 
-            PrintSortedBooks(books,false);
+            PrintSortedBooks(books, false);
         }
-
-
     }
 }
 

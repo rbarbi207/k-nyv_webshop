@@ -89,10 +89,10 @@
             </ListBox>
         </Border>
 
-        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="33" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" GotFocus="tbx_searchbar_GotFocus" MouseDown="tbx_searchbar_MouseDown" TextChanged="tbx_searchbar_TextChanged"  />
+        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="33" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" TextChanged="tbx_searchbar_TextChanged" GotKeyboardFocus="tbx_searchbar_GotKeyboardFocus"  />
 
         <Rectangle Name="rct_error" HorizontalAlignment="Stretch" Height="120" Grid.Row="3" VerticalAlignment="Stretch"  Fill="#FFC1BCC8" Margin="0,13,0,0" RadiusX="10" RadiusY="10"/>
-        <Border Name="border_error" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="5" Grid.Row="3" CornerRadius="10" Margin="20,20,20,20" >
+        <Border Name="border_error" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="5" Grid.Row="3" CornerRadius="10" Margin="20,20,20,10" >
             <TextBlock Name="tbk_error" Grid.Row="3" TextWrapping="Wrap" Background="White" Text="" Padding="10,10,10,12" Margin="-1,0,0,0" />
         </Border>
         <Image HorizontalAlignment="Left" Height="31"  Margin="35,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="25" Source="D:\suli\2025-2026\projektek\k-nyv_webshop\reni-commitok\edited-wpf-11-20\konyv_wpf\searchicon.png" Grid.RowSpan="2"/>
