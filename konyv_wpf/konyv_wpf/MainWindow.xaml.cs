@@ -38,6 +38,8 @@ namespace konyv_webshop
         public List<string> Genres { get; set; } = new();
         public bool exists = false;
         public Book? matchingbook;
+        public string errorMessage = "";
+        private List<string> errors = new List<string>();
 
         /// false -> alap: legkorábbi <summary>
         /// kiválasztott elem eltárolása ? 
@@ -48,6 +50,7 @@ namespace konyv_webshop
             HideError();
             ShowPlus();
             HideSave();
+            HideForm();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -148,7 +151,7 @@ namespace konyv_webshop
                 panel.Children.Add(lbl_date);
 
                 item.Content = panel;
-
+                item.Tag = book;
                 item.HorizontalAlignment = HorizontalAlignment.Stretch;
                 item.Width = rct_list.Width - 110;
                 item.Cursor = Cursors.Hand;
@@ -302,75 +305,24 @@ namespace konyv_webshop
         }
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
-            HideError();
-            bool valid = true;
-            foreach (var book in books)
+            if (lbx_books.SelectedItem != null)
             {
-                if (txtTitle.Text.Trim() == "")
+                ShowError();
+                errorMessage += "Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?";
+                ShowSave();
+                foreach (var book in books)
                 {
-                    valid = false;
-                    txtTitle.BorderBrush = Brushes.Red;
-                }
-                if (txtAuthor.Text.Trim() == "")
-                {
-                    valid = false;
-                    txtAuthor.BorderBrush = Brushes.Red;
-                }
-                if ((cmbGenre.SelectedItem == null && txtGenre.Text.Trim() == ""))
-                {
-                    valid = false;
-                    txtGenre.BorderBrush = Brushes.Red;
-                    cmbGenre.BorderBrush = Brushes.Red;
-                }
-                if (txtPublisher.Text.Trim() == "")
-                {
-                    valid = false;
-                    txtPublisher.BorderBrush = Brushes.Red;
-                }
-                if (rad_ebook.IsChecked == false && rad_paper.IsChecked == false)
-                {
-                    valid = false;
-                    rad_ebook.BorderBrush = Brushes.Red;
-                    rad_paper.BorderBrush = Brushes.Red;
-                }
-                if (dpDate.SelectedDate == null)
-                {
-                    valid = false;
-                    dpDate.BorderBrush = Brushes.Red;
-                }
-                if (txtnational.Text.Trim() == "")
-                {
-                    valid = false;
-                    txtnational.BorderBrush = Brushes.Red;
-                }
-
-                if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
-                    (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
-                    (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
-                    DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality)
-                {
-                    exists = true;
-                    ShowError("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?");
-                    ShowSave();
                     matchingbook = book;
-                    return;
                 }
-                else if (valid == true && (txtTitle.Text.ToLower() != book.Title.ToLower() &&
-                    txtAuthor.Text.ToLower() != book.Author.ToLower() &&
-                    (cmbGenre.SelectedItem?.ToString() != book.Genre || txtGenre.Text != book.Genre) &&
-                    (rad_ebook.IsChecked == book.Paper || rad_paper.IsChecked != book.Paper)) &&
-                    DateOnly.FromDateTime(dpDate.SelectedDate!.Value) != book.Year && txtnational.Text != book.Nationality)
-                {
-                    exists = false;
-                    HidePlus();
-                    ShowSave();
-                }
-                else if (valid == false)
-                {
-                    exists = false;
-                    errorMsg.Foreground = Brushes.Red;
-                    ShowError("Kérem adja meg a hiányzó adatokat! ");
-                }
+                return;
+            }
+            else
+            {
+                ShowForm();
+                ShowSave();
+                HideError();
+                HidePlus();
+                return;
             }
         }
 
@@ -379,15 +331,17 @@ namespace konyv_webshop
             txtGenre.BorderBrush = Brushes.Green;
         }
 
-        private void ShowError(string msg)
+        private void ShowError()
         {
-            errorMsg.Text = msg;
+            errorMsg.Text = string.Join("\n", errors);
             border_error.Visibility = Visibility.Visible;
             rct_error.Visibility = Visibility.Visible;
         }
 
         private void HideError()
         {
+            errors.Clear();
+            errorMsg.Text = "";
             rct_error.Visibility = Visibility.Collapsed;
             border_error.Visibility = Visibility.Collapsed;
         }
@@ -425,11 +379,6 @@ namespace konyv_webshop
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
         {
             dpDate.BorderBrush = Brushes.Green;
-            if (dpDate.SelectedDate.HasValue)
-            {
-                DateTime selected = dpDate.SelectedDate.Value;
-                MessageBox.Show("Kiválasztott dátum: " + selected.ToString("yyyy.MM.dd"));
-            }
         }
 
         // Könyv Módosítás biztos mentés
@@ -451,7 +400,102 @@ namespace konyv_webshop
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            
             HideError();
+            bool valid = true;
+            int copy = 0;
+            foreach (var book in books)
+            {
+                errors.Clear();
+                if (txtTitle.Text.Trim() == "")
+                {
+                    valid = false;
+                    txtTitle.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a könyv címét! ");
+                }
+                if (txtAuthor.Text.Trim() == "")
+                {
+                    valid = false;
+                    txtAuthor.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a könyv szerzőjét! ");
+                }
+                if ((cmbGenre.SelectedItem == null && txtGenre.Text.Trim() == ""))
+                {
+                    valid = false;
+                    txtGenre.BorderBrush = Brushes.Red;
+                    cmbGenre.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a könyv műfaját! ");
+                }
+                if (txtPublisher.Text.Trim() == "")
+                {
+                    valid = false;
+                    txtPublisher.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a könyv kiadóját! ");
+                }
+                if (rad_ebook.IsChecked == false && rad_paper.IsChecked == false)
+                {
+                    valid = false;
+                    rad_ebook.BorderBrush = Brushes.Red;
+                    rad_paper.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg hogy a könyv ebbok vagy papír! ");
+                }
+                if (dpDate.SelectedDate == null)
+                {
+                    valid = false;
+                    dpDate.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a könyv kiadási dátumát! ");
+                }
+                if (txtnational.Text.Trim() == "")
+                {
+                    valid = false;
+                    txtnational.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg hogy milyen nyelven íródott a könyv! ");
+                }
+                if (txtcopy.Text.Trim() == "")
+                {
+                    valid = false;
+                    txtcopy.BorderBrush = Brushes.Red;
+                    errors.Add("Kérem adja meg a példányszámot! ");
+                }
+                if (!int.TryParse(txtcopy.Text, out copy) && txtcopy.Text.Trim() != "")
+                {
+                    txtcopy.BorderBrush = Brushes.Red;
+                    errors.Add("A példányszámnak számnak kell lennie!");
+                }
+                if (copy <= 0 && txtcopy.Text.Trim() != "" && int.TryParse(txtcopy.Text, out copy))
+                {
+                    txtcopy.BorderBrush = Brushes.Red;
+                    errors.Add("A példányszámnak minimum 1-nek kell lennie!");
+                }
+
+                if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
+                    (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
+                    (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
+                    DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality && (txtcopy.Text != "" && copy > 0))
+                {
+                    exists = true;
+                    errors.Add("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?");
+                    ShowSave();
+                    matchingbook = book;
+                    return;
+                }
+                else if (valid == true && (txtTitle.Text.ToLower() != book.Title.ToLower() &&
+                    txtAuthor.Text.ToLower() != book.Author.ToLower() &&
+                    (cmbGenre.SelectedItem?.ToString() != book.Genre || txtGenre.Text != book.Genre) &&
+                    (rad_ebook.IsChecked == book.Paper || rad_paper.IsChecked != book.Paper)) &&
+                    DateOnly.FromDateTime(dpDate.SelectedDate!.Value) != book.Year && txtnational.Text != book.Nationality && (txtcopy.Text != "" && copy > 0))
+                {
+                    exists = false;
+                    HidePlus();
+                    ShowSave();
+                }
+                else if (valid == false)
+                {
+                    exists = false;
+                    errorMsg.Foreground = Brushes.Red;
+                }
+            }
+            ShowError();
             HideSave();
             ShowPlus();
 
@@ -465,7 +509,7 @@ namespace konyv_webshop
                 matchingbook!.Copies++;
                 matchingbook.DateEdited = DateTime.Now;
             }
-            if (exists == false)
+            if (exists == false && valid == true)
             {
                 if (cmbGenre.SelectedItem == null)
                 {
@@ -548,15 +592,33 @@ namespace konyv_webshop
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            HideSave();
+            HideForm();
             ShowPlus();
+            HideSave();
+            HideError();
+            // kell if hogyha hozzáadásnál van 
             txtTitle.BorderBrush = Brushes.Transparent;
             txtAuthor.BorderBrush = Brushes.Transparent;
             cmbGenre.BorderBrush = Brushes.Transparent;
             txtGenre.BorderBrush = Brushes.Transparent;
             txtPublisher.BorderBrush = Brushes.Transparent;
+            txtnational.BorderBrush = Brushes.Transparent;
+            txtcopy.BorderBrush = Brushes.Transparent;
+            dpDate.BorderBrush = Brushes.Transparent;
+            rad_ebook.BorderBrush = Brushes.Transparent;
+            rad_paper.BorderBrush = Brushes.Transparent;
+            txtTitle.Text = "";
+            txtAuthor.Text = "";
+            rad_ebook.IsChecked = false;
+            rad_paper.IsChecked = false;
+            dpDate.SelectedDate = null;
+            txtnational.Text = "";
+            txtGenre.Text = "";
+            cmbGenre.SelectedItem = null;
+            txtPublisher.Text = "";
+            txtcopy.Text = "";
+            lbx_books.SelectedItem = null;
             Delete();
-
         }
 
         private void rad_ebook_Checked(object sender, RoutedEventArgs e)
@@ -572,6 +634,33 @@ namespace konyv_webshop
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
         {
             txtnational.BorderBrush = Brushes.Green;
+        }
+
+        private void HideForm()
+        {
+            txtAuthor.IsEnabled = false;
+            txtGenre.IsEnabled = false;
+            txtPublisher.IsEnabled = false;
+            txtTitle.IsEnabled = false;
+            rad_ebook.IsEnabled = false;
+            rad_paper.IsEnabled = false;
+            txtnational.IsEnabled = false;
+            dpDate.IsEnabled = false;
+            cmbGenre.IsEnabled = false;
+            txtcopy.IsEnabled = false;
+        }
+        private void ShowForm()
+        {
+            txtAuthor.IsEnabled = true;
+            txtGenre.IsEnabled = true;
+            txtPublisher.IsEnabled = true;
+            txtTitle.IsEnabled = true;
+            rad_ebook.IsEnabled = true;
+            rad_paper.IsEnabled = true;
+            txtnational.IsEnabled = true;
+            dpDate.IsEnabled = true;
+            cmbGenre.IsEnabled = true;
+            txtcopy.IsEnabled = true;
         }
 
         private void Delete()
@@ -594,6 +683,36 @@ namespace konyv_webshop
             cmbGenre.BorderBrush = Brushes.Transparent;
             txtPublisher.Text = "";
             txtPublisher.BorderBrush = Brushes.Transparent;
+            txtcopy.Text = "";
+            txtcopy.BorderBrush = Brushes.Transparent;
+        }
+
+        private void txtCopy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            rad_ebook.BorderBrush = Brushes.Green;
+        }
+
+        private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbx_books.SelectedItem is ListBoxItem item &&
+            item.Tag is Book selectedBook)
+            {
+                txtTitle.Text = selectedBook.Title;
+                txtAuthor.Text = selectedBook.Author;
+                cmbGenre.Text = selectedBook.Genre;
+                txtPublisher.Text = selectedBook.Publisher;
+                txtnational.Text = selectedBook.Nationality;
+                txtcopy.Text = selectedBook.Copies.ToString();
+
+                rad_ebook.IsChecked = !selectedBook.Paper;
+                rad_paper.IsChecked = selectedBook.Paper;
+
+                dpDate.SelectedDate = new DateTime(
+                    selectedBook.Year.Year,
+                    selectedBook.Year.Month,
+                    selectedBook.Year.Day
+                );
+            }
         }
     }
 }
