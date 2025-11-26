@@ -1,0 +1,172 @@
+﻿<Window x:Class="konyv_webshop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:konyv_webshop"
+        mc:Ignorable="d"
+        Name="window"
+        Title="MainWindow" Height="710" Width="718" Background="#D4D5DB"
+        Padding="60" >
+    <Window.Resources>
+        <ResourceDictionary Source="Styles.xaml"/>
+
+    </Window.Resources>
+
+    <Grid Margin="20,26,20,14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="209*" />
+            <RowDefinition Height="233*"/>
+            <RowDefinition Height="141*" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="25*" />
+        </Grid.ColumnDefinitions>
+
+        <!--hr: stílus, h1: stílus-->
+        <Label Name="h1"  Content="Könyv Nyilvántartás" HorizontalAlignment="Left" Margin="7,-10,0,0" VerticalAlignment="Top" Grid.Column="0" Foreground="#0B0B2F" Opacity="0.63" FontWeight="Bold" FontSize="20" FontFamily="Arial" />
+        <Rectangle Fill="#FF5F3463" Height="5" Grid.ColumnSpan="3" VerticalAlignment="Bottom" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" RadiusY="3" RadiusX="3" Margin="1,0,-3,0"/>
+
+        <!--lbl_lang: stílus-->
+        <TextBlock Text="🌐" Grid.Column="2" Margin="300,-10,-292,5" FontSize="20"></TextBlock>
+        <TextBlock Text="🔎" Margin="34,26,318,181" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Row="1" Panel.ZIndex="10" FontSize="22"/>
+        <TextBlock Text="📖" Margin="323,-19,29,17" Grid.ColumnSpan="3" Panel.ZIndex="10" FontSize="30"/>
+        <Label Name="lbl_lang" Cursor="Hand" Grid.Column="2" Content="Magyar" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.296,0.046" Background="{x:Null}" Foreground="#FF3C3C43" Opacity="0.6" Width="102" FontSize="18" FontFamily="Arial" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="lbl_lang_MouseLeave" MouseDown="lbl_lang_MouseDown" Margin="0,-10,3,0"/>
+
+        <Rectangle Name="rct_list" Grid.Row="1" Grid.Column="0"  Fill="#FFC1BCC8" Grid.RowSpan="3" Margin="0,18,26,13" RadiusX="10" RadiusY="10" Grid.ColumnSpan="2"/>
+
+
+        <!--searchbar, stílus: image, rectangle -->
+        <Rectangle Name="rectangle" HorizontalAlignment="Left" Height="38"  Grid.Row="1"  Margin="28,24,0,0" VerticalAlignment="Top" Width="241" Fill="White" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
+        <Image Name="img_sort"   HorizontalAlignment="Left" Cursor="Hand" Height="34" Margin="280,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="36" Source="/sorticon.png" MouseEnter="Image_MouseEnter" MouseLeave="img_sort_MouseLeave" MouseDown="img_sort_MouseDown" Grid.RowSpan="2" Stretch="Fill"/>
+
+        <Border CornerRadius="10" BorderBrush="White" BorderThickness="1" Background="White" Padding="2" Margin="25,38,25,34" Grid.Row="2" Grid.RowSpan="2">
+            <ListBox x:Name="lbx_books"
+            Padding="10"
+            BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="7,7,-3,0" SelectionChanged="lbx_books_SelectionChanged">
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" >
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#1d152e"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="Bd"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10"
+                                    Padding="{TemplateBinding Padding}"
+                                    BorderThickness="1"        >
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFEDEDED"/>
+                                            <Setter Property="Foreground" Value="#FF827690"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFA190BF"/>
+                                            <Setter Property="Foreground" Value="#FF32253C"/>
+                                            <Setter TargetName="Bd" Property="BorderBrush" Value="#FFA190BF"/>
+                                            <Setter TargetName="Bd" Property="BorderThickness" Value="1"/>
+                                            <Setter TargetName="Bd" Property="CornerRadius" Value="10"/>
+
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <StackPanel Height="100" Width="100"/>
+
+            </ListBox>
+        </Border>
+
+        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="33" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" TextChanged="tbx_searchbar_TextChanged" GotKeyboardFocus="tbx_searchbar_GotKeyboardFocus"  />
+        <Image HorizontalAlignment="Left" Height="31"  Margin="35,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="25" Source="/searchicon.png" Grid.RowSpan="2"/>
+
+
+        <!--titlesearch-->
+        <Rectangle Name="rct_title" HorizontalAlignment="Center" Height="33" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Cím:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,0,0,0"/>
+        <TextBox Name="txtTitle" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Width="250" Text="" VerticalAlignment="Top" TextChanged="txtTitle_TextChanged" Margin="35,5,0,0" BorderBrush="White" Background="White"/>
+
+        <!--authorsearch-->
+        <Rectangle Name="rct_author" HorizontalAlignment="Center" Height="33" Margin="0,50,0,0" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Szerző:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,50,0,0"/>
+        <TextBox Name="txtAuthor" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Width="235" Text="" VerticalAlignment="Top" TextChanged="txtAuthor_TextChanged" Margin="55,55,0,0" BorderBrush="White" Background="White"/>
+
+        <!--genresearch-->
+        <Rectangle Name="rct_genre" HorizontalAlignment="Center" Height="80" Margin="0,100,0,0" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Műfaj:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,102,0,0"/>
+        <ComboBox Name="cmbGenre" Grid.Column="2" HorizontalAlignment="Left" Margin="80,106,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="220" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
+        <Label Grid.Column="2" Content="Új Műfaj:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,145,0,0"/>
+        <TextBox Grid.Column="2" Name="txtGenre" HorizontalAlignment="Left" Margin="90,150,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215" BorderBrush="White" TextChanged="txtGenre_TextChanged" Background="White"/>
+
+        <!--publishersearch-->
+        <Rectangle Name="rct_publisher" HorizontalAlignment="Center" Height="33" Margin="0,-10,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Kiadó:" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,-11,0,0"/>
+        <TextBox Name="txtPublisher" Grid.Column="2" HorizontalAlignment="Left" Margin="70,-6,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="White" TextChanged="txtPublisher_TextChanged" Background="White"/>
+
+        <!--ebook/paperSearch-->
+        <Rectangle Name="rct_ebook" HorizontalAlignment="Center" Height="33" Margin="0,41,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <RadioButton Name="rad_ebook" Grid.Column="2" Content="Ebook" HorizontalAlignment="Left" Margin="30,49,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FFCCA5E8" Checked="rad_ebook_Checked"/>
+        <RadioButton Name="rad_paper" Grid.Column="2" Content="Papír alapú" HorizontalAlignment="Left" Margin="205,49,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FFCCA5E8" Checked="rad_paper_Checked"/>
+
+        <!--DateSearch-->
+        <Rectangle Name="rct_Date" HorizontalAlignment="center" Height="33" Margin="0,91,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Megjelenési Dátum:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,91,0,0"/>
+        <DatePicker Name="dpDate" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="170,92,0,0" Grid.Row="3" VerticalAlignment="Top" BorderBrush="White" Background="White" SelectedDateChanged="dpDate_SelectedDateChanged"/>
+
+        <!--NationalitySearch-->
+        <Rectangle Name="rct_national" HorizontalAlignment="Center" Height="33" Margin="0,141,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Nemzetiség:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,141,0,0"/>
+        <TextBox Name="txtnational" Grid.Column="2" HorizontalAlignment="Left" Margin="115,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" BorderBrush="White" TextChanged="txtNatioal_TextChanged" Background="White"/>
+
+        <!--CopySearch-->
+        <Rectangle Name="rct_copy" HorizontalAlignment="Center" Height="33" Margin="0,189,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
+        <Label Grid.Column="2" Content="Példányszám:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,191,0,0"/>
+        <TextBox Name="txtcopy" Grid.Column="2" HorizontalAlignment="Left" Margin="115,197,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" BorderBrush="White" TextChanged="txtCopy_TextChanged" Background="White"/>
+
+
+        <!--EroorMsg-->
+        <Rectangle Name="rct_error" Height="120" Grid.Row="4"  Fill="#5F3463"  Margin="0,17,26,4" RadiusX="10" RadiusY="10" Grid.ColumnSpan="2"/>
+        <Border Name="border_error" BorderBrush="White" BorderThickness="5" Grid.Row="4" CornerRadius="10" Margin="20,30,21,19" >
+            <!--<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,-5,0,-5">-->
+                <TextBlock Name="errorMsg" TextWrapping="Wrap" Background="White" Text="" Padding="10,10,10,12" Margin="-1,0,0,0" Foreground="#FF24142F" FontSize="15" FontWeight="SemiBold" Width="277" RenderTransformOrigin="0.5,0.5">
+                    
+                </TextBlock>
+            <!--</ScrollViewer>-->
+        </Border>
+
+        <!--Mentés mégse plussz, clear-->
+
+
+        <Border Name="br_Cancel" Cursor="Hand" HorizontalAlignment="Right" Height="46" Margin="0,77,135,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="CancelButton_Click">
+            <Button Name="cancelButton" Cursor="Hand"  Grid.Column="2" Content="Mégse" HorizontalAlignment="Right" Width="89" Margin="0,0,11,0" Grid.Row="4" VerticalAlignment="Top" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24" Height="39" Click="CancelButton_Click"/>
+        </Border>
+        <Border Name="br_Save" Cursor="Hand" HorizontalAlignment="Right" Height="47" Margin="0,76,10,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#444455" CornerRadius="10" MouseDown="SaveButton_Click">
+            <Button Name="SaveButton" Cursor="Hand"   Grid.Column="2" Padding="5"  Content="Mentés" HorizontalAlignment="Center" Width="89" Margin="0,3,0,0" Grid.Row="4" VerticalAlignment="Top" BorderBrush="#444455" Background="#444455"  Foreground="White" FontSize="24"  Click="SaveButton_Click"/>
+        </Border>
+        <Border Name="br_newBook" Cursor="Hand" HorizontalAlignment="Left" Height="45" Margin="198,77,0,0" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#5F3463" CornerRadius="10" MouseDown="PlusButton_Click" Grid.Column="2" >
+            <Button Name="PlusButton" Cursor="Hand"  Content="+" HorizontalAlignment="Center" Width="50" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#5F3463" Background="#5F3463" Foreground="White" FontSize="24" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="35" Grid.Column="2" Click="PlusButton_Click"/>
+        </Border>
+        <Border Name="br_Clear"  Cursor="Hand" HorizontalAlignment="Left" Height="46" Margin="73,77,0,0" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="br_Clear_MouseDown" Grid.Column="2">
+            <Button Name="ClearButton" Cursor="Hand" Content="mégse"  HorizontalAlignment="Center" Width="98" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24" FontFamily="Arial" FontWeight="Thin"  Height="35" Grid.Column="2" Click="br_Clear_MouseDown"  />
+        </Border>
+
+
+
+    </Grid>
+
+</Window>
