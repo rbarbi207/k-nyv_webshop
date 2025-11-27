@@ -92,77 +92,77 @@
             </ListBox>
         </Border>
 
-        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="33" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" TextChanged="tbx_searchbar_TextChanged" GotKeyboardFocus="tbx_searchbar_GotKeyboardFocus"  />
+        <TextBox FocusVisualStyle="{x:Null}" Name="tbx_searchbar" FontSize="16"  Padding="0,0,0,0" Margin="70,28,61,0" Grid.Row="1" Panel.ZIndex="10"  VerticalAlignment="Top" TextWrapping="NoWrap" MaxLines="1" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D272B" Grid.RowSpan="2" MaxHeight="50" SelectionTextBrush="{x:Null}" BorderThickness="0,0,0,0" KeyDown="tbx_searchbar_KeyDown" TextChanged="tbx_searchbar_TextChanged" GotKeyboardFocus="tbx_searchbar_GotKeyboardFocus"  />
         <Image HorizontalAlignment="Left" Height="31"  Margin="35,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="25" Source="/searchicon.png" Grid.RowSpan="2"/>
 
 
         <!--titlesearch-->
         <Rectangle Name="rct_title" HorizontalAlignment="Center" Height="33" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Cím:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,0,0,0"/>
-        <TextBox Name="txtTitle" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Width="250" Text="" VerticalAlignment="Top" TextChanged="txtTitle_TextChanged" Margin="35,5,0,0" BorderBrush="White" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5"  Name="txtTitle" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Text="" VerticalAlignment="Top" TextChanged="txtTitle_TextChanged" Margin="57,5,24,0" BorderBrush="White" Background="White"/>
 
         <!--authorsearch-->
         <Rectangle Name="rct_author" HorizontalAlignment="Center" Height="33" Margin="0,50,0,0" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Szerző:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,50,0,0"/>
-        <TextBox Name="txtAuthor" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Width="235" Text="" VerticalAlignment="Top" TextChanged="txtAuthor_TextChanged" Margin="55,55,0,0" BorderBrush="White" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5"  Name="txtAuthor" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left" Text="" VerticalAlignment="Top" TextChanged="txtAuthor_TextChanged" Margin="73,55,24,0" BorderBrush="White" Background="White"/>
 
         <!--genresearch-->
         <Rectangle Name="rct_genre" HorizontalAlignment="Center" Height="80" Margin="0,100,0,0" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Műfaj:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,102,0,0"/>
-        <ComboBox Name="cmbGenre" Grid.Column="2" HorizontalAlignment="Left" Margin="80,106,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="220" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
+        <ComboBox  Name="cmbGenre" Grid.Column="2" Background="#FFCCA5E8" HorizontalAlignment="Left" Margin="80,106,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="217" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
         <Label Grid.Column="2" Content="Új Műfaj:" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Margin="17,145,0,0"/>
-        <TextBox Grid.Column="2" Name="txtGenre" HorizontalAlignment="Left" Margin="90,150,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215" BorderBrush="White" TextChanged="txtGenre_TextChanged" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5"  Grid.Column="2" Name="txtGenre" HorizontalAlignment="Left" Margin="90,150,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212" BorderBrush="White" TextChanged="txtGenre_TextChanged" Background="White"/>
 
         <!--publishersearch-->
         <Rectangle Name="rct_publisher" HorizontalAlignment="Center" Height="33" Margin="0,-10,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Kiadó:" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,-11,0,0"/>
-        <TextBox Name="txtPublisher" Grid.Column="2" HorizontalAlignment="Left" Margin="70,-6,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="White" TextChanged="txtPublisher_TextChanged" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5"  Name="txtPublisher" Grid.Column="2" HorizontalAlignment="Left" Margin="73,200,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" BorderBrush="White" TextChanged="txtPublisher_TextChanged" Background="White" Grid.RowSpan="2"/>
 
         <!--ebook/paperSearch-->
         <Rectangle Name="rct_ebook" HorizontalAlignment="Center" Height="33" Margin="0,41,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
-        <RadioButton Name="rad_ebook" Grid.Column="2" Content="Ebook" HorizontalAlignment="Left" Margin="30,49,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FFCCA5E8" Checked="rad_ebook_Checked"/>
+        <RadioButton  Name="rad_ebook" Grid.Column="2" Content="Ebook" HorizontalAlignment="Left" Margin="30,49,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FFCCA5E8" Checked="rad_ebook_Checked"/>
         <RadioButton Name="rad_paper" Grid.Column="2" Content="Papír alapú" HorizontalAlignment="Left" Margin="205,49,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FFCCA5E8" Checked="rad_paper_Checked"/>
 
         <!--DateSearch-->
         <Rectangle Name="rct_Date" HorizontalAlignment="center" Height="33" Margin="0,91,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Megjelenési Dátum:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,91,0,0"/>
-        <DatePicker Name="dpDate" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="170,92,0,0" Grid.Row="3" VerticalAlignment="Top" BorderBrush="White" Background="White" SelectedDateChanged="dpDate_SelectedDateChanged"/>
+        <DatePicker Name="dpDate" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="170,92,0,0" Grid.Row="3" VerticalAlignment="Top" BorderBrush="White" Background="White" SelectedDateChanged="dpDate_SelectedDateChanged" Width="127"/>
 
         <!--NationalitySearch-->
         <Rectangle Name="rct_national" HorizontalAlignment="Center" Height="33" Margin="0,141,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Nemzetiség:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,141,0,0"/>
-        <TextBox Name="txtnational" Grid.Column="2" HorizontalAlignment="Left" Margin="115,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" BorderBrush="White" TextChanged="txtNatioal_TextChanged" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5"  Name="txtnational" Grid.Column="2" HorizontalAlignment="Left" Margin="115,145,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" BorderBrush="White" TextChanged="txtNatioal_TextChanged" Background="White"/>
 
         <!--CopySearch-->
         <Rectangle Name="rct_copy" HorizontalAlignment="Center" Height="33" Margin="0,189,0,0" Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="300" Fill="White" RadiusX="10" RadiusY="10"/>
         <Label Grid.Column="2" Content="Példányszám:" Height="33" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Margin="17,191,0,0"/>
-        <TextBox Name="txtcopy" Grid.Column="2" HorizontalAlignment="Left" Margin="115,197,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" BorderBrush="White" TextChanged="txtCopy_TextChanged" Background="White"/>
+        <TextBox Style="{StaticResource ErrorTextBoxStyle}" Padding="2.5" Name="txtcopy" Grid.Column="2" HorizontalAlignment="Left" Margin="117,193,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" BorderBrush="White" TextChanged="txtCopy_TextChanged" Background="White"/>
 
 
         <!--EroorMsg-->
         <Rectangle Name="rct_error" Height="120" Grid.Row="4"  Fill="#5F3463"  Margin="0,17,26,4" RadiusX="10" RadiusY="10" Grid.ColumnSpan="2"/>
-        <Border Name="border_error" BorderBrush="White" BorderThickness="5" Grid.Row="4" CornerRadius="10" Margin="20,30,21,19" >
+        <Border Name="border_error" BorderBrush="White" BorderThickness="5" Grid.Row="4" CornerRadius="5" Margin="20,30,21,19" >
             <!--<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,-5,0,-5">-->
-                <TextBlock Name="errorMsg" TextWrapping="Wrap" Background="White" Text="" Padding="10,10,10,12" Margin="-1,0,0,0" Foreground="#FF24142F" FontSize="15" FontWeight="SemiBold" Width="277" RenderTransformOrigin="0.5,0.5">
-                    
-                </TextBlock>
+            <TextBlock  Name="errorMsg" TextWrapping="Wrap" Background="White" Text="" Padding="10,10,10,12" Margin="-1,-2,-1,-1" Foreground="#FF24142F" FontSize="15" FontWeight="SemiBold" Width="277" RenderTransformOrigin="0.5,0.5">
+
+            </TextBlock>
             <!--</ScrollViewer>-->
         </Border>
 
         <!--Mentés mégse plussz, clear-->
 
 
-        <Border Name="br_Cancel" Cursor="Hand" HorizontalAlignment="Right" Height="46" Margin="0,77,135,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="CancelButton_Click">
-            <Button Name="cancelButton" Cursor="Hand"  Grid.Column="2" Content="Mégse" HorizontalAlignment="Right" Width="89" Margin="0,0,11,0" Grid.Row="4" VerticalAlignment="Top" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24" Height="39" Click="CancelButton_Click"/>
+        <Border Name="br_Cancel"  Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Left" Height="46" Margin="73,77,0,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="CancelButton_Click">
+            <Button Name="cancelButton" Cursor="Hand"  Grid.Column="2" Content="mégse" HorizontalAlignment="Left" Width="98" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24"  FontFamily="Arial" FontWeight="Thin"  Height="34" Click="CancelButton_Click" Margin="8,0,0,0"  />
         </Border>
-        <Border Name="br_Save" Cursor="Hand" HorizontalAlignment="Right" Height="47" Margin="0,76,10,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#444455" CornerRadius="10" MouseDown="SaveButton_Click">
+        <Border Name="br_Clear"  Style="{StaticResource HoverBorder}"  Cursor="Hand" HorizontalAlignment="Left" Height="46" Margin="73,77,0,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="br_Clear_MouseDown">
+            <Button Name="ClearButton" Cursor="Hand" Grid.Column="2" Content="mégse"  HorizontalAlignment="Left" Width="98" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24" FontFamily="Arial" FontWeight="Thin"  Height="34"  Click="br_Clear_MouseDown" Margin="8,0,0,0"  />
+        </Border>
+        <Border Name="br_Save"  Style="{StaticResource HoverBorder}"  Cursor="Hand" HorizontalAlignment="Right" Height="47" Margin="198,76,0,0" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#444455" CornerRadius="10" MouseDown="SaveButton_Click">
             <Button Name="SaveButton" Cursor="Hand"   Grid.Column="2" Padding="5"  Content="Mentés" HorizontalAlignment="Center" Width="89" Margin="0,3,0,0" Grid.Row="4" VerticalAlignment="Top" BorderBrush="#444455" Background="#444455"  Foreground="White" FontSize="24"  Click="SaveButton_Click"/>
         </Border>
-        <Border Name="br_newBook" Cursor="Hand" HorizontalAlignment="Left" Height="45" Margin="198,77,0,0" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#5F3463" CornerRadius="10" MouseDown="PlusButton_Click" Grid.Column="2" >
-            <Button Name="PlusButton" Cursor="Hand"  Content="+" HorizontalAlignment="Center" Width="50" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#5F3463" Background="#5F3463" Foreground="White" FontSize="24" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="35" Grid.Column="2" Click="PlusButton_Click"/>
-        </Border>
-        <Border Name="br_Clear"  Cursor="Hand" HorizontalAlignment="Left" Height="46" Margin="73,77,0,0" Grid.Row="4" VerticalAlignment="Top" Width="118" Background="#BC8EB5" CornerRadius="10" MouseDown="br_Clear_MouseDown" Grid.Column="2">
-            <Button Name="ClearButton" Cursor="Hand" Content="mégse"  HorizontalAlignment="Center" Width="98" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#BC8EB5" Background="#BC8EB5" Foreground="White" FontSize="24" FontFamily="Arial" FontWeight="Thin"  Height="35" Grid.Column="2" Click="br_Clear_MouseDown"  />
+        <Border Name="br_newBook"  Style="{StaticResource HoverBorder}" Cursor="Hand"  HorizontalAlignment="Right" Height="47" Margin="198,76,0,0" Grid.Row="4"  VerticalAlignment="Top" Width="118" Background="#5F3463" CornerRadius="10" MouseDown="PlusButton_Click" Grid.Column="2" >
+            <Button Name="PlusButton" Cursor="Hand" Padding="5"  Content="+" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Center"  BorderBrush="#5F3463" Background="#5F3463" Foreground="White" FontSize="24" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="34" Grid.Column="2" Click="PlusButton_Click" Margin="51,0,0,0" />
         </Border>
 
 
