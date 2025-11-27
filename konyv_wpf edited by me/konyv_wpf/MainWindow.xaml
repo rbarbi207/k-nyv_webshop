@@ -186,10 +186,10 @@
                 <Border Name="br_newBook"  Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" Height="45" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="50" Background="#FF403C40" CornerRadius="10" MouseDown="PlusButton_Click">
                     <Button Name="PlusButton" Cursor="Hand"  Content="+" HorizontalAlignment="Center" Width="45" Grid.Row="4" VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" Foreground="White" FontSize="18" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="35" Click="PlusButton_Click"/>
                 </Border>
-                <Border Name="br_Clear" Style="{StaticResource HoverBorder}" Cursor="Hand" Height="45" Margin="111,0,145,20" VerticalAlignment="Bottom" Background="#FF49466D" CornerRadius="10" MouseDown="br_Clear_MouseDown">
+                <Border Name="br_Clear" Style="{StaticResource HoverBorder}" Cursor="Hand" Height="45" HorizontalAlignment="Left" Margin="-12.5,0,0,20" VerticalAlignment="Bottom" Background="#FF49466D" CornerRadius="10" MouseDown="br_Clear_MouseDown">
                     <Button Name="ClearButton" Cursor="Hand" Content="Mezők törlése"  HorizontalAlignment="Center" Width="117" VerticalAlignment="Center" BorderBrush="#FF49466D" Background="#FF49466D" Foreground="White" FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="34" Click="br_Clear_MouseDown"/>
                 </Border>
-                <Border Name="br_Modify"   Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Left" Height="45" Margin="-3,0,0,20" VerticalAlignment="Bottom" Width="110" Background="#FF403C40" CornerRadius="10" MouseDown="br_Modify_MouseDown">
+                <Border Name="br_Modify"   Style="{StaticResource HoverBorder}" Cursor="Hand"  Height="45"  Margin="111,0,145,20" VerticalAlignment="Bottom" Background="#FF403C40" CornerRadius="10" MouseDown="br_Modify_MouseDown">
                     <Button Name="ModifyButton" Cursor="Hand" Content="Módosítás" HorizontalAlignment="Center" Width="90"  VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" Foreground="White" FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Modify_MouseDown"/>
                 </Border>
                 <Border Name="br_Delete"   Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" Height="45" Margin="0,0,65,20" VerticalAlignment="Bottom" Width="75" Background="#FF412258" CornerRadius="10" MouseDown="br_Modify_MouseDown">

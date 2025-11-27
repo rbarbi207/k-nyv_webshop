@@ -380,7 +380,7 @@ namespace konyv_webshop
             {
                 HideForm();
                 ShowCopy();
-                errors.Add("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?");
+                errors.Add("Már létezik ilyen könyv a nyílvántartásban, felülírja a könyv példányszámát?");
 
             }
             else
@@ -919,6 +919,7 @@ namespace konyv_webshop
         {
             lbx_books.Visibility = Visibility.Visible;
 //*         
+            txtcopy.IsEnabled = false;
             hasShownError = false;
             errors.Clear();
             HideForm();
