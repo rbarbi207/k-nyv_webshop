@@ -9,6 +9,8 @@ A ***Könyv nyilvántartás*** program lehetővé teszi a felhasználó számár
 
 **Létrehozás (+)** - a kötelező mezők kitöltésével feljegyezhető bármilyen könyv
 
+**Mezők törlése** - a mezők kiürítése
+
 **Törlés** - adott könyv törlése
 
 **Módosítás** - adott könyv adatainak módosítása
