@@ -6,10 +6,10 @@
     "Genre": "háborús",
     "Publisher": "Európa",
     "Year": "1993-04-09",
-    "Copies": 12,
+    "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4167782+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7020633+01:00"
   },
   {
     "Id": 2,
@@ -18,10 +18,10 @@
     "Genre": "kaland",
     "Publisher": "Akadémia",
     "Year": "1985-06-17",
-    "Copies": 12,
+    "Copies": 6,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4168926+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022336+01:00"
   },
   {
     "Id": 3,
@@ -33,7 +33,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4168938+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702235+01:00"
   },
   {
     "Id": 4,
@@ -45,7 +45,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-01T20:45:11.4169119+01:00"
+    "DateEdited": "2025-11-29T17:25:58.7022504+01:00"
   },
   {
     "Id": 5,
@@ -57,7 +57,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4168942+01:00"
+    "DateEdited": "2025-11-25T17:26:03.1518992+01:00"
   },
   {
     "Id": 6,
@@ -69,7 +69,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.4168946+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022369+01:00"
   },
   {
     "Id": 7,
@@ -81,7 +81,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-11-27T20:45:11.4168948+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702237+01:00"
   },
   {
     "Id": 8,
@@ -93,7 +93,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.416895+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022372+01:00"
   },
   {
     "Id": 9,
@@ -105,7 +105,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168952+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022373+01:00"
   },
   {
     "Id": 10,
@@ -117,7 +117,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4168954+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022375+01:00"
   },
   {
     "Id": 11,
@@ -129,7 +129,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168956+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022377+01:00"
   },
   {
     "Id": 12,
@@ -141,7 +141,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.4168958+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022378+01:00"
   },
   {
     "Id": 13,
@@ -153,7 +153,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.416896+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022379+01:00"
   },
   {
     "Id": 14,
@@ -165,7 +165,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168961+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702238+01:00"
   },
   {
     "Id": 15,
@@ -177,7 +177,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.4168963+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022381+01:00"
   },
   {
     "Id": 16,
@@ -189,7 +189,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168965+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022382+01:00"
   },
   {
     "Id": 17,
@@ -201,7 +201,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.4168967+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022384+01:00"
   },
   {
     "Id": 18,
@@ -213,7 +213,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.416897+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022386+01:00"
   },
   {
     "Id": 19,
@@ -225,7 +225,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4168971+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022387+01:00"
   },
   {
     "Id": 20,
@@ -237,7 +237,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4168973+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022388+01:00"
   },
   {
     "Id": 21,
@@ -249,7 +249,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168974+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022389+01:00"
   },
   {
     "Id": 22,
@@ -261,7 +261,7 @@
     "Copies": 3,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168976+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022391+01:00"
   },
   {
     "Id": 23,
@@ -273,7 +273,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4168977+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022392+01:00"
   },
   {
     "Id": 24,
@@ -285,7 +285,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4168979+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022393+01:00"
   },
   {
     "Id": 25,
@@ -297,7 +297,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168981+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022394+01:00"
   },
   {
     "Id": 26,
@@ -309,7 +309,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4168982+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022395+01:00"
   },
   {
     "Id": 27,
@@ -321,7 +321,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4168984+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022397+01:00"
   },
   {
     "Id": 28,
@@ -333,7 +333,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4168986+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022399+01:00"
   },
   {
     "Id": 29,
@@ -345,7 +345,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4168988+01:00"
+    "DateEdited": "2025-11-25T17:25:58.70224+01:00"
   },
   {
     "Id": 30,
@@ -357,7 +357,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.416899+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022401+01:00"
   },
   {
     "Id": 31,
@@ -369,7 +369,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4168991+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022403+01:00"
   },
   {
     "Id": 32,
@@ -381,7 +381,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4168993+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022404+01:00"
   },
   {
     "Id": 33,
@@ -393,7 +393,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.4168998+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022405+01:00"
   },
   {
     "Id": 34,
@@ -405,7 +405,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169001+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022408+01:00"
   },
   {
     "Id": 35,
@@ -417,7 +417,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169003+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702241+01:00"
   },
   {
     "Id": 36,
@@ -429,7 +429,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4169005+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022411+01:00"
   },
   {
     "Id": 37,
@@ -441,7 +441,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.4169006+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022412+01:00"
   },
   {
     "Id": 38,
@@ -453,7 +453,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169008+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022414+01:00"
   },
   {
     "Id": 39,
@@ -465,7 +465,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169009+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022416+01:00"
   },
   {
     "Id": 40,
@@ -477,7 +477,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169011+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022417+01:00"
   },
   {
     "Id": 41,
@@ -489,7 +489,7 @@
     "Copies": 2,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169012+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022418+01:00"
   },
   {
     "Id": 42,
@@ -501,7 +501,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169014+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022419+01:00"
   },
   {
     "Id": 43,
@@ -513,7 +513,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169015+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702242+01:00"
   },
   {
     "Id": 44,
@@ -525,7 +525,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169017+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022423+01:00"
   },
   {
     "Id": 45,
@@ -537,7 +537,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4169019+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022425+01:00"
   },
   {
     "Id": 46,
@@ -549,7 +549,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169021+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022426+01:00"
   },
   {
     "Id": 47,
@@ -561,7 +561,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169022+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022427+01:00"
   },
   {
     "Id": 48,
@@ -573,7 +573,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169024+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022428+01:00"
   },
   {
     "Id": 49,
@@ -585,7 +585,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.4169025+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022429+01:00"
   },
   {
     "Id": 50,
@@ -597,7 +597,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4169027+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022431+01:00"
   },
   {
     "Id": 51,
@@ -609,7 +609,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169029+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022432+01:00"
   },
   {
     "Id": 52,
@@ -621,7 +621,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-11-27T20:45:11.416903+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022433+01:00"
   },
   {
     "Id": 53,
@@ -633,7 +633,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169032+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022434+01:00"
   },
   {
     "Id": 54,
@@ -645,7 +645,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169033+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022435+01:00"
   },
   {
     "Id": 55,
@@ -657,7 +657,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169037+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022436+01:00"
   },
   {
     "Id": 56,
@@ -669,7 +669,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169039+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022437+01:00"
   },
   {
     "Id": 57,
@@ -681,7 +681,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169041+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022438+01:00"
   },
   {
     "Id": 58,
@@ -693,7 +693,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169042+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022439+01:00"
   },
   {
     "Id": 59,
@@ -705,7 +705,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-11-27T20:45:11.4169044+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702244+01:00"
   },
   {
     "Id": 60,
@@ -717,7 +717,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169046+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022441+01:00"
   },
   {
     "Id": 61,
@@ -729,7 +729,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.4169048+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022444+01:00"
   },
   {
     "Id": 62,
@@ -741,7 +741,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169049+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022445+01:00"
   },
   {
     "Id": 63,
@@ -753,7 +753,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169051+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022446+01:00"
   },
   {
     "Id": 64,
@@ -765,7 +765,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169052+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022447+01:00"
   },
   {
     "Id": 65,
@@ -777,7 +777,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169054+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022454+01:00"
   },
   {
     "Id": 66,
@@ -789,7 +789,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169057+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022455+01:00"
   },
   {
     "Id": 67,
@@ -801,7 +801,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169059+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022457+01:00"
   },
   {
     "Id": 68,
@@ -813,7 +813,7 @@
     "Copies": 3,
     "Paper": false,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169061+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022458+01:00"
   },
   {
     "Id": 69,
@@ -825,7 +825,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169062+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022459+01:00"
   },
   {
     "Id": 70,
@@ -837,7 +837,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169064+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702246+01:00"
   },
   {
     "Id": 71,
@@ -849,7 +849,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169065+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022462+01:00"
   },
   {
     "Id": 72,
@@ -861,7 +861,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169067+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022463+01:00"
   },
   {
     "Id": 73,
@@ -873,7 +873,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169068+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022464+01:00"
   },
   {
     "Id": 74,
@@ -885,7 +885,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.416907+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022465+01:00"
   },
   {
     "Id": 75,
@@ -897,7 +897,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169071+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022471+01:00"
   },
   {
     "Id": 76,
@@ -909,7 +909,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169073+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022473+01:00"
   },
   {
     "Id": 77,
@@ -921,7 +921,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169074+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022474+01:00"
   },
   {
     "Id": 78,
@@ -933,7 +933,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169077+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022475+01:00"
   },
   {
     "Id": 79,
@@ -945,7 +945,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169079+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022477+01:00"
   },
   {
     "Id": 80,
@@ -957,7 +957,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.416908+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022478+01:00"
   },
   {
     "Id": 81,
@@ -969,7 +969,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169082+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022479+01:00"
   },
   {
     "Id": 82,
@@ -981,7 +981,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.4169084+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022482+01:00"
   },
   {
     "Id": 83,
@@ -993,7 +993,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169086+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022484+01:00"
   },
   {
     "Id": 84,
@@ -1005,7 +1005,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169087+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022485+01:00"
   },
   {
     "Id": 85,
@@ -1017,7 +1017,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169089+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022486+01:00"
   },
   {
     "Id": 86,
@@ -1029,7 +1029,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169091+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022487+01:00"
   },
   {
     "Id": 87,
@@ -1041,7 +1041,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169093+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022488+01:00"
   },
   {
     "Id": 88,
@@ -1053,7 +1053,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-11-27T20:45:11.4169094+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022489+01:00"
   },
   {
     "Id": 89,
@@ -1065,7 +1065,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.4169095+01:00"
+    "DateEdited": "2025-11-25T17:25:58.702249+01:00"
   },
   {
     "Id": 90,
@@ -1077,7 +1077,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169097+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022492+01:00"
   },
   {
     "Id": 91,
@@ -1089,7 +1089,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169099+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022493+01:00"
   },
   {
     "Id": 92,
@@ -1101,7 +1101,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-11-27T20:45:11.41691+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022494+01:00"
   },
   {
     "Id": 93,
@@ -1113,7 +1113,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169102+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022495+01:00"
   },
   {
     "Id": 94,
@@ -1125,7 +1125,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:11.4169103+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022496+01:00"
   },
   {
     "Id": 95,
@@ -1137,7 +1137,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169105+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022497+01:00"
   },
   {
     "Id": 96,
@@ -1149,7 +1149,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-11-27T20:45:11.4169106+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022498+01:00"
   },
   {
     "Id": 97,
@@ -1161,7 +1161,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-11-27T20:45:11.4169108+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022499+01:00"
   },
   {
     "Id": 98,
@@ -1173,7 +1173,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-11-27T20:45:11.4169109+01:00"
+    "DateEdited": "2025-11-25T17:25:58.70225+01:00"
   },
   {
     "Id": 99,
@@ -1185,7 +1185,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-11-27T20:45:11.4169111+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022501+01:00"
   },
   {
     "Id": 100,
@@ -1194,9 +1194,9 @@
     "Genre": "thriller",
     "Publisher": "Minerva",
     "Year": "1993-04-03",
-    "Copies": 2,
+    "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-11-27T20:45:25.0946988+01:00"
+    "DateEdited": "2025-11-25T17:25:58.7022502+01:00"
   }
 ]

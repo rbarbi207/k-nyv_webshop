@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +47,8 @@ namespace konyv_webshop
         private bool hasBeenDone = false;
         public string errorMessage = "";
         public bool hasShownError = false;
-        private List<string> errors = new List<string>();
+        private List<string> errors = new List<string>()
+        ListBoxItem? item = null;
 
         /// false -> alap: legkorábbi <summary>
         /// kiválasztott elem eltárolása ? 
@@ -58,8 +60,9 @@ namespace konyv_webshop
             ShowPlus();
             HideSave();
             //*
-            br_Modify.Visibility = Visibility.Hidden;
             HideForm();
+            br_Modify.Visibility = Visibility.Hidden;
+            br_Delete.Visibility = Visibility.Hidden;
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -430,10 +433,12 @@ namespace konyv_webshop
         {
             //*         
             br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
             br_Clear.Visibility = Visibility.Collapsed;
             if (lbx_books.SelectedItem != null)
             {
             br_Modify.Visibility = Visibility.Visible;
+            br_Delete.Visibility= Visibility.Visible;
             br_Clear.Visibility = Visibility.Visible;
             }
             br_newBook.Visibility = Visibility.Visible;
@@ -443,6 +448,7 @@ namespace konyv_webshop
         {
 //*
             br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
             br_Clear.Visibility = Visibility.Collapsed;
             br_newBook.Visibility = Visibility.Collapsed;
             PlusButton.Visibility = Visibility.Collapsed;
@@ -917,13 +923,14 @@ namespace konyv_webshop
 
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+          
             lbx_books.Visibility = Visibility.Visible;
 //*         
             txtcopy.IsEnabled = false;
             hasShownError = false;
             errors.Clear();
             HideForm();
-            HideError();
+            HideError();    
             HideSave();
             ShowPlus();
             ShowCopy();
@@ -964,6 +971,10 @@ namespace konyv_webshop
             }
             ShowChange();
             txtGenre.Text = "";
+
+            item = (ListBoxItem)lbx_books.SelectedItem;
+         
+
         }
         private void PlusButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -1012,14 +1023,74 @@ namespace konyv_webshop
         private void br_Modify_MouseDown(object sender, RoutedEventArgs e)
         {
             HidePlus();
+
             cancelButton.Visibility = Visibility.Visible;
             SaveButton.Visibility = Visibility.Visible;
             br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
             br_Cancel.Visibility = Visibility.Visible;
             br_Save.Visibility = Visibility.Visible;
 
             ShowForm();
 
+        }
+
+        private Book searchForSelectedItem()
+        {
+            Book _book = books[0];
+            foreach(Book book in books)
+            {
+                if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
+                        (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
+                        (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
+                        DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality)
+                {
+                    _book = book;
+                }
+            }
+
+            return _book;
+        }
+          
+
+        private void br_Delete_MouseDown(object sender, RoutedEventArgs e)
+        {
+           MessageBoxResult result =  MessageBox.Show("Biztosan törli a kiválasztott elemet?",
+                "Megerősítés",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+
+                {
+                    Book toBeDeleted = searchForSelectedItem();
+
+                    List<konyv_webshop.Book> newBooks = new List<Book>();
+                    foreach (konyv_webshop.Book book in books)
+                    {
+
+                        if (toBeDeleted.Id != book.Id)
+                        {
+                         newBooks.Add(book);
+
+                        }
+                    }
+                    books = newBooks;
+                    File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
+
+
+                    HideSave();
+                    HideCancel();
+                    ShowPlus();
+                    Delete();
+                    HideForm();
+                    PrintSortedBooks(books, false);
+                }
+
+            }
+
+           
         }
     }
 }

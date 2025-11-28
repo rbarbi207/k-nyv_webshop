@@ -124,7 +124,7 @@
                         <!--genresearch-->
                         <Rectangle Name="rct_genre" Height="80" Fill="White" RadiusX="10" RadiusY="10"/>
                         <Label Content="Műfaj:" Margin="10,5,0,0"/>
-                        <ComboBox Name="cmbGenre" Margin="70,-35,10,0" Height="25" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
+                        <ComboBox Name="cmbGenre" Margin="70,-35,10,0" Height="25"  SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
                         <Label Content="Új Műfaj:" Margin="10,45,10,0"/>
                         <TextBox Name="txtGenre" Margin="75,40,10,0" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" TextChanged="txtGenre_TextChanged" Background="White"/>
                     </Grid>
@@ -192,8 +192,8 @@
                 <Border Name="br_Modify"   Style="{StaticResource HoverBorder}" Cursor="Hand"  Height="45"  Margin="111,0,145,20" VerticalAlignment="Bottom" Background="#FF403C40" CornerRadius="10" MouseDown="br_Modify_MouseDown">
                     <Button Name="ModifyButton" Cursor="Hand" Content="Módosítás" HorizontalAlignment="Center" Width="90"  VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" Foreground="White" FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Modify_MouseDown"/>
                 </Border>
-                <Border Name="br_Delete"   Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" Height="45" Margin="0,0,65,20" VerticalAlignment="Bottom" Width="75" Background="#FF412258" CornerRadius="10" MouseDown="br_Modify_MouseDown">
-                    <Button Name="DeleteButton" Cursor="Hand" Content="Törlés" HorizontalAlignment="Center" Width="66"  VerticalAlignment="Center" BorderBrush="#FF412258" Background="#FF412258" Foreground="White" FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Modify_MouseDown"/>
+                <Border Name="br_Delete"   Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" Height="45" Margin="0,0,65,20" VerticalAlignment="Bottom" Width="75" Background="#FF412258" CornerRadius="10" MouseDown="br_Delete_MouseDown" >
+                    <Button Name="DeleteButton" Cursor="Hand" Content="Törlés" HorizontalAlignment="Center" Width="66"  VerticalAlignment="Center" BorderBrush="#FF412258" Background="#FF412258" Foreground="White" FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Delete_MouseDown"/>
                 </Border>
             </Grid>
             <Rectangle Panel.ZIndex="-1" Height="100" Margin="-50,-62,-57,0" Fill="#FF27213E" Stroke="#FF27213E" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
