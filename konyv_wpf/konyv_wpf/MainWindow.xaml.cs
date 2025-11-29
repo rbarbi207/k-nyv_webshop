@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +39,7 @@ namespace konyv_webshop
     public partial class MainWindow : Window
     {
         private Dictionary<UIElement, (int col, int colSpan)> originalPositions = new();
+        private Brush color = new SolidColorBrush(Color.FromRgb(199, 26, 26));
         private bool oneColumn = false;
         private const double BreakpointWidth = 500;
         private readonly string jsonPath =
@@ -48,9 +50,9 @@ namespace konyv_webshop
         public bool exists = false;
         public Book? matchingbook = null;
         private bool hasBeenDone = false;
-        public string errorMessage = "";
         private bool hasShownError = false;
         private List<string> errors = new List<string>();
+        ListBoxItem? item = null;
 
         /// false -> alap: legkorábbi <summary>
         /// kiválasztott elem eltárolása ? 
@@ -62,73 +64,96 @@ namespace konyv_webshop
             ShowPlus();
             HideSave();
             HideForm();
+            br_Clear.Visibility = Visibility.Collapsed;
+            br_Modify.Visibility = Visibility.Hidden;
+            br_Delete.Visibility = Visibility.Hidden;
         }
-
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            double w = ActualWidth * 0.4; 
+            tbx_searchbar.Width = w;
+            rectangle.Width = w;
+            Border? listBoxBorder = lbx_books.Parent as Border;
             if (ActualWidth < BreakpointWidth && !oneColumn)
             {
+                oneColumn = true;
                 SwitchToOneColumn();
-                Grid.SetRow(lbx_books, 2);
-                Grid.SetColumn(lbx_books, 0);
+                lbx_books.Height = double.NaN;
+                listBoxBorder!.Height = 350;
+                listBoxBorder.MaxHeight = 350;
+                book.HorizontalAlignment = HorizontalAlignment.Left;
 
-                Grid.SetRow(rightPanelRoot, 4);
-                Grid.SetColumn(rightPanelRoot, 0);
-
-                rightPanelRoot.VerticalAlignment = VerticalAlignment.Top;
-                rightPanelRoot.Height = double.NaN;
-                rightPanelRoot.Margin = new Thickness(0, 10, 0, 0);
             }
             else if (ActualWidth >= BreakpointWidth && oneColumn)
             {
+                oneColumn = false;
                 SwitchToThreeColumns();
-                Grid.SetRow(lbx_books, 2);
-                Grid.SetColumn(lbx_books, 0);
+                lbx_books.MaxHeight = double.PositiveInfinity;
+                listBoxBorder?.ClearValue(Border.HeightProperty);
+                listBoxBorder?.ClearValue(Border.MaxHeightProperty);
 
-                Grid.SetRow(rightPanelRoot, 2);
-                Grid.SetColumn(rightPanelRoot, 2);
+                book.HorizontalAlignment = HorizontalAlignment.Center;
 
-                rightPanelRoot.VerticalAlignment = VerticalAlignment.Stretch;
-                rightPanelRoot.Margin = new Thickness(10);
             }
 
+            h1.Visibility = ActualWidth < BreakpointWidth ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void SwitchToOneColumn()
         {
-            oneColumn = true;
-
-            // Csak az első oszlop látszik
             windowGrid.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
             windowGrid.ColumnDefinitions[1].Width = new GridLength(0);
             windowGrid.ColumnDefinitions[2].Width = new GridLength(0);
 
-            // Bal lista marad felül
-            Grid.SetColumn(lbx_books, 0);
-            Grid.SetRow(lbx_books, 2);
+            h1.Visibility = Visibility.Collapsed;     
+            Grid.SetColumn(book, 0);                  
+            book.Margin = new Thickness(0, -15, 0, 0);
 
-            // JOBB OLDALI PANEL (ScrollViewer) LEMEGY A LISTA ALÁ
+            Grid.SetColumn(language, 0);             
+            language.HorizontalAlignment = HorizontalAlignment.Right;
+
+            Grid.SetRow(lbx_books.Parent as Border, 1);
+            Grid.SetColumn(lbx_books.Parent as Border, 0);
+
             Grid.SetColumn(rightPanelRoot, 0);
-            Grid.SetRow(rightPanelRoot, 3);
+            Grid.SetRow(rightPanelRoot, 2);
+            rightPanelRoot.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            rightPanelRoot.Height = window.ActualHeight - 600;
+
+            Grid.SetColumn(rct_error.Parent as Grid, 0);
+            Grid.SetRow(rct_error.Parent as Grid, 3);
+
+            Grid.SetColumn(br_Cancel.Parent as Grid, 0);
+            Grid.SetRow(br_Cancel.Parent as Grid, 4);
         }
         private void SwitchToThreeColumns()
         {
-            oneColumn = false;
-
-            // Visszaáll a 3 oszlop
             windowGrid.ColumnDefinitions[0].Width = new GridLength(25, GridUnitType.Star);
             windowGrid.ColumnDefinitions[1].Width = new GridLength(2, GridUnitType.Star);
             windowGrid.ColumnDefinitions[2].Width = new GridLength(25, GridUnitType.Star);
 
-            // Bal lista vissza helyére
-            Grid.SetColumn(lbx_books, 0);
-            Grid.SetRow(lbx_books, 2);
+            h1.Visibility = Visibility.Visible;
+            Grid.SetColumn(book, 1);
+            book.Margin = new Thickness(0, -15, 0, 0);
 
-            // JOBB OLDALI PANEL vissza jobb oldalra
+            Grid.SetColumn(language, 2);
+            language.HorizontalAlignment = HorizontalAlignment.Right;
+
+            Grid.SetRow(lbx_books.Parent as Border, 1);
+            Grid.SetColumn(lbx_books.Parent as Border, 0);
+            (lbx_books.Parent as Border)?.ClearValue(Border.HeightProperty);
+
             Grid.SetColumn(rightPanelRoot, 2);
-            Grid.SetRow(rightPanelRoot, 2);
-        }
+            Grid.SetRow(rightPanelRoot, 1);
+            rightPanelRoot.ClearValue(HeightProperty);
+            rightPanelRoot.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
 
+            Grid.SetColumn(rct_error.Parent as Grid, 0);
+            Grid.SetRow(rct_error.Parent as Grid, 2);
+
+            Grid.SetColumn(br_Cancel.Parent as Grid, 2);
+            Grid.SetRow(br_Cancel.Parent as Grid, 2);
+        }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -299,7 +324,6 @@ namespace konyv_webshop
                 book.DateEdited = DateTime.Now;
                 Genres.Add(book.Genre);
             }
-            // Mindig a program elindítása az editedidő???
             books[3].DateEdited = DateTime.Now.AddDays(4);
             PrintSortedBooks(books, false);
             Genres = Genres.Distinct().ToList();
@@ -364,27 +388,25 @@ namespace konyv_webshop
 
         private void txtTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtTitle.BorderBrush = Brushes.Transparent;
+            txtTitle.BorderBrush = Brushes.Green;
         }
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtGenre.Text = "";
-            cmbGenre.BorderBrush = Brushes.Transparent;
+            cmbGenre.BorderBrush = Brushes.Green;
         }
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
+            HidePlus();
             if (lbx_books.SelectedItem != null)
             {
                 HideForm();
                 ShowCopy();
                 errors.Add("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?");
-
             }
             else
             {
                 ShowForm();
                 HideError();
-
             }
             ShowSave();
             ShowCancel();
@@ -398,14 +420,13 @@ namespace konyv_webshop
             {
                 txtGenre.BorderBrush = Brushes.Transparent;
                 cmbGenre.SelectedItem = null;
-
             }
         }
 
         private void ShowError()
         {
             errorMsg.Text = "";
-            errorMsg.Foreground = Brushes.Red;
+            errorMsg.Foreground = Brushes.Red;  
             errorMsg.Text = string.Join("\n", errors);
             border_error.Visibility = Visibility.Visible;
             rct_error.Visibility = Visibility.Visible;
@@ -423,12 +444,23 @@ namespace konyv_webshop
         // Új könyv hozzáadás biztos mentés
         private void ShowPlus()
         {
-            br_Clear.Visibility = Visibility.Visible;
+            //*         
+            br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
+            br_Clear.Visibility = Visibility.Collapsed;
+            if (lbx_books.SelectedItem != null)
+            {
+                br_Modify.Visibility = Visibility.Visible;
+                br_Delete.Visibility = Visibility.Visible;
+                br_Clear.Visibility = Visibility.Visible;
+            }
             br_newBook.Visibility = Visibility.Visible;
             PlusButton.Visibility = Visibility.Visible;
         }
         private void HidePlus()
         {
+            br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
             br_Clear.Visibility = Visibility.Collapsed;
             br_newBook.Visibility = Visibility.Collapsed;
             PlusButton.Visibility = Visibility.Collapsed;
@@ -453,7 +485,8 @@ namespace konyv_webshop
 
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
         {
-            dpDate.BorderBrush = Brushes.Transparent;
+            rct_Date.Stroke = Brushes.Transparent;
+            rct_Date.StrokeThickness = 0;
         }
 
         // Könyv Módosítás biztos mentés
@@ -470,11 +503,12 @@ namespace konyv_webshop
 
         private void txtPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtPublisher.BorderBrush = Brushes.Green;
+            rct_publisher.Stroke = Brushes.Transparent;
+            rct_publisher.StrokeThickness = 0;
         }
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            int value = int.Parse(txtcopy.Text);
             HidePlus();
             ShowError();
             if (hasBeenDone && matchingbook != null)
@@ -486,7 +520,7 @@ namespace konyv_webshop
                 }
                 if (i >= 0)
                 {
-                    books[i].Copies += value;
+                    books[i].Copies += int.Parse(txtcopy.Text);
                     books[i].DateEdited = DateTime.Now;
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
@@ -512,70 +546,78 @@ namespace konyv_webshop
                 if (txtTitle.Text.Trim() == "")
                 {
                     valid = false;
-                    txtTitle.BorderBrush = Brushes.Red;
+                    rct_title.Stroke = color;
+                    rct_title.StrokeThickness = 1;
                     errors.Add("Kérem adja meg a könyv címét! ");
 
                 }
                 if (txtAuthor.Text.Trim() == "")
                 {
                     valid = false;
-                    txtAuthor.BorderBrush = Brushes.Red;
+                    rct_author.Stroke = color;
+                    rct_author.StrokeThickness = 1;
                     errors.Add("Kérem adja meg a könyv szerzőjét! ");
 
                 }
                 if ((cmbGenre.SelectedItem == null && txtGenre.Text.Trim() == ""))
                 {
                     valid = false;
-                    txtGenre.BorderBrush = Brushes.Red;
-                    cmbGenre.BorderBrush = Brushes.Red;
+                    rct_genre.Stroke = color;
+                    rct_genre.StrokeThickness = 1;
                     errors.Add("Kérem adja meg a könyv műfaját! ");
 
                 }
                 if (txtPublisher.Text.Trim() == "")
                 {
                     valid = false;
-                    txtPublisher.BorderBrush = Brushes.Red;
+                    rct_publisher.Stroke = color;
+                    rct_publisher.StrokeThickness = 1;
                     errors.Add("Kérem adja meg a könyv kiadóját! ");
 
                 }
                 if (rad_ebook.IsChecked == false && rad_paper.IsChecked == false)
                 {
                     valid = false;
-                    rad_ebook.BorderBrush = Brushes.Red;
-                    rad_paper.BorderBrush = Brushes.Red;
+                    rct_ebook.Stroke = color;
+                    rct_ebook.StrokeThickness = 1;
                     errors.Add("Kérem adja meg hogy a könyv ebbok vagy papír! ");
 
                 }
                 if (dpDate.SelectedDate == null)
                 {
                     valid = false;
-                    dpDate.BorderBrush = Brushes.Red;
+                    rct_Date.StrokeThickness = 1;
+                    rct_Date.Stroke = color;
                     errors.Add("Kérem adja meg a könyv kiadási dátumát! ");
 
                 }
                 if (txtnational.Text.Trim() == "")
                 {
                     valid = false;
-                    txtnational.BorderBrush = Brushes.Red;
+                    rct_national.Stroke = color;
+                    rct_national.StrokeThickness = 1;
                     errors.Add("Kérem adja meg hogy milyen nyelven íródott a könyv! ");
 
                 }
                 if (txtcopy.Text.Trim() == "")
                 {
                     valid = false;
-                    txtcopy.BorderBrush = Brushes.Red;
+                    rct_copy.Stroke = color;
+                    rct_copy.StrokeThickness = 1;
                     errors.Add("Kérem adja meg a példányszámot! ");
 
                 }
                 if (!int.TryParse(txtcopy.Text, out copy) && txtcopy.Text.Trim() != "")
                 {
-                    txtcopy.BorderBrush = Brushes.Red;
+                    rct_copy.Stroke = color;
+                    rct_copy.StrokeThickness = 1;
                     errors.Add("A példányszámnak számnak kell lennie!");
 
                 }
                 if (copy <= 0 && txtcopy.Text.Trim() != "" && int.TryParse(txtcopy.Text, out copy))
                 {
-                    txtcopy.BorderBrush = Brushes.Red;
+                    rct_copy.Stroke = color;
+                    rct_copy.StrokeThickness = 1;
                     errors.Add("A példányszámnak minimum 1-nek kell lennie!");
                 }
                 foreach (var book in books)
@@ -710,7 +752,7 @@ namespace konyv_webshop
                 matchingbook = null;
             }
             hasBeenDone = true;
-            
+
         }
 
         private void ShowCopy()
@@ -755,21 +797,26 @@ namespace konyv_webshop
 
         private void rad_ebook_Checked(object sender, RoutedEventArgs e)
         {
-            rad_ebook.BorderBrush = Brushes.Green;
+            rct_ebook.Stroke = Brushes.Transparent;
+            rct_ebook.StrokeThickness = 0;
+
+
             rad_ebook.FontWeight = FontWeights.Bold;
             rad_paper.FontWeight = FontWeights.Normal;
         }
 
         private void rad_paper_Checked(object sender, RoutedEventArgs e)
         {
-            rad_paper.BorderBrush = Brushes.Transparent;
+            rct_ebook.Stroke = Brushes.Transparent;
+            rct_ebook.StrokeThickness = 0;
             rad_ebook.FontWeight = FontWeights.Normal;
             rad_paper.FontWeight = FontWeights.Bold;
         }
 
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtnational.BorderBrush = Brushes.Transparent;
+            rct_national.Stroke = Brushes.Transparent;
+            rct_national.StrokeThickness = 0;
         }
 
         private void HideForm()
@@ -788,11 +835,9 @@ namespace konyv_webshop
             txtTitle.Foreground = Brushes.Black;
             rad_ebook.IsEnabled = false;
             rad_ebook.Foreground = Brushes.Black;
-            rad_ebook.FontWeight = FontWeights.Normal;
             //rad_ebook.FontWeight = FontWeights.Bold;
             rad_paper.Foreground = Brushes.Black;
             rad_paper.IsEnabled = false;
-            rad_paper.FontWeight = FontWeights.Normal;
             //rad_paper.FontWeight = FontWeights.Bold;
             txtnational.IsEnabled = false;
             txtnational.Foreground = Brushes.Black;
@@ -862,20 +907,21 @@ namespace konyv_webshop
             if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
                 HideError();
-                txtcopy.BorderBrush = Brushes.Transparent;
+                rct_copy.Stroke = Brushes.Transparent;
+                rct_copy.StrokeThickness = 0;
                 return;
             }
-            int szam;
-            if (!int.TryParse(txtcopy.Text, out szam))
+            int n;
+            if (!int.TryParse(txtcopy.Text, out n))
             {
-                //txtcopy.BorderBrush = Brushes.Red;
+                //txtcopy.BorderBrush = color;
                 errors.Clear();
                 errors.Add("A példányszámnak számnak kell lennie!");
                 ShowError();
             }
-            else if (szam < 0)
+            else if (n < 0)
             {
-                //txtcopy.BorderBrush = Brushes.Red;
+                //txtcopy.BorderBrush = color;
                 errors.Clear();
                 errors.Add("A példányszámnak 0-nál nagyobbnak kell lennie!");
                 ShowError();
@@ -883,18 +929,21 @@ namespace konyv_webshop
             else
             {
                 errors.Clear();
-                txtcopy.BorderBrush = Brushes.Green;
+                rct_copy.Stroke = Brushes.Transparent;
+                rct_copy.StrokeThickness = 0;
             }
         }
 
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lbx_books.Visibility = Visibility.Visible;
+            txtcopy.IsEnabled = false;
             hasShownError = false;
             errors.Clear();
             HideForm();
             HideError();
             HideSave();
+            ShowPlus();
             ShowCopy();
 
             if (lbx_books.SelectedItem == null)
@@ -933,6 +982,8 @@ namespace konyv_webshop
             }
             ShowChange();
             txtGenre.Text = "";
+
+            item = (ListBoxItem)lbx_books.SelectedItem;
         }
         private void PlusButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -969,6 +1020,80 @@ namespace konyv_webshop
         {
             lbx_books.SelectedItem = null;
             Delete();
+        }
+
+        //*
+        private void br_Modify_MouseDown(object sender, RoutedEventArgs e)
+        {
+            HidePlus();
+
+            cancelButton.Visibility = Visibility.Visible;
+            SaveButton.Visibility = Visibility.Visible;
+            br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;
+            br_Cancel.Visibility = Visibility.Visible;
+            br_Save.Visibility = Visibility.Visible;
+
+            ShowForm();
+
+        }
+
+        private Book searchForSelectedItem()
+        {
+            Book _book = books[0];
+            foreach (Book book in books)
+            {
+                if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
+                        (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
+                        (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
+                        DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality)
+                {
+                    _book = book;
+                }
+            }
+
+            return _book;
+        }
+
+
+        private void br_Delete_MouseDown(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Biztosan törli a kiválasztott elemet?",
+                 "Megerősítés",
+                 MessageBoxButton.YesNo,
+                 MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+
+                {
+                    Book toBeDeleted = searchForSelectedItem();
+
+                    List<konyv_webshop.Book> newBooks = new List<Book>();
+                    foreach (konyv_webshop.Book book in books)
+                    {
+
+                        if (toBeDeleted.Id != book.Id)
+                        {
+                            newBooks.Add(book);
+
+                        }
+                    }
+                    books = newBooks;
+                    File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
+
+
+                    HideSave();
+                    HideCancel();
+                    ShowPlus();
+                    Delete();
+                    HideForm();
+                    PrintSortedBooks(books, false);
+                }
+
+            }
+
+
         }
     }
 }
