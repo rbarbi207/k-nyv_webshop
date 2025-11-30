@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace konyv_webshop
+namespace konyv_wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml

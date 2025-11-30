@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Title">Book Inventory</sys:String>
+    <sys:String x:Key="LangLabel">English</sys:String>
+
+    <sys:String x:Key="SearchPlaceholder">Search...</sys:String>
+
+    <sys:String x:Key="LblTitle">Title:</sys:String>
+    <sys:String x:Key="LblAuthor">Author:</sys:String>
+    <sys:String x:Key="LblGenre">Genre:</sys:String>
+    <sys:String x:Key="LblNewGenre">New Genre:</sys:String>
+    <sys:String x:Key="LblPublisher">Publisher:</sys:String>
+    <sys:String x:Key="LblDate">Publish Date:</sys:String>
+    <sys:String x:Key="LblNationality">Nationality:</sys:String>
+    <sys:String x:Key="LblCopy">Copies:</sys:String>
+
+    <sys:String x:Key="BtnSave">Save</sys:String>
+    <sys:String x:Key="BtnCancel">Cancel</sys:String>
+    <sys:String x:Key="BtnDelete">Delete</sys:String>
+    <sys:String x:Key="BtnModify">Modify</sys:String>
+    <sys:String x:Key="BtnClear">Clear Fields</sys:String>
+    <sys:String x:Key="BtnNew">New Book</sys:String>
+
+    <sys:String x:Key="RbEbook">Ebook</sys:String>
+    <sys:String x:Key="RbPaper">Paper book</sys:String>
+
+    <sys:String x:Key="msg_delete_question">Are you sure you want to delete the selected item?</sys:String>
+    <sys:String x:Key="msg_confirmation">Confirmation</sys:String>
+
+</ResourceDictionary>

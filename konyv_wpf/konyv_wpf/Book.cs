@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace konyv_webshop
+namespace konyv_wpf
 {
     public class Book
     {
@@ -35,8 +35,6 @@ namespace konyv_webshop
         {
             return $"{id}, {author}, {title}, {genre}, {publisher}, {year}, {copies}, {paper}, {nationality}";
         }
-
     }
-
 }
 
