@@ -9,11 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\books.png" />
     <None Remove="refreshicon.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\books.png" />
   </ItemGroup>
 
   <ItemGroup>
