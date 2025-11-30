@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Title">Könyv Nyilvántartás</sys:String>
+    <sys:String x:Key="LangLabel">Magyar</sys:String>
+
+    <sys:String x:Key="SearchPlaceholder">Keresés...</sys:String>
+
+    <sys:String x:Key="LblTitle">Cím:</sys:String>
+    <sys:String x:Key="LblAuthor">Szerző:</sys:String>
+    <sys:String x:Key="LblGenre">Műfaj:</sys:String>
+    <sys:String x:Key="LblNewGenre">Új Műfaj:</sys:String>
+    <sys:String x:Key="LblPublisher">Kiadó:</sys:String>
+    <sys:String x:Key="LblDate">Megj. Dátum:</sys:String>
+    <sys:String x:Key="LblNationality">Nemzetiség:</sys:String>
+    <sys:String x:Key="LblCopy">Példányszám:</sys:String>
+
+    <sys:String x:Key="BtnSave">Mentés</sys:String>
+    <sys:String x:Key="BtnCancel">Mégse</sys:String>
+    <sys:String x:Key="BtnDelete">Törlés</sys:String>
+    <sys:String x:Key="BtnModify">Módosítás</sys:String>
+    <sys:String x:Key="BtnClear">Mezők törlése</sys:String>
+    <sys:String x:Key="BtnNew">Új könyv</sys:String>
+
+    <sys:String x:Key="RbEbook">Ebook</sys:String>
+    <sys:String x:Key="RbPaper">Papír alapú</sys:String>
+
+    <sys:String x:Key="msg_delete_question">Biztosan törli a kiválasztott elemet?</sys:String>
+    <sys:String x:Key="msg_confirmation">Megerősítés</sys:String>
+</ResourceDictionary>
