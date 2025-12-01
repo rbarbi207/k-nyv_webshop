@@ -36,12 +36,12 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        
+
         <Image Grid.ColumnSpan="3" Grid.RowSpan="3" Source="images/books.png"  Stretch="Uniform"
             Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,20" Width="300"/>
-        
-        
-        
+
+
+
         <!-- Header - Title, Icon, Language -->
         <Label Name="h1"  Content="{DynamicResource Title}" Foreground="White" HorizontalAlignment="Left" Margin="7,-10,0,0" 
                VerticalAlignment="Top" Grid.Column="0" Opacity="0.63" FontWeight="Bold" FontSize="20" FontFamily="Arial" />
@@ -49,20 +49,20 @@
         <TextBlock x:Name="book" Text="📖" FontSize="30"
                    HorizontalAlignment="Center" Margin="0,-15,0,0" Grid.ColumnSpan="3" Panel.ZIndex="10"
                    Foreground="White"/>
-       
+
         <Grid HorizontalAlignment="Right" Grid.Column="2" x:Name="language">
             <TextBlock Name="txtb_lang" Cursor="Hand" Text="🌐" Margin="0,-10,0,10" 
                        Foreground="White" FontSize="20" Opacity="0.6" 
                        MouseEnter="txtb_lang_MouseEnter" MouseLeave="txtb_lang_MouseLeave" MouseDown="txtb_lang_MouseDown"/>
-            
+
             <Label Name="lbl_lang" Cursor="Hand" Content="{DynamicResource LangLabel}" Foreground="White" Margin="25,-10,10,0" 
                    RenderTransformOrigin="0.296,0.046" Background="{x:Null}" Opacity="0.6" FontSize="18" FontFamily="Arial" FontWeight="Bold" 
                    MouseEnter="lbl_lang_MouseEnter" MouseLeave="lbl_lang_MouseLeave" MouseDown="lbl_lang_MouseDown"/>
         </Grid>
 
 
-        
-        
+
+
         <!-- Searchbar, Update, Listbox -->
         <Grid x:Name="contentArea" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
             <Rectangle x:Name="rct_list"  Height="auto" IsHitTestVisible="False" Fill="#FFC1BCC8" Margin="0,0,0,0" RadiusX="10" RadiusY="10"/>
@@ -77,15 +77,16 @@
                        MouseLeave="img_sort_MouseLeave" MouseDown="img_sort_MouseDown" />
             <Rectangle x:Name="rectangle" Margin="20,10,70,0" IsHitTestVisible="False" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
                        Height="38" Fill="White" RadiusX="10" RadiusY="10"/>
-            
+
             <Border CornerRadius="10" BorderBrush="White" BorderThickness="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" 
                     Padding="2" Margin="20,60,20,20" Height="auto">
                 <ListBox x:Name="lbx_books" Padding="10" BorderBrush="{x:Null}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"  
-                         VerticalAlignment="Stretch" MinHeight="250"
-                         Margin="7,7,-3,0" SelectionChanged="lbx_books_SelectionChanged">
+                         VerticalAlignment="Stretch" MinHeight="250" 
+                         Margin="7,7,-3,0" SelectionChanged="lbx_books_SelectionChanged"   >
 
                     <ListBox.ItemContainerStyle>
+
                         <Style TargetType="{x:Type ListBoxItem}" >
                             <Setter Property="Background" Value="White"/>
                             <Setter Property="Foreground" Value="#1d152e"/>
@@ -124,7 +125,7 @@
             </Border>
         </Grid>
 
-        
+
         <!-- Form -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="rightPanelRoot" Grid.Column="2" Grid.Row="1" Margin="0,10,0,0">
             <StackPanel x:Name="panelRight" Margin="0,0,10,0">
@@ -132,16 +133,20 @@
                     <!-- titlesearch -->
                     <Rectangle Name="rct_title" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label Content="{DynamicResource LblTitle}" Margin="10,5,0,0"/>
-                    <TextBox Name="txtTitle" Text="" TextChanged="txtTitle_TextChanged" Margin="45,0,10,0" 
-                             BorderBrush="White" Background="White" VerticalAlignment="Center"/>
+                    <TextBox Name="txtTitle" Text="" TextChanged="txtTitle_TextChanged" Margin="45,0,28,0" 
+                             BorderBrush="White" Background="White" VerticalAlignment="Center"></TextBox>
+                    <TextBlock HorizontalAlignment="Right" Name="tick1" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
+                    VerticalAlignment="Center"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
                     <!-- authorsearch -->
                     <Rectangle Name="rct_author" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label  Content="{DynamicResource LblAuthor}" Margin="10,5,0,0"/>
-                    <TextBox Name="txtAuthor" Text="" VerticalAlignment="Top" Margin="55,9,10,0" 
+                    <TextBox Name="txtAuthor" Text="" VerticalAlignment="Top" Margin="55,9,30,0" 
                              TextChanged="txtAuthor_TextChanged" BorderBrush="White" Background="White"/>
+                    <TextBlock HorizontalAlignment="Right" Name="tick2" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
+                     VerticalAlignment="Center"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
@@ -149,17 +154,21 @@
                     <Rectangle Name="rct_genre" Height="80" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label Content="{DynamicResource LblGenre}" Margin="10,5,0,0"/>
                     <ComboBox Name="cmbGenre" Margin="60,-43,10,0" Height="25" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
-                    <Label Content="{DynamicResource LblNewGenre}" Margin="10,45,10,0"/>
-                    <TextBox Name="txtGenre" Margin="75,40,10,0" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
+                    <Label Content="{DynamicResource LblNewGenre}" Margin="10,45,30,0"/>
+                    <TextBox Name="txtGenre" Margin="75,50,40,10" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtGenre_TextChanged" Background="White"/>
+                    <TextBlock HorizontalAlignment="Right" Name="tick0" Text="✔" VerticalAlignment="Bottom"  Padding="0,0,10,10" Foreground="Green" Visibility="Collapsed" 
+       />
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
                     <!-- publishersearch -->
                     <Rectangle Name="rct_publisher" Height="35" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblPublisher}" Margin="10,5,0,0"/>
-                    <TextBox Name="txtPublisher" Margin="65,2,10,0" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
+                    <Label Content="{DynamicResource LblPublisher}" Margin="10,5,30,0"/>
+                    <TextBox Name="txtPublisher" Margin="65,9,40,7" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtPublisher_TextChanged" Background="White"/>
+                    <TextBlock HorizontalAlignment="Right" Name="tick3" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
+                    VerticalAlignment="Center"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
@@ -169,6 +178,7 @@
                                  Background="#FFCCA5E8" Checked="rad_ebook_Checked"/>
                     <RadioButton Name="rad_paper" HorizontalAlignment="Right" Margin="0,10,20,0" Content="{DynamicResource RbPaper}" 
                                  Background="#FFCCA5E8" Checked="rad_paper_Checked"/>
+             
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- DateSearch -->
@@ -181,15 +191,19 @@
                     <!-- NationalitySearch -->
                     <Rectangle Name="rct_national" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label Content="{DynamicResource LblNationality}" Height="33" Margin="10,5,0,0"/>
-                    <TextBox Name="txtnational" Margin="90,0,10,0" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
+                    <TextBox Name="txtnational" Margin="90,9,30,9" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtNatioal_TextChanged" Background="White"/>
+                    <TextBlock HorizontalAlignment="Right" Name="tick4" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
+                    VerticalAlignment="Center"/>
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- CopySearch -->
                     <Rectangle Name="rct_copy" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label Content="{DynamicResource LblCopy}" Height="33" Margin="10,5,0,0"/>
-                    <TextBox Name="txtcopy" Margin="100,0,10,0" TextWrapping="Wrap" Height="20" Text="" BorderBrush="White" 
-                             TextChanged="txtCopy_TextChanged" Background="White"/>
+                    <TextBox Name="txtcopy" Margin="100,9,30,9" TextWrapping="Wrap" Height="20" Text="" BorderBrush="White" 
+                             TextChanged="txtCopy_TextChanged" Background="White" IsEnabled="False"/>
+                    <TextBlock HorizontalAlignment="Right" Name="tick5" Text="✔" Foreground="Green"  Padding="0,0,10,0" Visibility="Collapsed" 
+                    VerticalAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>
@@ -208,7 +222,7 @@
             </Border>
         </Grid>
 
-        
+
         <!-- Button -->
         <Grid Grid.Row="2" Grid.Column="2">
             <Border Name="br_Cancel" Visibility="Hidden"   Style="{StaticResource HoverBorder}"  Cursor="Hand" 
@@ -251,8 +265,8 @@
                         FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Delete_MouseDown"/>
             </Border>
         </Grid>
-        
-        
+
+
         <Rectangle Grid.Row="0" Panel.ZIndex="-1" Height="100" Margin="-20,-40,-20,0" Fill="#FF27213E" Stroke="#FF27213E" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

@@ -61,7 +61,12 @@ namespace konyv_wpf
             txtnational.IsEnabled = true;
             dpDate.IsEnabled = true;
             cmbGenre.IsEnabled = true;
-            txtcopy.IsEnabled = true;
+            if (rad_ebook.IsChecked == true)
+            {
+                txtcopy.Text = "-";
+            txtcopy.IsEnabled = false;
+
+            }
         }
 
 

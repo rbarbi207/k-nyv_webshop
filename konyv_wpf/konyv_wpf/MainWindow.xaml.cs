@@ -27,17 +27,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace konyv_wpf
 {
-    /// error to-do: már létező könyv (minden adat egyezik, kivéve a feltöltés dátuma, és a példányszám)
-    /// - max karakterszám (szerző, cím)
-    /// - Kitöltetlen mező
-    /// - nincs találat
-    /// - Nem lehet speciális karakter -> név, szerző (kivéve ','; '-')
-    /// - törlés és módosítás esetén hoverkor jelenjen meg szövegben az hogy nincs kiválasztva elem dőlt betűkkel (nem súlyos), ilyenkor NE változzon a kinézet hover esetén (plussz a kurzor se)
-    /// új ötlet: módosításnál felülíródik a mentett dátum <summary>
-    /// error to-do: már létező könyv (minden adat egyezik, kivéve a feltöltés dátuma, és a példányszám)
-    /// 
-    /// 
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         private readonly string jsonPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\books.json"));
@@ -54,12 +44,15 @@ namespace konyv_wpf
         private bool hasBeenDone = false;
         public Book? matchingbook = null;
         ListBoxItem? item = null;
+        public int idNumber = 0;
+        public Book? lastClicked = null;
 
-        
         public MainWindow()
         {
             InitializeComponent();
             loadBooks("books.json");
+            //languageSelect();
+
             HideError();
             ShowPlus();
             HideSave();
@@ -68,10 +61,13 @@ namespace konyv_wpf
             br_Clear.Visibility = Visibility.Collapsed;
             br_Modify.Visibility = Visibility.Hidden;
             br_Delete.Visibility = Visibility.Hidden;
+        
         }
 
 
         // ---- Még kell??
+
+            
 
                 /// false -> alap: legkorábbi <summary>
                 /// kiválasztott elem eltárolása ? 
@@ -81,11 +77,44 @@ namespace konyv_wpf
 
                 // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
                 // + csak elindításkor vagyi fúmenőbe lehessen nyelvet változtatni
+                // + MessasageBox gombfeliratainak nyelv változtatása
 
-
-
+/// felugró ablak 
 
         // ---------- Language 
+        //private void languageSelect()
+        //{
+        //    MessageBoxResult result = MessageBox.Show("Átvált angol fordításra?", "Will you turn on English translation?", MessageBoxButton.YesNo);
+        //    if (result == MessageBoxResult.Yes)
+        //    {
+        //        currentLanguage = "HU";
+        //    }
+        //    else
+        //    {
+        //        currentLanguage = "EN";
+        //    }
+        //        languageSwitch();
+        //}
+
+/// az alatta lévő függvényből másolva (Mousedown) 
+        //private void languageSwitch()
+        //{
+        //    ResourceDictionary dict = new ResourceDictionary();
+        //    if (currentLanguage == "HU")
+        //    {
+        //        currentLanguage = "EN";
+        //        lbl_lang.Content = "English";
+        //        SetLanguage("en");
+        //    }
+        //    else
+        //    {
+        //        currentLanguage = "HU";
+        //        lbl_lang.Content = "Magyar";
+        //        SetLanguage("hu");
+        //    }
+        //    PrintSortedBooks(books, false);
+        //}
+
         private void lbl_lang_MouseEnter(object sender, MouseEventArgs e)
         {
             lbl_lang.Opacity = 0.4;
@@ -204,17 +233,35 @@ namespace konyv_wpf
         //*
 
 
-        // ---------- Elemek change funkcioója - form rész
+        // ---------- Elemek change funkciója - form rész
         private void txtTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_title.Stroke = Brushes.Transparent;
             rct_title.StrokeThickness = 0;
+
+            if (txtTitle.Text.Trim() != "" && txtTitle.IsEnabled == true)
+            {
+                tick1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick1.Visibility = Visibility.Collapsed;
+            }
         }
         //*
         private void txtAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_author.Stroke = Brushes.Transparent;
             rct_author.StrokeThickness = 0;
+
+            if (txtAuthor.Text.Trim() != "" && txtAuthor.IsEnabled == true)
+            {
+                tick2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick2.Visibility = Visibility.Collapsed;
+            }
         }
         //*
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -222,24 +269,48 @@ namespace konyv_wpf
             txtGenre.Text = "";
             rct_genre.Stroke = Brushes.Transparent;
             rct_genre.StrokeThickness = 0;
+            if (cmbGenre.IsEnabled == true)
+            {
+                tick0.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                tick0.Visibility = Visibility.Collapsed;
+            }
+
         }
         private void txtGenre_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtGenre.Text != "")
+            if (txtGenre.Text.Trim() != "")
             {
                 txtGenre.BorderBrush = Brushes.Transparent;
                 cmbGenre.SelectedItem = null;
+                tick0.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick0.Visibility = Visibility.Collapsed;
             }
         }
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
         {
             rct_Date.Stroke = Brushes.Transparent;
             rct_Date.StrokeThickness = 0;
+       
         }
         private void txtPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_publisher.Stroke = Brushes.Transparent;
             rct_publisher.StrokeThickness = 0;
+            if (txtPublisher.Text.Trim() != "" && txtPublisher.IsEnabled == true)
+            {
+                tick3.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick3.Visibility = Visibility.Collapsed;
+            }
         }
         private void rad_ebook_Checked(object sender, RoutedEventArgs e)
         {
@@ -249,6 +320,9 @@ namespace konyv_wpf
 
             rad_ebook.FontWeight = FontWeights.Bold;
             rad_paper.FontWeight = FontWeights.Normal;
+
+            txtcopy.IsEnabled = false;
+            txtcopy.Text = "-";
         }
         private void rad_paper_Checked(object sender, RoutedEventArgs e)
         {
@@ -256,15 +330,32 @@ namespace konyv_wpf
             rct_ebook.StrokeThickness = 0;
             rad_ebook.FontWeight = FontWeights.Normal;
             rad_paper.FontWeight = FontWeights.Bold;
+
+            txtcopy.IsEnabled = true;
+            if (lbx_books.SelectedItem is ListBoxItem item &&
+           item.Tag is Book selectedBook)
+            {
+                txtcopy.Text = selectedBook.Copies.ToString();
+            }
         }
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_national.Stroke = Brushes.Transparent;
             rct_national.StrokeThickness = 0;
+            if (txtnational.Text.Trim() != "" && txtnational.IsEnabled == true)
+            {
+                tick4.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick4.Visibility = Visibility.Collapsed;
+            }
         }
         private void txtCopy_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtcopy.Text))
+            
+            tick5.Visibility = Visibility.Collapsed;
+                if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
                 HideError();
                 rct_copy.Stroke = Brushes.Transparent;
@@ -272,16 +363,16 @@ namespace konyv_wpf
                 return;
             }
             int n;
-            if (!int.TryParse(txtcopy.Text, out n))
+            if (!int.TryParse(txtcopy.Text, out n) && rad_ebook.IsChecked == false)
             {
-                //txtcopy.BorderBrush = color;
+
                 errors.Clear();
                 errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
                 ShowError();
             }
-            else if (n < 0)
+            else if (n < 0 && rad_ebook.IsChecked == false)
             {
-                //txtcopy.BorderBrush = color;
+
                 errors.Clear();
                 errors.Add(T("A példányszámnak minimum 1-nek kell lennie!", "The number of copies must be at least 1!"));
                 ShowError();
@@ -289,10 +380,24 @@ namespace konyv_wpf
             else
             {
                 errors.Clear();
+                HideError();
+             
                 rct_copy.Stroke = Brushes.Transparent;
                 rct_copy.StrokeThickness = 0;
             }
+
+            if (txtcopy.IsEnabled == true && errors.Count == 0)
+            {
+                tick5.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tick5.Visibility = Visibility.Collapsed;
+            }
         }
+
+
+
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lbx_books.Visibility = Visibility.Visible;
@@ -302,7 +407,8 @@ namespace konyv_wpf
             HideError();
             HideSave();
             ShowPlus();
-            ShowCopy();
+            //ShowCopy();
+
 
             if (lbx_books.SelectedItem == null)
             {
@@ -315,6 +421,7 @@ namespace konyv_wpf
             else if (lbx_books.SelectedItem is ListBoxItem item &&
             item.Tag is Book selectedBook)
             {
+                lastClicked = selectedBook;
                 txtTitle.Text = selectedBook.Title;
                 txtTitle.BorderBrush = Brushes.Transparent;
                 txtAuthor.Text = selectedBook.Author;
@@ -331,17 +438,26 @@ namespace konyv_wpf
                 rad_ebook.IsChecked = !selectedBook.Paper;
                 rad_paper.IsChecked = selectedBook.Paper;
 
+                if (rad_ebook.IsChecked == true)
+                {
+                    txtcopy.Text = "-";
+                    txtcopy.IsEnabled = false;
+                }
+
                 dpDate.SelectedDate = new DateTime(
                     selectedBook.Year.Year,
                     selectedBook.Year.Month,
                     selectedBook.Year.Day
                 );
                 dpDate.BorderBrush = Brushes.Transparent;
+                idNumber = selectedBook.Id;
             }
             ShowChange();
             txtGenre.Text = "";
 
             item = (ListBoxItem)lbx_books.SelectedItem;
+
+
         }
 
 
@@ -458,7 +574,7 @@ namespace konyv_wpf
                     errors.Add(T("Kérem adja meg hogy milyen nyelven íródott a könyv! ", "Please enter the language in which the book was written!"));
                     // ez így jó? 
                 }
-                if (txtcopy.Text.Trim() == "")
+                if (txtcopy.Text.Trim() == "" && rad_ebook.IsChecked == false)
                 {
                     valid = false;
                     rct_copy.Stroke = color;
@@ -468,12 +584,15 @@ namespace konyv_wpf
                 }
                 if (!int.TryParse(txtcopy.Text, out copy) && txtcopy.Text.Trim() != "")
                 {
+                    if (rad_ebook.IsChecked == false)
+                    { 
                     rct_copy.Stroke = color;
                     rct_copy.StrokeThickness = 1;
                     errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
+                    }
 
                 }
-                if (copy <= 0 && txtcopy.Text.Trim() != "" && int.TryParse(txtcopy.Text, out copy))
+                if (copy <= 0 && txtcopy.Text.Trim() != "" && int.TryParse(txtcopy.Text, out copy) && rad_ebook.IsChecked == false)
                 {
                     rct_copy.Stroke = color;
                     rct_copy.StrokeThickness = 1;
@@ -604,7 +723,6 @@ namespace konyv_wpf
                 HideError();
                 HideForm();
                 PrintSortedBooks(books, false);
-                Delete();
                 ShowPlus();
                 HideSave();
                 hasBeenDone = false;
@@ -722,25 +840,32 @@ namespace konyv_wpf
 
         }
 
-
-
-
-
-        
-
-        // Barbi -- ez lesz használva??
-        private void DeleteBook(Book book)
+        private void lbx_books_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Delete();
-            books.Remove(book);
+            /// listboxra kattintva az e.originalsource megadja azt az elemet amire kattintottunk a listboxon belülre 
+            /// a container from element pedig visszaadja azt az itemet amiben benne volt az a dolog amit az egerünkkel elértünk
+            var item = ItemsControl.ContainerFromElement(
+                lbx_books,
+                e.OriginalSource as DependencyObject /// dependencyobject -> a vizuális elemek innen származnak le
+            ) as ListBoxItem;
 
-            List<Book> Filteredbooks = filterBooks();
+
+            if (item != null && item.IsSelected)
             {
-                PrintSortedBooks(Filteredbooks, false);
 
+                e.Handled = true;
+
+     
+                item.IsSelected = false;
+
+                Delete();
+                HideForm();
             }
         }
+
+
+
+
     }
 }
-
 
