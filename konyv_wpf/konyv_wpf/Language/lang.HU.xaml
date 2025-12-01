@@ -20,12 +20,15 @@
     <sys:String x:Key="BtnCancel">Mégse</sys:String>
     <sys:String x:Key="BtnDelete">Törlés</sys:String>
     <sys:String x:Key="BtnModify">Módosítás</sys:String>
-    <sys:String x:Key="BtnClear">Mezők törlése</sys:String>
+    <sys:String x:Key="BtnClear">Mégse</sys:String>
     <sys:String x:Key="BtnNew">Új könyv</sys:String>
 
     <sys:String x:Key="RbEbook">Ebook</sys:String>
     <sys:String x:Key="RbPaper">Papír alapú</sys:String>
 
-    <sys:String x:Key="msg_delete_question">Biztosan törli a kiválasztott elemet?</sys:String>
-    <sys:String x:Key="msg_confirmation">Megerősítés</sys:String>
+    <sys:String x:Key="RUSure">Biztosan törli a kiválasztott elemet?</sys:String>
+    <sys:String x:Key="RUSureModify">Biztosan módosítja a kiválasztott elemet?</sys:String>
+    <sys:String x:Key="RUSurePlus">Biztosan hozzáaadja a könyvet az adatbázishoz?</sys:String>
+    <sys:String x:Key="Yes">Igen</sys:String>
+    <sys:String x:Key="No">Nem</sys:String>
 </ResourceDictionary>

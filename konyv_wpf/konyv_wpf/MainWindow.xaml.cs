@@ -51,12 +51,9 @@ namespace konyv_wpf
         {
             InitializeComponent();
             loadBooks("books.json");
-            //languageSelect();
-
             HideError();
             ShowPlus();
             HideSave();
-            //*
             HideForm();
             br_Clear.Visibility = Visibility.Collapsed;
             br_Modify.Visibility = Visibility.Hidden;
@@ -64,57 +61,45 @@ namespace konyv_wpf
         
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.ActualWidth < 720)
+            {
+                br_Clear.VerticalAlignment = VerticalAlignment.Top;
+                br_Clear.Margin = new Thickness(0, 40, 10, 20);
+                br_newBook.Width = 80;
+                br_Delete.Margin = new Thickness(0, 0, 100, 20);
+                br_Delete.Width = 95;
+                br_Modify.VerticalAlignment = VerticalAlignment.Top;
+                br_Modify.Margin = new Thickness(0, 40, 100, 20);
+            }
+            else
+            {
+                br_Clear.VerticalAlignment = VerticalAlignment.Bottom;
+                br_Clear.Margin = new Thickness(0, 0, 245, 20);
+                br_newBook.Width = 50;
+                br_Delete.Margin = new Thickness(0, 0, 65, 20);
+                br_Delete.Width = 75;
+                br_Modify.VerticalAlignment = VerticalAlignment.Bottom;
+                br_Modify.Margin = new Thickness(0, 0, 145, 20);
+            }
+        }
+
 
         // ---- Még kell??
 
-            
+            /// false -> alap: legkorábbi <summary>
+            /// kiválasztott elem eltárolása ? 
+            // Új könyv hozzáadás biztos mentés 
+            // Mentés mégse
+            // Könyv Módosítás biztos mentés 
 
-                /// false -> alap: legkorábbi <summary>
-                /// kiválasztott elem eltárolása ? 
-                // Új könyv hozzáadás biztos mentés
-                // Mentés mégse
-                // Könyv Módosítás biztos mentés
+            // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
+            // + popup kinézet 
 
-                // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
-                // + csak elindításkor vagyi fúmenőbe lehessen nyelvet változtatni
-                // + MessasageBox gombfeliratainak nyelv változtatása
 
-/// felugró ablak 
 
-        // ---------- Language 
-        //private void languageSelect()
-        //{
-        //    MessageBoxResult result = MessageBox.Show("Átvált angol fordításra?", "Will you turn on English translation?", MessageBoxButton.YesNo);
-        //    if (result == MessageBoxResult.Yes)
-        //    {
-        //        currentLanguage = "HU";
-        //    }
-        //    else
-        //    {
-        //        currentLanguage = "EN";
-        //    }
-        //        languageSwitch();
-        //}
-
-/// az alatta lévő függvényből másolva (Mousedown) 
-        //private void languageSwitch()
-        //{
-        //    ResourceDictionary dict = new ResourceDictionary();
-        //    if (currentLanguage == "HU")
-        //    {
-        //        currentLanguage = "EN";
-        //        lbl_lang.Content = "English";
-        //        SetLanguage("en");
-        //    }
-        //    else
-        //    {
-        //        currentLanguage = "HU";
-        //        lbl_lang.Content = "Magyar";
-        //        SetLanguage("hu");
-        //    }
-        //    PrintSortedBooks(books, false);
-        //}
-
+        // ---------- Language  
         private void lbl_lang_MouseEnter(object sender, MouseEventArgs e)
         {
             lbl_lang.Opacity = 0.4;
@@ -230,7 +215,6 @@ namespace konyv_wpf
 
             PrintSortedBooks(books, false);
         }
-        //*
 
 
         // ---------- Elemek change funkciója - form rész
@@ -248,7 +232,6 @@ namespace konyv_wpf
                 tick1.Visibility = Visibility.Collapsed;
             }
         }
-        //*
         private void txtAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_author.Stroke = Brushes.Transparent;
@@ -263,7 +246,6 @@ namespace konyv_wpf
                 tick2.Visibility = Visibility.Collapsed;
             }
         }
-        //*
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             txtGenre.Text = "";
@@ -317,10 +299,6 @@ namespace konyv_wpf
             rct_ebook.Stroke = Brushes.Transparent;
             rct_ebook.StrokeThickness = 0;
 
-
-            rad_ebook.FontWeight = FontWeights.Bold;
-            rad_paper.FontWeight = FontWeights.Normal;
-
             txtcopy.IsEnabled = false;
             txtcopy.Text = "-";
         }
@@ -328,8 +306,6 @@ namespace konyv_wpf
         {
             rct_ebook.Stroke = Brushes.Transparent;
             rct_ebook.StrokeThickness = 0;
-            rad_ebook.FontWeight = FontWeights.Normal;
-            rad_paper.FontWeight = FontWeights.Bold;
 
             txtcopy.IsEnabled = true;
             if (lbx_books.SelectedItem is ListBoxItem item &&
@@ -395,9 +371,6 @@ namespace konyv_wpf
                 tick5.Visibility = Visibility.Collapsed;
             }
         }
-
-
-
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lbx_books.Visibility = Visibility.Visible;
@@ -458,6 +431,28 @@ namespace konyv_wpf
             item = (ListBoxItem)lbx_books.SelectedItem;
 
 
+        }
+        private void lbx_books_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            /// listboxra kattintva az e.originalsource megadja azt az elemet amire kattintottunk a listboxon belülre 
+            /// a container from element pedig visszaadja azt az itemet amiben benne volt az a dolog amit az egerünkkel elértünk
+            var item = ItemsControl.ContainerFromElement(
+                lbx_books,
+                e.OriginalSource as DependencyObject /// dependencyobject -> a vizuális elemek innen származnak le
+            ) as ListBoxItem;
+
+
+            if (item != null && item.IsSelected)
+            {
+
+                e.Handled = true;
+
+
+                item.IsSelected = false;
+
+                Delete();
+                HideForm();
+            }
         }
 
 
@@ -784,6 +779,7 @@ namespace konyv_wpf
         {
             lbx_books.SelectedItem = null;
             Delete();
+            HideEveryButton();
         }
         private void br_Modify_MouseDown(object sender, RoutedEventArgs e)
         {
@@ -801,71 +797,48 @@ namespace konyv_wpf
         }
         private void br_Delete_MouseDown(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(
-            (string)Application.Current.Resources["msg_delete_question"],
-            (string)Application.Current.Resources["msg_confirmation"],
-            MessageBoxButton.YesNo,
-            MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-
-                {
-                    Book toBeDeleted = searchForSelectedItem();
-
-                    List<konyv_wpf.Book> newBooks = new List<Book>();
-                    foreach (konyv_wpf.Book book in books)
-                    {
-
-                        if (toBeDeleted.Id != book.Id)
-                        {
-                            newBooks.Add(book);
-
-                        }
-                    }
-                    books = newBooks;
-                    File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
-
-
-                    HideSave();
-                    HideCancel();
-                    ShowPlus();
-                    Delete();
-                    HideForm();
-                    PrintSortedBooks(books, false);
-                }
-
-            }
-
-
+            MyPopup.IsOpen = true;
         }
 
-        private void lbx_books_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+
+
+        // ---------- PopUpok
+        private void PopupOk_Click(object sender, RoutedEventArgs e)
         {
-            /// listboxra kattintva az e.originalsource megadja azt az elemet amire kattintottunk a listboxon belülre 
-            /// a container from element pedig visszaadja azt az itemet amiben benne volt az a dolog amit az egerünkkel elértünk
-            var item = ItemsControl.ContainerFromElement(
-                lbx_books,
-                e.OriginalSource as DependencyObject /// dependencyobject -> a vizuális elemek innen származnak le
-            ) as ListBoxItem;
+            Book toBeDeleted = searchForSelectedItem();
 
-
-            if (item != null && item.IsSelected)
+            List<konyv_wpf.Book> newBooks = new List<Book>();
+            foreach (konyv_wpf.Book book in books)
             {
 
-                e.Handled = true;
+                if (toBeDeleted.Id != book.Id)
+                {
+                    newBooks.Add(book);
 
-     
-                item.IsSelected = false;
-
-                Delete();
-                HideForm();
+                }
             }
+            books = newBooks;
+            File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
+
+
+            HideSave();
+            HideCancel();
+            ShowPlus();
+            Delete();
+            HideForm();
+            PrintSortedBooks(books, false);
+
+
+            MyPopup.IsOpen = false;
         }
-
-
-
-
+        private void PopupCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MyPopup.IsOpen = false;
+        }
+        private void ClosePopup_Click(object sender, RoutedEventArgs e)
+        {
+            MyPopup.IsOpen = false;
+        }
     }
 }
 

@@ -20,13 +20,15 @@
     <sys:String x:Key="BtnCancel">Cancel</sys:String>
     <sys:String x:Key="BtnDelete">Delete</sys:String>
     <sys:String x:Key="BtnModify">Modify</sys:String>
-    <sys:String x:Key="BtnClear">Clear Fields</sys:String>
+    <sys:String x:Key="BtnClear">Cancel</sys:String>
     <sys:String x:Key="BtnNew">New Book</sys:String>
 
     <sys:String x:Key="RbEbook">Ebook</sys:String>
     <sys:String x:Key="RbPaper">Paper book</sys:String>
 
-    <sys:String x:Key="msg_delete_question">Are you sure you want to delete the selected item?</sys:String>
-    <sys:String x:Key="msg_confirmation">Confirmation</sys:String>
-
+    <sys:String x:Key="RUSure">Are you sure you want to delete the selected item?</sys:String>
+    <sys:String x:Key="RUSureModify">Are you sure you want to modify the selected item?</sys:String>
+    <sys:String x:Key="RUSurePlus">Are you sure you want to add this book to the datebase?</sys:String>
+    <sys:String x:Key="Yes">Yes</sys:String>
+    <sys:String x:Key="No">No</sys:String>
 </ResourceDictionary>

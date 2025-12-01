@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:konyv_wpf"
-        mc:Ignorable="d"
+        mc:Ignorable="d" SizeChanged="Window_SizeChanged"
         Name="window"
-        Title="MainWindow" Height="720" Width="800" MinHeight="480" MinWidth="640">
+        Title="MainWindow" Height="740" Width="800" MinHeight="480" MinWidth="640">
     <Window.Resources>
         <ResourceDictionary Source="Styles.xaml"/>
 
@@ -83,7 +83,7 @@
                 <ListBox x:Name="lbx_books" Padding="10" BorderBrush="{x:Null}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"  
                          VerticalAlignment="Stretch" MinHeight="250" 
-                         Margin="7,7,-3,0" SelectionChanged="lbx_books_SelectionChanged"   >
+                         Margin="7,7,-3,0" SelectionChanged="lbx_books_SelectionChanged">
 
                     <ListBox.ItemContainerStyle>
 
@@ -132,7 +132,7 @@
                 <Grid>
                     <!-- titlesearch -->
                     <Rectangle Name="rct_title" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblTitle}" Margin="10,5,0,0"/>
+                    <Label Content="{DynamicResource LblTitle}" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtTitle" Text="" TextChanged="txtTitle_TextChanged" Margin="45,0,28,0" 
                              BorderBrush="White" Background="White" VerticalAlignment="Center"></TextBox>
                     <TextBlock HorizontalAlignment="Right" Name="tick1" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
@@ -142,8 +142,8 @@
                 <Grid Margin="0,18,0,0">
                     <!-- authorsearch -->
                     <Rectangle Name="rct_author" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label  Content="{DynamicResource LblAuthor}" Margin="10,5,0,0"/>
-                    <TextBox Name="txtAuthor" Text="" VerticalAlignment="Top" Margin="55,9,30,0" 
+                    <Label  Content="{DynamicResource LblAuthor}" Margin="10,5,0,0" FontWeight="Bold"/>
+                    <TextBox Name="txtAuthor" Text="" VerticalAlignment="Top" Margin="60,9,30,0" 
                              TextChanged="txtAuthor_TextChanged" BorderBrush="White" Background="White"/>
                     <TextBlock HorizontalAlignment="Right" Name="tick2" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
                      VerticalAlignment="Center"/>
@@ -152,9 +152,9 @@
                 <Grid Margin="0,18,0,0">
                     <!-- genresearch -->
                     <Rectangle Name="rct_genre" Height="80" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblGenre}" Margin="10,5,0,0"/>
+                    <Label Content="{DynamicResource LblGenre}" Margin="10,5,0,0" FontWeight="Bold"/>
                     <ComboBox Name="cmbGenre" Margin="60,-43,10,0" Height="25" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black"/>
-                    <Label Content="{DynamicResource LblNewGenre}" Margin="10,45,30,0"/>
+                    <Label Content="{DynamicResource LblNewGenre}" Margin="10,45,30,0" FontWeight="Bold"/>
                     <TextBox Name="txtGenre" Margin="75,50,40,10" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtGenre_TextChanged" Background="White"/>
                     <TextBlock HorizontalAlignment="Right" Name="tick0" Text="✔" VerticalAlignment="Bottom"  Padding="0,0,10,10" Foreground="Green" Visibility="Collapsed" 
@@ -164,8 +164,8 @@
                 <Grid Margin="0,18,0,0">
                     <!-- publishersearch -->
                     <Rectangle Name="rct_publisher" Height="35" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblPublisher}" Margin="10,5,30,0"/>
-                    <TextBox Name="txtPublisher" Margin="65,9,40,7" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
+                    <Label Content="{DynamicResource LblPublisher}" Margin="10,5,30,0" FontWeight="Bold"/>
+                    <TextBox Name="txtPublisher" Margin="70,9,40,7" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtPublisher_TextChanged" Background="White"/>
                     <TextBlock HorizontalAlignment="Right" Name="tick3" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
                     VerticalAlignment="Center"/>
@@ -175,22 +175,22 @@
                     <!-- ebook/paperSearch -->
                     <Rectangle Name="rct_ebook" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
                     <RadioButton Name="rad_ebook" HorizontalAlignment="Left" Margin="20,10,0,0" Content="{DynamicResource RbEbook}" 
-                                 Background="#FFCCA5E8" Checked="rad_ebook_Checked"/>
+                                 Background="#FFCCA5E8" Checked="rad_ebook_Checked" FontWeight="Bold"/>
                     <RadioButton Name="rad_paper" HorizontalAlignment="Right" Margin="0,10,20,0" Content="{DynamicResource RbPaper}" 
-                                 Background="#FFCCA5E8" Checked="rad_paper_Checked"/>
+                                 Background="#FFCCA5E8" Checked="rad_paper_Checked" FontWeight="Bold"/>
              
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- DateSearch -->
                     <Rectangle Name="rct_Date" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblDate}" Height="33" Margin="10,5,0,0"/>
+                    <Label Content="{DynamicResource LblDate}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <DatePicker Name="dpDate" Height="25" Margin="90,0,10,0" BorderBrush="White" Background="White" 
                                 SelectedDateChanged="dpDate_SelectedDateChanged"/>
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- NationalitySearch -->
                     <Rectangle Name="rct_national" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblNationality}" Height="33" Margin="10,5,0,0"/>
+                    <Label Content="{DynamicResource LblNationality}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtnational" Margin="90,9,30,9" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtNatioal_TextChanged" Background="White"/>
                     <TextBlock HorizontalAlignment="Right" Name="tick4" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
@@ -199,7 +199,7 @@
                 <Grid Margin="0,18,0,0">
                     <!-- CopySearch -->
                     <Rectangle Name="rct_copy" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
-                    <Label Content="{DynamicResource LblCopy}" Height="33" Margin="10,5,0,0"/>
+                    <Label Content="{DynamicResource LblCopy}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtcopy" Margin="100,9,30,9" TextWrapping="Wrap" Height="20" Text="" BorderBrush="White" 
                              TextChanged="txtCopy_TextChanged" Background="White" IsEnabled="False"/>
                     <TextBlock HorizontalAlignment="Right" Name="tick5" Text="✔" Foreground="Green"  Padding="0,0,10,0" Visibility="Collapsed" 
@@ -225,48 +225,65 @@
 
         <!-- Button -->
         <Grid Grid.Row="2" Grid.Column="2">
-            <Border Name="br_Cancel" Visibility="Hidden"   Style="{StaticResource HoverBorder}"  Cursor="Hand" 
-                    HorizontalAlignment="Right" Height="45" Margin="0,0,140,20" VerticalAlignment="Bottom" Width="98" 
-                    Background="#FF49466D" CornerRadius="10" MouseDown="CancelButton_Click">
+            <Border Name="br_Cancel" Visibility="Hidden" Style="{StaticResource HoverBorder}"  Cursor="Hand" 
+            HorizontalAlignment="Right" Height="45" Margin="0,0,140,20" VerticalAlignment="Bottom" Width="98" 
+            Background="#FF49466D" CornerRadius="10" MouseDown="CancelButton_Click">
                 <Button Name="cancelButton" Cursor="Hand" Content="{DynamicResource BtnCancel}" 
-                        HorizontalAlignment="Center" Width="89" Margin="0,0,0,0" VerticalAlignment="Center" 
-                        BorderBrush="#FF49466D" Background="#FF49466D" Foreground="White" FontSize="18" Height="39" Click="CancelButton_Click"/>
+                HorizontalAlignment="Center" Width="89" Margin="0,0,0,0" VerticalAlignment="Center" 
+                BorderBrush="#FF49466D" Background="#FF49466D" Foreground="White" FontSize="18" Height="39" Click="CancelButton_Click"/>
             </Border>
             <Border Name="br_Save"  Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" 
-                    Height="45" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="118" Background="#444455" 
-                    CornerRadius="10" MouseDown="SaveButton_Click">
+            Height="45" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="118" Background="#444455" 
+            CornerRadius="10" MouseDown="SaveButton_Click">
                 <Button Name="SaveButton" Cursor="Hand" Padding="5"  Content="{DynamicResource BtnSave}" 
-                        HorizontalAlignment="Center" Width="89" VerticalAlignment="Center" BorderBrush="#444455" 
-                        Background="#444455"  Foreground="White" FontSize="18"  Click="SaveButton_Click"/>
+                HorizontalAlignment="Center" Width="89" VerticalAlignment="Center" BorderBrush="#444455" 
+                Background="#444455"  Foreground="White" FontSize="18"  Click="SaveButton_Click"/>
             </Border>
             <Border Name="br_newBook"  Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" 
-                    Height="45" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="50" Background="#FF403C40" 
-                    CornerRadius="10" MouseDown="PlusButton_Click">
+            Height="45" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="50" Background="#FF403C40" 
+            CornerRadius="10" MouseDown="PlusButton_Click">
                 <Button Name="PlusButton" Cursor="Hand"  Content="+" HorizontalAlignment="Center" Width="45" 
-                        Grid.Row="4" VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" 
-                        Foreground="White" FontSize="18" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="35" Click="PlusButton_Click"/>
+                Grid.Row="4" VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" 
+                Foreground="White" FontSize="18" FontFamily="Bodoni MT Black" FontWeight="Bold" Height="35" Click="PlusButton_Click"/>
             </Border>
-            <Border Name="br_Clear" Style="{StaticResource HoverBorder}" Cursor="Hand" Height="45" HorizontalAlignment="Left" 
-                    Margin="-12.5,0,0,20" VerticalAlignment="Bottom" Background="#FF49466D" CornerRadius="10" MouseDown="br_Clear_MouseDown">
+            <Border x:Name="br_Clear" Style="{StaticResource HoverBorder}" Cursor="Hand" Height="45" HorizontalAlignment="Right" Width="80"
+            Margin="0,0,245,20" VerticalAlignment="Bottom" Background="#FF49466D" CornerRadius="10" MouseDown="br_Clear_MouseDown">
                 <Button Name="ClearButton" Cursor="Hand" Content="{DynamicResource BtnClear}"  HorizontalAlignment="Center" 
-                        Width="117" VerticalAlignment="Center" BorderBrush="#FF49466D" Background="#FF49466D" Foreground="White" 
-                        FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="34" Click="br_Clear_MouseDown"/>
+                Width="75" VerticalAlignment="Center" BorderBrush="#FF49466D" Background="#FF49466D" Foreground="White" 
+                FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="34" Click="br_Clear_MouseDown"/>
             </Border>
-            <Border Name="br_Modify"   Style="{StaticResource HoverBorder}" Cursor="Hand"  Height="45"  Margin="111,0,145,20" 
-                    VerticalAlignment="Bottom" Background="#FF403C40" CornerRadius="10" MouseDown="br_Modify_MouseDown">
+            <Border Name="br_Modify"   Style="{StaticResource HoverBorder}" Cursor="Hand"  Height="45" Margin="0,0,145,20" Width="95"
+            VerticalAlignment="Bottom" Background="#FF403C40" CornerRadius="10" MouseDown="br_Modify_MouseDown" HorizontalAlignment="Right">
                 <Button Name="ModifyButton" Cursor="Hand" Content="{DynamicResource BtnModify}" HorizontalAlignment="Center" 
-                        Width="90"  VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" Foreground="White" 
-                        FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Modify_MouseDown"/>
+                Width="90"  VerticalAlignment="Center" BorderBrush="#FF403C40" Background="#FF403C40" Foreground="White" 
+                FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Modify_MouseDown"/>
             </Border>
             <Border Name="br_Delete"   Style="{StaticResource HoverBorder}" Cursor="Hand" HorizontalAlignment="Right" Height="45" 
-                    Margin="0,0,65,20" VerticalAlignment="Bottom" Width="75" Background="#FF412258" CornerRadius="10" MouseDown="br_Delete_MouseDown" >
+            Margin="0,0,65,20" VerticalAlignment="Bottom" Width="75" Background="#FF412258" CornerRadius="10" MouseDown="br_Delete_MouseDown" >
                 <Button Name="DeleteButton" Cursor="Hand" Content="{DynamicResource BtnDelete}" HorizontalAlignment="Center" 
-                        Width="66"  VerticalAlignment="Center" BorderBrush="#FF412258" Background="#FF412258" Foreground="White" 
-                        FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Delete_MouseDown"/>
+                Width="66"  VerticalAlignment="Center" BorderBrush="#FF412258" Background="#FF412258" Foreground="White" 
+                FontSize="18" FontFamily="Arial" FontWeight="Thin" Height="35" Click="br_Delete_MouseDown"/>
             </Border>
         </Grid>
 
 
         <Rectangle Grid.Row="0" Panel.ZIndex="-1" Height="100" Margin="-20,-40,-20,0" Fill="#FF27213E" Stroke="#FF27213E" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+
+        <!-- PopUp -->
+        <Popup x:Name="MyPopup" Placement="Center" StaysOpen="False">
+            <Border Background="Lavender" Padding="20" BorderBrush="Black" BorderThickness="2">
+                <StackPanel>
+                    <Button Content="✖" HorizontalAlignment="Right" BorderThickness="0"
+            FontSize="8" Foreground="Black" Click="ClosePopup_Click" Margin="0,-20,-10,0"/>
+
+                    <TextBlock x:Name="PopupText" Text="{DynamicResource RUSure}" Foreground="Black" Margin="0 0 0 10"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="{DynamicResource Yes}" Click="PopupOk_Click" Margin="10,0,10,0" Padding="10" Width="50" Background="#FFCCCCCC" BorderBrush="Black" />
+                        <Button Content="{DynamicResource No}" Click="PopupCancel_Click" Width="50" Padding="10" Background="#FFCCCCCC" BorderBrush="Black" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Window>

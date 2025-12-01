@@ -20,35 +20,25 @@ namespace konyv_wpf
         private void HideForm()
         {
             txtAuthor.IsEnabled = false;
-            txtAuthor.FontWeight = FontWeights.Bold;
             txtAuthor.Foreground = Brushes.Black;
             txtGenre.IsEnabled = false;
-            txtGenre.FontWeight = FontWeights.Bold;
             txtGenre.Foreground = Brushes.Black;
             txtPublisher.IsEnabled = false;
             txtPublisher.Foreground = Brushes.Black;
-            txtPublisher.FontWeight = FontWeights.Bold;
             txtTitle.IsEnabled = false;
-            txtTitle.FontWeight = FontWeights.Bold;
             txtTitle.Foreground = Brushes.Black;
             rad_ebook.IsEnabled = false;
             rad_ebook.Foreground = Brushes.Black;
-            //rad_ebook.FontWeight = FontWeights.Bold;
             rad_paper.Foreground = Brushes.Black;
             rad_paper.IsEnabled = false;
-            //rad_paper.FontWeight = FontWeights.Bold;
             txtnational.IsEnabled = false;
             txtnational.Foreground = Brushes.Black;
-            txtnational.FontWeight = FontWeights.Bold;
             dpDate.IsEnabled = false;
             dpDate.Foreground = Brushes.Black;
-            dpDate.FontWeight = FontWeights.Bold;
             cmbGenre.IsEnabled = false;
             cmbGenre.Foreground = Brushes.Black;
-            cmbGenre.FontWeight = FontWeights.Bold;
             txtcopy.IsEnabled = false;
             txtcopy.Foreground = Brushes.Black;
-            txtcopy.FontWeight = FontWeights.Bold;
         }
         private void ShowForm()
         {
@@ -68,6 +58,28 @@ namespace konyv_wpf
 
             }
         }
+        private void HideRedBorder()
+        {
+            rct_author.Stroke = Brushes.Transparent;
+            rct_genre.Stroke = Brushes.Transparent;
+            rct_publisher.Stroke = Brushes.Transparent;
+            rct_title.Stroke = Brushes.Transparent;
+            rct_ebook.Stroke = Brushes.Transparent;
+            rct_national.Stroke = Brushes.Transparent;
+            rct_Date.Stroke = Brushes.Transparent;
+            rct_copy.Stroke = Brushes.Transparent;
+        }
+
+
+
+        private void HideEveryButton()
+        {
+            br_Cancel.Visibility = Visibility.Collapsed;
+            br_Save.Visibility = Visibility.Collapsed;
+            br_Clear.Visibility = Visibility.Collapsed;
+            br_Modify.Visibility = Visibility.Collapsed;
+            br_Delete.Visibility = Visibility.Collapsed;    
+        }
 
 
         private void Delete()
@@ -78,10 +90,8 @@ namespace konyv_wpf
             txtAuthor.Text = "";
             txtAuthor.BorderBrush = Brushes.Transparent;
             rad_ebook.IsChecked = false;
-            rad_paper.FontWeight = FontWeights.Normal;
             rad_ebook.BorderBrush = Brushes.Transparent;
             rad_paper.IsChecked = false;
-            rad_ebook.FontWeight = FontWeights.Normal;
             rad_paper.BorderBrush = Brushes.Transparent;
             dpDate.SelectedDate = null;
             dpDate.BorderBrush = Brushes.Transparent;
