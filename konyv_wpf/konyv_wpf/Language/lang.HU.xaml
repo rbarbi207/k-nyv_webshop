@@ -27,8 +27,9 @@
     <sys:String x:Key="RbPaper">Papír alapú</sys:String>
 
     <sys:String x:Key="RUSure">Biztosan törli a kiválasztott elemet?</sys:String>
-    <sys:String x:Key="RUSureModify">Biztosan módosítja a kiválasztott elemet?</sys:String>
-    <sys:String x:Key="RUSurePlus">Biztosan hozzáaadja a könyvet az adatbázishoz?</sys:String>
     <sys:String x:Key="Yes">Igen</sys:String>
     <sys:String x:Key="No">Nem</sys:String>
+
+    <sys:String x:Key="Exists">Ez a könyv már létezik a nyilvántartásba!</sys:String>
+    <sys:String x:Key="YesExists">Ok</sys:String>
 </ResourceDictionary>

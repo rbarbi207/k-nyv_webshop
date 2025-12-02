@@ -36,7 +36,6 @@ namespace konyv_wpf
             dpDate.IsEnabled = false;
             dpDate.Foreground = Brushes.Black;
             cmbGenre.IsEnabled = false;
-            cmbGenre.Foreground = Brushes.Black;
             txtcopy.IsEnabled = false;
             txtcopy.Foreground = Brushes.Black;
         }
@@ -100,7 +99,6 @@ namespace konyv_wpf
             txtGenre.Text = "";
             txtGenre.BorderBrush = Brushes.Transparent;
             cmbGenre.SelectedItem = null;
-            cmbGenre.BorderBrush = Brushes.Transparent;
             txtPublisher.Text = "";
             txtPublisher.BorderBrush = Brushes.Transparent;
             txtcopy.Text = "";

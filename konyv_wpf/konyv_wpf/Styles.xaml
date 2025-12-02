@@ -95,5 +95,60 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="MyComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="Border"
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="10"
+                          Padding="{TemplateBinding Padding}"/>
 
+                        <ContentPresenter HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="5,0,25,0"
+                                    Content="{TemplateBinding SelectionBoxItem}"
+                                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
+
+                        <ToggleButton HorizontalAlignment="Right"
+                                Width="20"
+                                Focusable="False"
+                                IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border Background="White"
+                                          BorderThickness="2" CornerRadius="0,10,10,0" 
+                                      Padding="2">
+                                        <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" Fill="DarkBlue"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+
+                        <Popup x:Name="PART_Popup"
+                             Placement="Bottom"
+                             IsOpen="{TemplateBinding IsDropDownOpen}"
+                             AllowsTransparency="True"
+                             Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                             Height="250">
+                            <Border Background="White"
+                              BorderBrush="Gray"
+                              BorderThickness="1"
+                              CornerRadius="10">
+                                <ScrollViewer>
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

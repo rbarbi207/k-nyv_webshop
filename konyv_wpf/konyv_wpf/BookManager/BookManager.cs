@@ -19,6 +19,7 @@ namespace konyv_wpf
         {
             string json = File.ReadAllText(jsonPath);
             books = JsonConvert.DeserializeObject<List<Book>>(json)!;
+
             foreach (Book book in books)
             {
                 book.DateEdited = DateTime.Now;

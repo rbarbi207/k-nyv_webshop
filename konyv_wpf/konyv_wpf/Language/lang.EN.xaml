@@ -27,8 +27,9 @@
     <sys:String x:Key="RbPaper">Paper book</sys:String>
 
     <sys:String x:Key="RUSure">Are you sure you want to delete the selected item?</sys:String>
-    <sys:String x:Key="RUSureModify">Are you sure you want to modify the selected item?</sys:String>
-    <sys:String x:Key="RUSurePlus">Are you sure you want to add this book to the datebase?</sys:String>
     <sys:String x:Key="Yes">Yes</sys:String>
     <sys:String x:Key="No">No</sys:String>
+
+    <sys:String x:Key="Exists">This book already exists in the repository!</sys:String>
+    <sys:String x:Key="YesExists">Ok</sys:String>
 </ResourceDictionary>

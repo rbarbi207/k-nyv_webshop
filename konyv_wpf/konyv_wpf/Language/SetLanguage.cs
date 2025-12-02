@@ -37,10 +37,12 @@ namespace konyv_wpf
 
             Application.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Add(dict);
+
         }
         public string T(string hu, string en)
         {
             return currentLanguage == "HU" ? hu : en;
         }
+
     }
 }

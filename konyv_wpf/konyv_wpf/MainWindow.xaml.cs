@@ -567,7 +567,6 @@ namespace konyv_wpf
                     rct_national.Stroke = color;
                     rct_national.StrokeThickness = 1;
                     errors.Add(T("Kérem adja meg hogy milyen nyelven íródott a könyv! ", "Please enter the language in which the book was written!"));
-                    // ez így jó? 
                 }
                 if (txtcopy.Text.Trim() == "" && rad_ebook.IsChecked == false)
                 {
@@ -596,24 +595,32 @@ namespace konyv_wpf
                 foreach (var book in books)
                 {
                     if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
-                        (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
-                        (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
-                        DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality && (txtcopy.Text != "" && copy > 0))
+                        ((cmbGenre.SelectedItem?.ToString() == book.Genre) || (txtGenre.Text == book.Genre)) &&
+                        ((book.Paper && rad_paper.IsChecked == true) || (!book.Paper && rad_ebook.IsChecked == true)) &&
+                        DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality && (((book.Paper && rad_paper.IsChecked == true) && (txtcopy.Text != "" && copy > 0)) || ((!book.Paper && rad_ebook.IsChecked == true) && (txtcopy.Text == "-"))))
                     {
-                        matchingbook = book;
-                        exists = true;
-                        errors.Add(T("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?", "This book already exists in the registry. Do you want to add this entry to its copy count?"));
-                        ShowError();
-                        hasBeenDone = true;
-                        ShowSave();
+                        if (rad_ebook.IsChecked == true)
+                        {
+                            AlreadyExists.IsOpen = true;
+                        }
+                        else
+                        {
+                            matchingbook = book;
+                            exists = true;
+                            errors.Add(T("Már létezik ilyen könyv a nyílvántartásban, hozzáadja ezt a feljegyzést a példányszámhoz?", "This book already exists in the registry. Do you want to add this entry to its copy count?"));
+                            ShowError();
+                            hasBeenDone = true;
+                            ShowSave();
+                        }
                         return;
                     }
                     else if (valid == true && (txtTitle.Text.ToLower() != book.Title.ToLower() &&
                         txtAuthor.Text.ToLower() != book.Author.ToLower() &&
-                        (cmbGenre.SelectedItem?.ToString() != book.Genre || txtGenre.Text != book.Genre) &&
+                        ((cmbGenre.SelectedItem?.ToString() != book.Genre) || (txtGenre.Text.ToLower() != book.Genre)) &&
                         (rad_ebook.IsChecked == book.Paper || rad_paper.IsChecked != book.Paper)) &&
                         DateOnly.FromDateTime(dpDate.SelectedDate!.Value) != book.Year && txtnational.Text != book.Nationality && (txtcopy.Text != "" && copy > 0))
                     {
+
                         exists = false;
                         HidePlus();
                         ShowSave();
@@ -717,6 +724,7 @@ namespace konyv_wpf
 
                 HideError();
                 HideForm();
+                Delete();
                 PrintSortedBooks(books, false);
                 ShowPlus();
                 HideSave();
@@ -733,6 +741,7 @@ namespace konyv_wpf
             errors.Clear();
             HideForm();
             ShowPlus();
+            HideEveryButton();
             HideSave();
             // kell if hogyha hozzáadásnál van 
             rct_title.Stroke = Brushes.Transparent;
@@ -835,9 +844,17 @@ namespace konyv_wpf
         {
             MyPopup.IsOpen = false;
         }
+        private void PopupOk_ClickExists(object sender, RoutedEventArgs e)
+        {
+            HideEveryButton();
+            Delete();
+            ShowPlus();
+            AlreadyExists.IsOpen = false;
+        }
         private void ClosePopup_Click(object sender, RoutedEventArgs e)
         {
             MyPopup.IsOpen = false;
+            AlreadyExists.IsOpen = false;
         }
     }
 }
