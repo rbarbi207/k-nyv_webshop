@@ -30,10 +30,19 @@ namespace konyv_wpf
 
             foreach (Book book in books)
             {
-                book.DateEdited = DateTime.Now;
+                book.DateEdited = new DateTime(
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    DateTime.Now.Hour,
+                    DateTime.Now.Minute,
+                    DateTime.Now.Second, 0
+                    );
                 Genres.Add(book.Genre);
                 Genre_En.Add(book.GenreEn); 
             }
+   
+
             PrintSortedBooks(books, false);
             Genres = Genres.Distinct().ToList();
             cmbGenre.ItemsSource = Genres;
@@ -111,7 +120,7 @@ namespace konyv_wpf
             else
             {
                 if (!sorted)
-                {
+                { 
                     sortedBooks.Reverse();
                 }
             }
@@ -119,36 +128,12 @@ namespace konyv_wpf
         }
         private List<Book> sort(List<Book> books)
         {
-            List<Book> sortedBooks = new List<Book>();
-            List<DateTime> dates = new List<DateTime>();
-            foreach (Book book in books)
-            {
-                dates.Add(book.DateEdited);
-            }
-            dates.Sort();
+           
+            return books.OrderBy(book => book.DateEdited).ThenBy(book => book.Title).ToList();
+        }
 
-            foreach (DateTime date in dates)
-            {
-                List<int> indexes = searchIndexbyDate(date, books);
-                foreach (int index in indexes)
-                {
-                    sortedBooks.Add(books[index]);
-                }
-            }
-            return sortedBooks;
-        }
-        private List<int> searchIndexbyDate(DateTime date, List<Book> books)
-        {
-            List<int> indexes = new List<int>();
-            for (int i = 0; i < books.Count; i++)
-            {
-                if (DateTime.Equals(books[i].DateEdited, date))
-                {
-                    indexes.Add(i);
-                }
-            }
-            return indexes;
-        }
+
+      
         private Book searchForSelectedItem()
         {
             Book _book = books[0];
