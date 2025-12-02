@@ -32,4 +32,12 @@
 
     <sys:String x:Key="Exists">This book already exists in the repository!</sys:String>
     <sys:String x:Key="YesExists">Ok</sys:String>
+
+    <sys:String x:Key="TextNewBook">Successfully added!</sys:String>
+    <sys:String x:Key="DeleteText">Successfully deleted!</sys:String>
+    <sys:String x:Key="ModifyText">Successfully modified!</sys:String>
+
+    <sys:String x:Key="GenreEnglish">This book only has hungarian genres! Do you want to write that out?</sys:String>
+    <sys:String x:Key="YesGenreEnglish">Yes</sys:String>
+    <sys:String x:Key="NoGenreEnglish">No</sys:String>
 </ResourceDictionary>

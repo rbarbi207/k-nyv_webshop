@@ -9,35 +9,31 @@ namespace konyv_wpf
 {
     public partial class MainWindow : Window
     {
-        private void SetLanguage(string lang)
+        private void SetLanguage(string lang) //
         {
             ResourceDictionary dict = new ResourceDictionary();
 
             if (lang == "hu")
             {
                 dict.Source = new Uri("/Language/lang.HU.xaml", UriKind.Relative);
-                Delete();
-                HideForm();
-                HideError();
-                HideRedBorder();
-                ShowPlus();
-                HideEveryButton();
             }
 
             else
             {
                 dict.Source = new Uri("/Language/lang.EN.xaml", UriKind.Relative);
-                Delete();
-                HideForm();
-                HideError();
-                HideRedBorder();
-                ShowPlus();
-                HideEveryButton();
             }
 
             Application.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
+            UpdateGenreComboBox();
+
+            Delete();
+            HideForm();
+            HideError();
+            HideRedBorder();
+            ShowPlus();
+            HideEveryButton();
         }
         public string T(string hu, string en)
         {

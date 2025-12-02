@@ -32,4 +32,12 @@
 
     <sys:String x:Key="Exists">Ez a könyv már létezik a nyilvántartásba!</sys:String>
     <sys:String x:Key="YesExists">Ok</sys:String>
+
+    <sys:String x:Key="TextNewBook">Sikeres hozzáadás!</sys:String>
+    <sys:String x:Key="DeleteText">Sikeres törlés!</sys:String>
+    <sys:String x:Key="ModifyText">Sikeres módosítás!</sys:String>
+
+    <sys:String x:Key="GenreEnglish">Ennek a könyvnek csak angol műfaja van megadva! Szeretné kiírni?</sys:String>
+    <sys:String x:Key="YesGenreEnglish">Igen</sys:String>
+    <sys:String x:Key="NoGenreEnglish">Nem</sys:String>
 </ResourceDictionary>

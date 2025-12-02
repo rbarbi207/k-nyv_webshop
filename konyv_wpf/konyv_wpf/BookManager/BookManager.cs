@@ -15,6 +15,14 @@ namespace konyv_wpf
 {
     partial class MainWindow : Window
     {
+        private void UpdateGenreComboBox()
+        {
+            if (currentLanguage == "HU")
+                cmbGenre.ItemsSource = Genres;
+            else
+                cmbGenre.ItemsSource = Genre_En;
+        }
+
         private void loadBooks(string filename)
         {
             string json = File.ReadAllText(jsonPath);
@@ -24,10 +32,13 @@ namespace konyv_wpf
             {
                 book.DateEdited = DateTime.Now;
                 Genres.Add(book.Genre);
+                Genre_En.Add(book.GenreEn); 
             }
             PrintSortedBooks(books, false);
             Genres = Genres.Distinct().ToList();
             cmbGenre.ItemsSource = Genres;
+            Genre_En = Genre_En.Distinct().ToList(); 
+            cmbGenre.ItemsSource = Genre_En; 
         }
 
         // --- Listbox
@@ -144,7 +155,7 @@ namespace konyv_wpf
             foreach (Book book in books)
             {
                 if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
-                        (cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) &&
+                        ((cmbGenre.SelectedItem?.ToString() == book.Genre || txtGenre.Text == book.Genre) || (cmbGenre.SelectedItem?.ToString() == book.GenreEn || txtGenre.Text == book.GenreEn)) && //
                         (rad_ebook.IsChecked != book.Paper || rad_paper.IsChecked == book.Paper) &&
                         DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality)
                 {
