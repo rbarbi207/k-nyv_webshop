@@ -12,6 +12,7 @@ using System.Net.NetworkInformation;
 using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
+using System.Resources;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,7 @@ namespace konyv_wpf
         
         private List<konyv_wpf.Book> books = new();
         public List<string> Genres = new();
+        public List<string> Genre_En = new();
         private List<string> errors = new List<string>();
 
         public static string currentLanguage = "HU";
@@ -86,17 +88,26 @@ namespace konyv_wpf
             }
         }
 
+        private async void ShowToast(string resourceKey)
+        {
+            ToastText.Text = (string)FindResource(resourceKey);
+            ToastPopUp.Visibility = Visibility.Visible;
+
+            await Task.Delay(1000); 
+
+            ToastPopUp.Visibility = Visibility.Collapsed;
+        }
 
         // ---- Még kell??
 
-            /// false -> alap: legkorábbi <summary>
-            /// kiválasztott elem eltárolása ? 
-            // Új könyv hozzáadás biztos mentés 
-            // Mentés mégse
-            // Könyv Módosítás biztos mentés 
+        /// false -> alap: legkorábbi <summary>
+        /// kiválasztott elem eltárolása ? 
+        // Új könyv hozzáadás biztos mentés 
+        // Mentés mégse
+        // Könyv Módosítás biztos mentés 
 
-            // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
-            // + popup kinézet 
+        // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
+        // + popup kinézet 
 
 
 
@@ -198,7 +209,7 @@ namespace konyv_wpf
             {
                 lbx_books.Items.Clear();
                 ListBoxItem item = new ListBoxItem();
-                item.Content = "Nincs találat ezen a néven!";
+                item.Content = T("Nincs találat ezen a néven!", "No results found under this name!");
                 item.HorizontalAlignment = HorizontalAlignment.Center;
                 item.IsHitTestVisible = false;
                 item.Focusable = false;
@@ -384,6 +395,7 @@ namespace konyv_wpf
         }
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            UpdateGenreComboBox();
             lbx_books.Visibility = Visibility.Visible;
             txtcopy.IsEnabled = false;
             errors.Clear();
@@ -410,7 +422,30 @@ namespace konyv_wpf
                 txtTitle.BorderBrush = Brushes.Transparent;
                 txtAuthor.Text = selectedBook.Author;
                 txtAuthor.BorderBrush = Brushes.Transparent;
-                cmbGenre.Text = selectedBook.Genre;
+                if (currentLanguage == "HU") 
+                {
+                    if (string.IsNullOrWhiteSpace(selectedBook.Genre))
+                    {
+                        GenreEnglish.IsOpen = true;
+                        cmbGenre.Text = selectedBook.GenreEn;
+                    }
+                    else
+                    {
+                        cmbGenre.Text = selectedBook.Genre;
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(selectedBook.GenreEn))
+                    {
+                        GenreEnglish.IsOpen = true;
+                        cmbGenre.Text = selectedBook.Genre;
+                    }
+                    else
+                    {
+                        cmbGenre.Text = selectedBook.GenreEn;
+                    }
+                } 
                 txtGenre.BorderBrush = Brushes.Transparent;
                 txtPublisher.Text = selectedBook.Publisher;
                 txtPublisher.BorderBrush = Brushes.Transparent;
@@ -520,6 +555,7 @@ namespace konyv_wpf
                     exists = false;
                     hasBeenDone = false;
                     matchingbook = null;
+                    ShowToast("TextNewBook");
                 }
             }
             else if (hasBeenDone && matchingbook != null && modificationClicked)
@@ -650,13 +686,14 @@ namespace konyv_wpf
                 foreach (var book in books)
                 {
                     if (txtTitle.Text.ToLower() == book.Title.ToLower() && txtAuthor.Text.ToLower() == book.Author.ToLower() &&
-                        ((cmbGenre.SelectedItem?.ToString() == book.Genre) || (txtGenre.Text == book.Genre)) &&
+                        (((cmbGenre.SelectedItem?.ToString() == book.Genre) || (txtGenre.Text == book.Genre)) || ((cmbGenre.SelectedItem?.ToString() == book.GenreEn) || (txtGenre.Text == book.GenreEn))) && //
                         ((book.Paper && rad_paper.IsChecked == true) || (!book.Paper && rad_ebook.IsChecked == true)) &&
                         DateOnly.FromDateTime(dpDate.SelectedDate!.Value) == book.Year && txtnational.Text == book.Nationality && (((book.Paper && rad_paper.IsChecked == true) && (txtcopy.Text != "" && copy > 0)) || ((!book.Paper && rad_ebook.IsChecked == true) && (txtcopy.Text == "-"))))
                     {
                         if (rad_ebook.IsChecked == true)
                         {
                             AlreadyExists.IsOpen = true;
+                            HideError();
                         }
                         else if (!modificationClicked)
                         {
@@ -671,7 +708,7 @@ namespace konyv_wpf
                     }
                     else if (valid == true && (txtTitle.Text.ToLower() != book.Title.ToLower() &&
                         txtAuthor.Text.ToLower() != book.Author.ToLower() &&
-                        ((cmbGenre.SelectedItem?.ToString() != book.Genre) || (txtGenre.Text.ToLower() != book.Genre)) &&
+                        (((cmbGenre.SelectedItem?.ToString() != book.Genre) || (txtGenre.Text.ToLower() != book.Genre)) || ((cmbGenre.SelectedItem?.ToString() != book.GenreEn) || (txtGenre.Text.ToLower() != book.GenreEn))) && //
                         (rad_ebook.IsChecked == book.Paper || rad_paper.IsChecked != book.Paper)) &&
                         DateOnly.FromDateTime(dpDate.SelectedDate!.Value) != book.Year && txtnational.Text != book.Nationality && (txtcopy.Text != "" && copy > 0))
                     {
@@ -702,7 +739,14 @@ namespace konyv_wpf
                     {
                         if (rad_paper.IsChecked == true)
                         {
-                            Genres.Add(txtGenre.Text);
+                            if (currentLanguage == "HU") //
+                            {
+                                Genres.Add(txtGenre.Text);
+                            }
+                            else
+                            {
+                                Genre_En.Add(txtGenre.Text);
+                            }
                             books.Add(new Book()
                             {
                                 Id = j + 1,
@@ -719,7 +763,14 @@ namespace konyv_wpf
                         }
                         else
                         {
-                            Genres.Add(txtGenre.Text);
+                            if (currentLanguage == "HU") //
+                            {
+                                Genres.Add(txtGenre.Text);
+                            }
+                            else
+                            {
+                                Genre_En.Add(txtGenre.Text);
+                            }
                             books.Add(new Book()
                             {
                                 Id = j + 1,
@@ -740,7 +791,6 @@ namespace konyv_wpf
                     {
                         if (rad_paper.IsChecked == true)
                         {
-                            Genres.Add(txtGenre.Text);
                             books.Add(new Book()
                             {
                                 Id = j + 1,
@@ -757,7 +807,6 @@ namespace konyv_wpf
                         }
                         else
                         {
-                            Genres.Add(txtGenre.Text);
                             books.Add(new Book()
                             {
                                 Id = j + 1,
@@ -816,6 +865,7 @@ namespace konyv_wpf
                 File.WriteAllText(jsonPath,
                 JsonConvert.SerializeObject(books, Formatting.Indented));
 
+                ShowToast("TextNewBook");
                 HideError();
                 HideForm();
                 Delete();
@@ -935,6 +985,7 @@ namespace konyv_wpf
 
 
             MyPopup.IsOpen = false;
+            ShowToast("DeleteText");
         }
         private void PopupCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -947,10 +998,34 @@ namespace konyv_wpf
             ShowPlus();
             AlreadyExists.IsOpen = false;
         }
+        private void PopupOk_ClickGenreEn(object sender, RoutedEventArgs e)
+        {
+            if (lastClicked == null)
+                return;
+
+            UpdateGenreComboBox();
+            if (currentLanguage == "HU")
+            {
+                cmbGenre.ItemsSource = Genre_En;   
+                cmbGenre.SelectedItem = lastClicked.GenreEn;
+            }
+            else
+            {
+                cmbGenre.ItemsSource = Genres; 
+                cmbGenre.SelectedItem = lastClicked.Genre;
+            }
+            GenreEnglish.IsOpen = false;
+        }
+        private void PopupNo_ClickGenreEn(object sender, RoutedEventArgs e)
+        {
+            cmbGenre.Text = "";
+            GenreEnglish.IsOpen = false;
+        }
         private void ClosePopup_Click(object sender, RoutedEventArgs e)
         {
             MyPopup.IsOpen = false;
             AlreadyExists.IsOpen = false;
+            GenreEnglish.IsOpen = false;
         }
     }
 }
