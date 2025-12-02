@@ -39,14 +39,15 @@ namespace konyv_wpf
         private List<string> errors = new List<string>();
 
         public static string currentLanguage = "HU";
-        public bool sorted = true;
+        public bool sorted = false;
         public bool exists = false; 
         private bool hasBeenDone = false;
         public Book? matchingbook = null;
         ListBoxItem? item = null;
         public int idNumber = 0;
         public Book? lastClicked = null;
-
+        public bool modificationClicked = false;
+        public Book? tobeModified = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -220,6 +221,8 @@ namespace konyv_wpf
         // ---------- Elemek change funkciója - form rész
         private void txtTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //// bármi változik akkor ez is változik 
+            modificationClicked = false;
             rct_title.Stroke = Brushes.Transparent;
             rct_title.StrokeThickness = 0;
 
@@ -307,11 +310,19 @@ namespace konyv_wpf
             rct_ebook.Stroke = Brushes.Transparent;
             rct_ebook.StrokeThickness = 0;
 
-            txtcopy.IsEnabled = true;
+            /// ha a title szerkeszthető akkor a copy is 
+            if(txtTitle.IsEnabled == true){
+                txtcopy.IsEnabled = true;
+
+            }
             if (lbx_books.SelectedItem is ListBoxItem item &&
            item.Tag is Book selectedBook)
             {
                 txtcopy.Text = selectedBook.Copies.ToString();
+            }
+            if (txtcopy.Text == "-1")
+            {
+                txtcopy.Text = "-";
             }
         }
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
@@ -331,7 +342,7 @@ namespace konyv_wpf
         {
             
             tick5.Visibility = Visibility.Collapsed;
-                if (string.IsNullOrWhiteSpace(txtcopy.Text))
+            if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
                 HideError();
                 rct_copy.Stroke = Brushes.Transparent;
@@ -481,7 +492,7 @@ namespace konyv_wpf
         {
             HidePlus();
             ShowError();
-            if (hasBeenDone && matchingbook != null)
+            if (hasBeenDone && matchingbook != null && !modificationClicked)
             {
                 int i = books.IndexOf(matchingbook);
                 if (i < 0 && matchingbook.Id != 0)
@@ -491,7 +502,14 @@ namespace konyv_wpf
                 if (i >= 0)
                 {
                     books[i].Copies += int.Parse(txtcopy.Text);
-                    books[i].DateEdited = DateTime.Now;
+                    books[i].DateEdited = new DateTime(
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    DateTime.Now.Hour,
+                    DateTime.Now.Minute,
+                    DateTime.Now.Second, 0
+                    );
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
                     // frissítjük a megjelenítést és UI-t
@@ -504,14 +522,51 @@ namespace konyv_wpf
                     matchingbook = null;
                 }
             }
+            else if (hasBeenDone && matchingbook != null && modificationClicked)
+            {
+
+                int i = books.IndexOf(matchingbook);
+                if (i < 0 && matchingbook.Id != 0)
+                {
+                    i = books.FindIndex(b => b.Id == matchingbook.Id);
+                }
+                if (i >= 0)
+                {
+                    if (rad_ebook.IsChecked == true)
+                    {
+                        books[i].Copies = -1;
+                    }
+                    else
+                    {
+                        books[i].Copies = int.Parse(txtcopy.Text);
+
+                    }
+                    books[i].DateEdited = new DateTime(
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    DateTime.Now.Hour,
+                    DateTime.Now.Minute,
+                    DateTime.Now.Second, 0
+                    );
+                    File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
+
+                    // frissítjük a megjelenítést és UI-t
+                    HideError();
+                    PrintSortedBooks(books, false);
+                    ShowPlus();
+                    Delete();
+                    exists = false;
+                    hasBeenDone = false;
+                    matchingbook = null;
+             
+                }
+            }
             else
             {
                 bool valid = true;
                 int copy = 0;
                 errors.Clear();
-
-
-
 
                 if (txtTitle.Text.Trim() == "")
                 {
@@ -579,10 +634,10 @@ namespace konyv_wpf
                 if (!int.TryParse(txtcopy.Text, out copy) && txtcopy.Text.Trim() != "")
                 {
                     if (rad_ebook.IsChecked == false)
-                    { 
-                    rct_copy.Stroke = color;
-                    rct_copy.StrokeThickness = 1;
-                    errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
+                    {
+                        rct_copy.Stroke = color;
+                        rct_copy.StrokeThickness = 1;
+                        errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
                     }
 
                 }
@@ -603,7 +658,7 @@ namespace konyv_wpf
                         {
                             AlreadyExists.IsOpen = true;
                         }
-                        else
+                        else if (!modificationClicked)
                         {
                             matchingbook = book;
                             exists = true;
@@ -641,7 +696,7 @@ namespace konyv_wpf
 
                 //// új könyv létrehozása
                 int j = books.Count;
-                if (exists == false && valid == true)
+                if (exists == false && valid == true && !modificationClicked)
                 {
                     if (cmbGenre.SelectedItem == null)
                     {
@@ -659,7 +714,7 @@ namespace konyv_wpf
                                 Copies = 1,
                                 Paper = true,
                                 Nationality = txtnational.Text,
-                                DateEdited = DateTime.Now
+                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
                             });
                         }
                         else
@@ -676,7 +731,8 @@ namespace konyv_wpf
                                 Copies = 1,
                                 Paper = false,
                                 Nationality = txtnational.Text,
-                                DateEdited = DateTime.Now
+                                DateEdited = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second, 0
+                    )
                             });
                         }
                     }
@@ -696,7 +752,7 @@ namespace konyv_wpf
                                 Copies = 1,
                                 Paper = true,
                                 Nationality = txtnational.Text,
-                                DateEdited = DateTime.Now
+                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
                             });
                         }
                         else
@@ -713,12 +769,50 @@ namespace konyv_wpf
                                 Copies = 1,
                                 Paper = false,
                                 Nationality = txtnational.Text,
-                                DateEdited = DateTime.Now
+                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
                             });
                         }
                     }
                 }
 
+                if (modificationClicked && valid == true)
+                {
+
+                    modificationClicked = false;
+                    if (cmbGenre.SelectedItem == null)
+                    {
+                        Genres.Add(txtGenre.Text);
+                        tobeModified!.Genre = txtGenre.Text;
+                    }
+                    else
+                    {
+                        tobeModified!.Genre = cmbGenre.SelectedItem.ToString()!;
+                    }
+                    if (rad_paper.IsChecked == true)
+                    {
+                        tobeModified!.Paper = true;
+                        tobeModified!.Copies = int.Parse(txtcopy.Text);
+                    }
+                    else
+                    {
+                        tobeModified!.Copies = -1;
+                        tobeModified!.Paper = false;
+                    }
+                    tobeModified.Title = txtTitle.Text;
+                    tobeModified.Author = txtAuthor.Text;
+                    tobeModified.Publisher = txtPublisher.Text;
+                    tobeModified.Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value);
+                    tobeModified.Nationality = txtnational.Text;
+                    tobeModified.DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0);
+
+
+                    books[books.IndexOf(tobeModified)] = tobeModified;
+                    PrintSortedBooks(books,false);
+
+              
+                }
+                
+           
                 File.WriteAllText(jsonPath,
                 JsonConvert.SerializeObject(books, Formatting.Indented));
 
@@ -728,12 +822,13 @@ namespace konyv_wpf
                 PrintSortedBooks(books, false);
                 ShowPlus();
                 HideSave();
-                hasBeenDone = false;
                 matchingbook = null;
             }
+
             hasBeenDone = true;
 
         }
+        
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             lbx_books.SelectionChanged -= lbx_books_SelectionChanged;
@@ -802,7 +897,8 @@ namespace konyv_wpf
             br_Save.Visibility = Visibility.Visible;
 
             ShowForm();
-
+            tobeModified = searchForSelectedItem();
+            modificationClicked = true;
         }
         private void br_Delete_MouseDown(object sender, RoutedEventArgs e)
         {

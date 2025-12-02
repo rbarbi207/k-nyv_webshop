@@ -56,6 +56,10 @@ namespace konyv_wpf
             txtcopy.IsEnabled = false;
 
             }
+            else
+            {
+                txtcopy.IsEnabled = true;
+            }
         }
         private void HideRedBorder()
         {
@@ -188,6 +192,7 @@ namespace konyv_wpf
 
         private void ShowCopy()
         {
+            if (rad_ebook.IsChecked == false)
             txtcopy.IsEnabled = true;
         }
     }
