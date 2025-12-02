@@ -9,7 +9,7 @@ namespace konyv_wpf
 {
     public partial class MainWindow : Window
     {
-        private void SetLanguage(string lang) //
+        private void SetLanguage(string lang)
         {
             ResourceDictionary dict = new ResourceDictionary();
 

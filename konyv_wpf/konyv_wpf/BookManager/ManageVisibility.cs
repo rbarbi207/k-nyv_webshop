@@ -65,6 +65,7 @@ namespace konyv_wpf
         {
             rct_author.Stroke = Brushes.Transparent;
             rct_genre.Stroke = Brushes.Transparent;
+            tick0.Text = null;
             rct_publisher.Stroke = Brushes.Transparent;
             rct_title.Stroke = Brushes.Transparent;
             rct_ebook.Stroke = Brushes.Transparent;
@@ -82,6 +83,7 @@ namespace konyv_wpf
             br_Clear.Visibility = Visibility.Collapsed;
             br_Modify.Visibility = Visibility.Collapsed;
             br_Delete.Visibility = Visibility.Collapsed;    
+
         }
 
 

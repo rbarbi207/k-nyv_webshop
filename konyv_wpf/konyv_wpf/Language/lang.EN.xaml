@@ -30,6 +30,14 @@
     <sys:String x:Key="Yes">Yes</sys:String>
     <sys:String x:Key="No">No</sys:String>
 
+    <sys:String x:Key="RUSureNew">Are you sure you want to add this book to the repository?</sys:String>
+    <sys:String x:Key="YesNew">Yes</sys:String>
+    <sys:String x:Key="NoNew">No</sys:String>
+
+    <sys:String x:Key="RUSureModify">Are you sure you want to modify this book?</sys:String>
+    <sys:String x:Key="YesModify">Yes</sys:String>
+    <sys:String x:Key="NoModify">No</sys:String>
+
     <sys:String x:Key="Exists">This book already exists in the repository!</sys:String>
     <sys:String x:Key="YesExists">Ok</sys:String>
 

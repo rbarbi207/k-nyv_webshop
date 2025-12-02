@@ -46,9 +46,7 @@ namespace konyv_wpf
             PrintSortedBooks(books, false);
             Genres = Genres.Distinct().ToList();
             cmbGenre.ItemsSource = Genres;
-            Genre_En = Genre_En.Distinct().ToList(); 
-            cmbGenre.ItemsSource = Genre_En; 
-        }
+            Genre_En = Genre_En.Distinct().ToList();         }
 
         // --- Listbox
         private void PrintSortedBooks(List<Book> books, bool clicked)

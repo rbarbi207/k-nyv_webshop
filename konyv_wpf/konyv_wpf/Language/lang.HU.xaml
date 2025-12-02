@@ -30,6 +30,14 @@
     <sys:String x:Key="Yes">Igen</sys:String>
     <sys:String x:Key="No">Nem</sys:String>
 
+    <sys:String x:Key="RUSureNew">Biztos hozzáadja a könyvet a nyilvántartáshoz?</sys:String>
+    <sys:String x:Key="YesNew">Igen</sys:String>
+    <sys:String x:Key="NoNew">Nem</sys:String>
+
+    <sys:String x:Key="RUSureModify">Biztos módosítja a könyv adatai?</sys:String>
+    <sys:String x:Key="YesModify">Igen</sys:String>
+    <sys:String x:Key="NoModify">Nem</sys:String>
+
     <sys:String x:Key="Exists">Ez a könyv már létezik a nyilvántartásba!</sys:String>
     <sys:String x:Key="YesExists">Ok</sys:String>
 

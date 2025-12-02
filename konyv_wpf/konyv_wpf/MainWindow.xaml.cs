@@ -555,7 +555,7 @@ namespace konyv_wpf
                     exists = false;
                     hasBeenDone = false;
                     matchingbook = null;
-                    ShowToast("TextNewBook");
+                    MyPopupNew.IsOpen = true;
                 }
             }
             else if (hasBeenDone && matchingbook != null && modificationClicked)
@@ -595,7 +595,7 @@ namespace konyv_wpf
                     exists = false;
                     hasBeenDone = false;
                     matchingbook = null;
-             
+                    MyPopupModify.IsOpen = true;
                 }
             }
             else
@@ -739,7 +739,7 @@ namespace konyv_wpf
                     {
                         if (rad_paper.IsChecked == true)
                         {
-                            if (currentLanguage == "HU") //
+                            if (currentLanguage == "HU") 
                             {
                                 Genres.Add(txtGenre.Text);
                             }
@@ -763,7 +763,7 @@ namespace konyv_wpf
                         }
                         else
                         {
-                            if (currentLanguage == "HU") //
+                            if (currentLanguage == "HU") 
                             {
                                 Genres.Add(txtGenre.Text);
                             }
@@ -822,8 +822,9 @@ namespace konyv_wpf
                             });
                         }
                     }
+                    MyPopupNew.IsOpen = true;
                 }
-
+                
                 if (modificationClicked && valid == true)
                 {
 
@@ -857,15 +858,15 @@ namespace konyv_wpf
 
                     books[books.IndexOf(tobeModified)] = tobeModified;
                     PrintSortedBooks(books,false);
+                    MyPopupModify.IsOpen = true;
 
-              
                 }
                 
            
                 File.WriteAllText(jsonPath,
                 JsonConvert.SerializeObject(books, Formatting.Indented));
 
-                ShowToast("TextNewBook");
+                
                 HideError();
                 HideForm();
                 Delete();
@@ -878,7 +879,6 @@ namespace konyv_wpf
             hasBeenDone = true;
 
         }
-        
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             lbx_books.SelectionChanged -= lbx_books_SelectionChanged;
@@ -998,6 +998,24 @@ namespace konyv_wpf
             ShowPlus();
             AlreadyExists.IsOpen = false;
         }
+        private void PopupCancel_ClickNewRUS(object sender, RoutedEventArgs e)
+        {
+            MyPopupNew.IsOpen = false;
+        }
+        private void PopupOk_ClickNewRUS(object sender, RoutedEventArgs e)
+        {
+            ShowToast("TextNewBook");
+            MyPopupNew.IsOpen = false;
+        }
+        private void PopupCancel_ClickModifyRUS(object sender, RoutedEventArgs e)
+        {
+            MyPopupModify.IsOpen = false;
+        }
+        private void PopupOk_ClickModifyRUS(object sender, RoutedEventArgs e)
+        {
+            ShowToast("ModifyText");
+            MyPopupModify.IsOpen = false;
+        }
         private void PopupOk_ClickGenreEn(object sender, RoutedEventArgs e)
         {
             if (lastClicked == null)
@@ -1026,6 +1044,8 @@ namespace konyv_wpf
             MyPopup.IsOpen = false;
             AlreadyExists.IsOpen = false;
             GenreEnglish.IsOpen = false;
+            MyPopupModify.IsOpen = false;
+            MyPopupNew.IsOpen = false;
         }
     }
 }
