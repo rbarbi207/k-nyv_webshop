@@ -19,7 +19,7 @@ namespace konyv_wpf
         private int copies { get; set; }
         private bool paper { get; set; }
         private string nationality { get; set; }
-        private DateTime dateEdited { get; set; }
+        private DateTime? dateEdited { get; set; }
 
         public int Id { get { return id; } set { id = value; } }
         public string Author { get { return author; } set { author = value; } }
@@ -31,7 +31,7 @@ namespace konyv_wpf
         public int Copies { get { return copies; } set { copies = value; } }
         public bool Paper { get { return paper; } set { paper = value; } }
         public string Nationality { get { return nationality; } set { nationality = value; } }
-        public DateTime DateEdited { get { return dateEdited; } set { dateEdited = value; } }
+        public DateTime? DateEdited { get { return dateEdited; } set { dateEdited = value; } }
 
         public override string ToString()
         {

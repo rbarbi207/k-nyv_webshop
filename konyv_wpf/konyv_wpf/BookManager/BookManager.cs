@@ -30,14 +30,16 @@ namespace konyv_wpf
 
             foreach (Book book in books)
             {
-                book.DateEdited = new DateTime(
-                    DateTime.Now.Year,
-                    DateTime.Now.Month,
-                    DateTime.Now.Day,
-                    DateTime.Now.Hour,
-                    DateTime.Now.Minute,
-                    DateTime.Now.Second, 0
-                    );
+
+                //book.DateEdited = new DateTime(
+                //    DateTime.Now.Year,
+                //    DateTime.Now.Month,
+                //    DateTime.Now.Day,
+                //    DateTime.Now.Hour,
+                //    DateTime.Now.Minute,
+                //    DateTime.Now.Second, 0
+                //    );
+                book.DateEdited = null;
                 Genres.Add(book.Genre);
                 Genre_En.Add(book.GenreEn); 
             }
@@ -77,7 +79,10 @@ namespace konyv_wpf
                 lbl_title.FontSize = 16;
                 lbl_title.FontWeight = FontWeights.Bold;
 
+                panel.Children.Add(lbl_title);
                 // dátum
+                if (book.DateEdited != null)
+                {
                 Label lbl_date = new Label();
                 lbl_date.Name = "lbl_date";
                 lbl_date.Content = T("módosítva: ", "edited: ") + book.DateEdited;
@@ -86,8 +91,9 @@ namespace konyv_wpf
                 lbl_date.Margin = new Thickness(0, -5, 0, 0);
                 lbl_date.FontStyle = FontStyles.Italic;
 
-                panel.Children.Add(lbl_title);
                 panel.Children.Add(lbl_date);
+
+                }
 
                 item.Content = panel;
                 item.Tag = book;

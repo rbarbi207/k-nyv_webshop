@@ -131,22 +131,20 @@
             <StackPanel x:Name="panelRight" Margin="0,0,10,0">
                 <Grid>
                     <!-- titlesearch -->
-                    <Rectangle Name="rct_title" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_title" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblTitle}" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtTitle" Text="" TextChanged="txtTitle_TextChanged" Margin="45,0,28,0" 
                              BorderBrush="White" Background="White" VerticalAlignment="Center"></TextBox>
-                    <TextBlock HorizontalAlignment="Right" Name="tick1" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
-                    VerticalAlignment="Center"/>
+                    <TextBlock Name="tick1" Style="{StaticResource tick}"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
                     <!-- authorsearch -->
-                    <Rectangle Name="rct_author" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_author" Style="{StaticResource field}" />
                     <Label  Content="{DynamicResource LblAuthor}" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtAuthor" Text="" VerticalAlignment="Top" Margin="60,9,30,0" 
                              TextChanged="txtAuthor_TextChanged" BorderBrush="White" Background="White"/>
-                    <TextBlock HorizontalAlignment="Right" Name="tick2" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
-                     VerticalAlignment="Center"/>
+                    <TextBlock Name="tick2" Style="{StaticResource tick}"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
@@ -154,36 +152,26 @@
                     <Rectangle Name="rct_genre" Height="80" Fill="White" RadiusX="10" RadiusY="10"/>
                     <Label Content="{DynamicResource LblGenre}" Margin="10,5,0,0" FontWeight="Bold"/>
                     <ComboBox Style="{StaticResource MyComboBoxStyle}" Name="cmbGenre" Margin="60,-43,10,0" Height="25" SelectionChanged="cmbGenre_SelectionChanged" Foreground="Black">
-                        <ComboBox.ItemContainerStyle>
-                            <Style TargetType="ComboBoxItem">
-                                <Setter Property="Background" Value="Lavender"/>
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="Margin" Value="2"/>
-                                <Setter Property="Padding" Value="4"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                            </Style>
-                        </ComboBox.ItemContainerStyle>
+                        
                     </ComboBox>
                     <Label Content="{DynamicResource LblNewGenre}" Margin="10,45,30,0" FontWeight="Bold"/>
                     <TextBox Name="txtGenre" Margin="80,50,40,10" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtGenre_TextChanged" Background="White"/>
-                    <TextBlock HorizontalAlignment="Right" Name="tick0" Text="✔" VerticalAlignment="Bottom"  Padding="0,0,10,10" Foreground="Green" Visibility="Collapsed"/>
+                    <TextBlock Name="tick0" Style="{StaticResource tick}"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
                     <!-- publishersearch -->
-                    <Rectangle Name="rct_publisher" Height="35" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_publisher" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblPublisher}" Margin="10,5,30,0" FontWeight="Bold"/>
                     <TextBox Name="txtPublisher" Margin="70,9,40,7" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtPublisher_TextChanged" Background="White"/>
-                    <TextBlock HorizontalAlignment="Right" Name="tick3" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
-                    VerticalAlignment="Center"/>
+                    <TextBlock  Name="tick3" Style="{StaticResource tick}"/>
                 </Grid>
 
                 <Grid Margin="0,18,0,0">
                     <!-- ebook/paperSearch -->
-                    <Rectangle Name="rct_ebook" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Style="{StaticResource field}"  Name="rct_ebook" />
                     <RadioButton Name="rad_ebook" HorizontalAlignment="Left" Margin="20,10,0,0" Content="{DynamicResource RbEbook}" 
                                  Background="#FFCCA5E8" Checked="rad_ebook_Checked" FontWeight="Bold"/>
                     <RadioButton Name="rad_paper" HorizontalAlignment="Right" Margin="0,10,20,0" Content="{DynamicResource RbPaper}" 
@@ -192,28 +180,26 @@
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- DateSearch -->
-                    <Rectangle Name="rct_Date" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_Date" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblDate}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <DatePicker Name="dpDate" Height="25" Margin="90,0,10,0" BorderBrush="White" Background="White" 
                                 SelectedDateChanged="dpDate_SelectedDateChanged"/>
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- NationalitySearch -->
-                    <Rectangle Name="rct_national" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_national" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblNationality}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtnational" Margin="90,9,30,9" Height="20" TextWrapping="Wrap" Text="" BorderBrush="White" 
                              TextChanged="txtNatioal_TextChanged" Background="White"/>
-                    <TextBlock HorizontalAlignment="Right" Name="tick4" Text="✔" Foreground="Green" Padding="0,0,10,0" Visibility="Collapsed" 
-                    VerticalAlignment="Center"/>
+                    <TextBlock Name="tick4" Style="{StaticResource tick}"/>
                 </Grid>
                 <Grid Margin="0,18,0,0">
                     <!-- CopySearch -->
-                    <Rectangle Name="rct_copy" Height="33" Fill="White" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Name="rct_copy" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblCopy}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <TextBox Name="txtcopy" Margin="100,9,30,9" TextWrapping="Wrap" Height="20" Text="" BorderBrush="White" 
                              TextChanged="txtCopy_TextChanged" Background="White" IsEnabled="False"/>
-                    <TextBlock HorizontalAlignment="Right" Name="tick5" Text="✔" Foreground="Green"  Padding="0,0,10,0" Visibility="Collapsed" 
-                    VerticalAlignment="Center"/>
+                    <TextBlock Name="tick5" Style="{StaticResource tick}"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

@@ -38,6 +38,7 @@ namespace konyv_wpf
             cmbGenre.IsEnabled = false;
             txtcopy.IsEnabled = false;
             txtcopy.Foreground = Brushes.Black;
+            cmbGenre.IsEnabled = false;
         }
         private void ShowForm()
         {

@@ -39,9 +39,9 @@ namespace konyv_wpf
         public List<string> Genres = new();
         public List<string> Genre_En = new();
         private List<string> errors = new List<string>();
-
+        private List<char> chars = ['0','1','2','3','4','5','6','7','8','9','*','{',']','}',']','(',')','#','@','˘','^','ˇ','~','°','"','˙','´','¸','¤','_','/','×','$','÷','|','=','+'];
         public static string currentLanguage = "HU";
-        public bool sorted = false;
+        public bool sorted = true;
         public bool exists = false; 
         private bool hasBeenDone = false;
         public Book? matchingbook = null;
@@ -236,7 +236,19 @@ namespace konyv_wpf
             modificationClicked = false;
             rct_title.Stroke = Brushes.Transparent;
             rct_title.StrokeThickness = 0;
+            foreach (char C in chars)
+            {
+                if (txtnational.Text.Contains(C))
+                {
+                    errors.Add(T("A cím nem tartalmazhat speciális karaktereket!", "The title can't contain special characters!"));
+                }
+                //show, errors.add
+            }
+            if (errors.Count > 0)
+            {
+                ShowError();
 
+            }
             if (txtTitle.Text.Trim() != "" && txtTitle.IsEnabled == true)
             {
                 tick1.Visibility = Visibility.Visible;
@@ -250,6 +262,19 @@ namespace konyv_wpf
         {
             rct_author.Stroke = Brushes.Transparent;
             rct_author.StrokeThickness = 0;
+            foreach (char C in chars)
+            {
+                if (txtAuthor.Text.Contains(C))
+                {
+                    errors.Add(T("A szerző nem tartalmazhat speciális karaktereket!", "The author can't contain special characters!"));
+                }
+                //show, errors.add
+            }
+            if (errors.Count > 0)
+            {
+                ShowError();
+
+            }
 
             if (txtAuthor.Text.Trim() != "" && txtAuthor.IsEnabled == true)
             {
@@ -262,6 +287,7 @@ namespace konyv_wpf
         }
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             txtGenre.Text = "";
             rct_genre.Stroke = Brushes.Transparent;
             rct_genre.StrokeThickness = 0;
@@ -278,6 +304,20 @@ namespace konyv_wpf
         }
         private void txtGenre_TextChanged(object sender, TextChangedEventArgs e)
         {
+            foreach (char C in chars)
+            {
+                if (txtGenre.Text.Contains(C))
+                {
+                    errors.Add(T("A műfaj nem tartalmazhat speciális karaktereket!", "The genre field can't contain special characters!"));
+                }
+                //show, errors.add
+            }
+            if (errors.Count > 0)
+            {
+                ShowError();
+
+            }
+
             if (txtGenre.Text.Trim() != "")
             {
                 txtGenre.BorderBrush = Brushes.Transparent;
@@ -340,6 +380,21 @@ namespace konyv_wpf
         {
             rct_national.Stroke = Brushes.Transparent;
             rct_national.StrokeThickness = 0;
+
+            foreach(char C in chars)
+            {
+                if (txtnational.Text.Contains(C))
+                {
+                    errors.Add(T("A nemzetiség nem tartalmazhat speciális karaktereket!","The nationality field can't contain special characters!"));
+                }
+                    //show, errors.add
+            }
+            if (errors.Count > 0)
+            {
+            ShowError();
+
+            }
+            if (txtnational.Text.Contains(""))
             if (txtnational.Text.Trim() != "" && txtnational.IsEnabled == true)
             {
                 tick4.Visibility = Visibility.Visible;
@@ -368,7 +423,7 @@ namespace konyv_wpf
                 errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
                 ShowError();
             }
-            else if (n < 0 && rad_ebook.IsChecked == false)
+            else if (n < 1 && rad_ebook.IsChecked == false)
             {
 
                 errors.Clear();
@@ -661,6 +716,7 @@ namespace konyv_wpf
                     rct_national.StrokeThickness = 1;
                     errors.Add(T("Kérem adja meg hogy milyen nyelven íródott a könyv! ", "Please enter the language in which the book was written!"));
                 }
+
                 if (txtcopy.Text.Trim() == "" && rad_ebook.IsChecked == false)
                 {
                     valid = false;
@@ -697,7 +753,7 @@ namespace konyv_wpf
                             AlreadyExists.IsOpen = true;
                             HideError();
                         }
-                        else if (!modificationClicked)
+                        else
                         {
                             matchingbook = book;
                             exists = true;
@@ -706,7 +762,7 @@ namespace konyv_wpf
                             hasBeenDone = true;
                             ShowSave();
                         }
-                        return;
+                            return;
                     }
                     else if (valid == true && (txtTitle.Text.ToLower() != book.Title.ToLower() &&
                         txtAuthor.Text.ToLower() != book.Author.ToLower() &&
@@ -980,6 +1036,7 @@ namespace konyv_wpf
 
             HideSave();
             HideCancel();
+            lbx_books.SelectedItem = null;
             ShowPlus();
             Delete();
             HideForm();

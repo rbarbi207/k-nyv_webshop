@@ -10,7 +10,7 @@
     "Copies": 25,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 2,
@@ -23,7 +23,7 @@
     "Copies": 67,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 3,
@@ -36,7 +36,7 @@
     "Copies": 43,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 4,
@@ -49,7 +49,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 5,
@@ -62,7 +62,7 @@
     "Copies": 11,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 6,
@@ -75,7 +75,7 @@
     "Copies": 17,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 7,
@@ -88,7 +88,7 @@
     "Copies": 7,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 8,
@@ -101,7 +101,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 9,
@@ -114,7 +114,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 10,
@@ -127,7 +127,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 11,
@@ -140,7 +140,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 12,
@@ -153,7 +153,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 13,
@@ -166,7 +166,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 14,
@@ -179,7 +179,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 15,
@@ -192,7 +192,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 16,
@@ -205,7 +205,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 17,
@@ -218,7 +218,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 18,
@@ -231,7 +231,7 @@
     "Copies": 11,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 19,
@@ -244,7 +244,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 20,
@@ -257,7 +257,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 21,
@@ -270,7 +270,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 22,
@@ -283,7 +283,7 @@
     "Copies": 3,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 23,
@@ -296,7 +296,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 24,
@@ -309,7 +309,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 25,
@@ -322,7 +322,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 26,
@@ -335,7 +335,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 27,
@@ -348,7 +348,7 @@
     "Copies": -1,
     "Paper": false,
     "Nationality": "orosz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 28,
@@ -361,7 +361,7 @@
     "Copies": 5,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 29,
@@ -374,7 +374,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 30,
@@ -387,7 +387,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 31,
@@ -400,7 +400,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": "2025-12-03T14:06:11"
   },
   {
     "Id": 32,
@@ -413,7 +413,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 33,
@@ -426,7 +426,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 34,
@@ -439,7 +439,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 35,
@@ -452,7 +452,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 36,
@@ -465,7 +465,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "orosz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 37,
@@ -478,7 +478,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 38,
@@ -491,7 +491,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 39,
@@ -504,7 +504,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 40,
@@ -517,7 +517,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 41,
@@ -530,7 +530,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 42,
@@ -543,7 +543,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 43,
@@ -556,7 +556,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 44,
@@ -569,7 +569,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 45,
@@ -582,7 +582,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 46,
@@ -595,7 +595,7 @@
     "Copies": -1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 47,
@@ -608,7 +608,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 48,
@@ -621,7 +621,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 49,
@@ -634,7 +634,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 50,
@@ -647,7 +647,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 51,
@@ -660,7 +660,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 52,
@@ -673,7 +673,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 53,
@@ -686,7 +686,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 54,
@@ -699,7 +699,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 55,
@@ -712,7 +712,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 56,
@@ -725,7 +725,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 57,
@@ -738,7 +738,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 58,
@@ -751,7 +751,7 @@
     "Copies": 6,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 59,
@@ -764,7 +764,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 60,
@@ -777,7 +777,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 61,
@@ -790,7 +790,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 62,
@@ -803,7 +803,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 63,
@@ -816,7 +816,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 64,
@@ -829,7 +829,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 65,
@@ -842,7 +842,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 66,
@@ -855,7 +855,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 67,
@@ -868,7 +868,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 68,
@@ -881,7 +881,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 69,
@@ -894,7 +894,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 70,
@@ -907,7 +907,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 71,
@@ -920,7 +920,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "német",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 72,
@@ -933,7 +933,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 73,
@@ -946,7 +946,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 74,
@@ -959,7 +959,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 75,
@@ -972,7 +972,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 76,
@@ -985,7 +985,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 77,
@@ -998,7 +998,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 78,
@@ -1011,7 +1011,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 79,
@@ -1024,7 +1024,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 80,
@@ -1037,7 +1037,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 81,
@@ -1050,7 +1050,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 82,
@@ -1063,7 +1063,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 83,
@@ -1076,7 +1076,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 84,
@@ -1089,7 +1089,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 85,
@@ -1102,7 +1102,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 86,
@@ -1115,7 +1115,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 87,
@@ -1128,7 +1128,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 88,
@@ -1141,7 +1141,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "olasz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 89,
@@ -1154,7 +1154,7 @@
     "Copies": 10,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 90,
@@ -1167,7 +1167,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 91,
@@ -1180,7 +1180,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 92,
@@ -1193,7 +1193,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "francia",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 93,
@@ -1206,7 +1206,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 94,
@@ -1219,7 +1219,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 95,
@@ -1232,7 +1232,7 @@
     "Copies": 3,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 96,
@@ -1245,7 +1245,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "dán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 97,
@@ -1258,7 +1258,7 @@
     "Copies": 5,
     "Paper": true,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 98,
@@ -1271,7 +1271,7 @@
     "Copies": 1,
     "Paper": true,
     "Nationality": "finn",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 99,
@@ -1284,7 +1284,7 @@
     "Copies": 4,
     "Paper": true,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 100,
@@ -1297,7 +1297,7 @@
     "Copies": 2,
     "Paper": true,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 101,
@@ -1310,7 +1310,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "japán",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 102,
@@ -1323,7 +1323,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "kanadai",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 103,
@@ -1336,7 +1336,7 @@
     "Copies": 20,
     "Paper": false,
     "Nationality": "orosz",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 104,
@@ -1349,7 +1349,7 @@
     "Copies": -1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 105,
@@ -1362,7 +1362,7 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "magyar",
-    "DateEdited": "2025-12-02T20:50:16"
+    "DateEdited": null
   },
   {
     "Id": 106,
@@ -1375,6 +1375,19 @@
     "Copies": 1,
     "Paper": false,
     "Nationality": "angol",
-    "DateEdited": "2025-12-02T20:52:01"
+    "DateEdited": null
+  },
+  {
+    "Id": 107,
+    "Author": "Chloe Walsh",
+    "Title": "Binding 13",
+    "Genre": "romance",
+    "GenreEn": null,
+    "Publisher": "rainydays",
+    "Year": "2018-07-24",
+    "Copies": 1,
+    "Paper": true,
+    "Nationality": "magyar",
+    "DateEdited": null
   }
 ]
