@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:konyv_wpf"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" SizeChanged="Window_SizeChanged"
-        Name="window"
+        Name="window" PreviewKeyDown="Window_PreviewKeyDown"
         Title="MainWindow" Height="740" Width="800" MinHeight="480" MinWidth="640">
     <Window.Resources>
         <ResourceDictionary Source="Styles.xaml"/>
