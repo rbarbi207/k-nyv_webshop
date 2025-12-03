@@ -630,6 +630,7 @@ namespace konyv_wpf
                     DateTime.Now.Minute,
                     DateTime.Now.Second, 0
                     );
+            
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
                     // frissítjük a megjelenítést és UI-t
