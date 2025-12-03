@@ -340,8 +340,6 @@ namespace konyv_wpf
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
         {
             rct_Date.Stroke = Brushes.Transparent;
-            rct_Date.StrokeThickness = 0;
-       
         }
         private void txtPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -478,6 +476,7 @@ namespace konyv_wpf
         }
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             UpdateGenreComboBox();
             lbx_books.Visibility = Visibility.Visible;
             txtcopy.IsEnabled = false;
@@ -548,11 +547,7 @@ namespace konyv_wpf
                     txtcopy.IsEnabled = false;
                 }
 
-                dpDate.SelectedDate = new DateTime(
-                    selectedBook.Year.Year,
-                    selectedBook.Year.Month,
-                    selectedBook.Year.Day
-                );
+                dpDate.SelectedDate = selectedBook.Year.ToDateTime(TimeOnly.MinValue);
                 dpDate.BorderBrush = Brushes.Transparent;
                 idNumber = selectedBook.Id;
             }
@@ -677,7 +672,6 @@ namespace konyv_wpf
                     HideError();
                     PrintSortedBooks(books, false);
                     ShowPlus();
-                    Delete();
                     exists = false;
                     hasBeenDone = false;
                     matchingbook = null;
@@ -688,7 +682,6 @@ namespace konyv_wpf
             {
                 bool valid = true;
                 int copy = 0;
-                errors.Clear();
 
                 if (txtTitle.Text.Trim() == "")
                 {
@@ -823,23 +816,16 @@ namespace konyv_wpf
                 if (exists == false && valid == true && !modificationClicked && errors.Count == 0)
                 {
                     MyPopupNew.IsOpen = true;
+                    return;
                 }
                 
                 if (modificationClicked && valid == true && errors.Count == 0)
                 {
                     MyPopupModify.IsOpen = true;
                     modificationClicked = false;
+                    return;
                 }
                 
-           
-                File.WriteAllText(jsonPath,
-                JsonConvert.SerializeObject(books, Formatting.Indented));
-
-                
-                HideError();
-                HideForm();
-                Delete();
-                PrintSortedBooks(books, false);
                 ShowPlus();
                 HideSave();
                 matchingbook = null;
@@ -974,9 +960,13 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickNewRUS(object sender, RoutedEventArgs e)
         {
+            File.WriteAllText(jsonPath,
+            JsonConvert.SerializeObject(books, Formatting.Indented));
             IfEnglishNewBook();
             ShowToast("TextNewBook");
             MyPopupNew.IsOpen = false;
+            Delete();
+            HideForm();
         }
         private void PopupCancel_ClickModifyRUS(object sender, RoutedEventArgs e)
         {
@@ -1030,6 +1020,12 @@ namespace konyv_wpf
             PrintSortedBooks(books, false);
             ShowToast("ModifyText");
             MyPopupModify.IsOpen = false;
+            Delete();
+            HideForm();
+
+
+            File.WriteAllText(jsonPath,
+            JsonConvert.SerializeObject(books, Formatting.Indented));
         }
         private void PopupOk_ClickGenreEn(object sender, RoutedEventArgs e)
         {

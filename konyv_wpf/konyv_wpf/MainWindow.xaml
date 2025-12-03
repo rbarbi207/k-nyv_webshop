@@ -184,7 +184,7 @@
                     <Rectangle Name="rct_Date" Style="{StaticResource field}" />
                     <Label Content="{DynamicResource LblDate}" Height="33" Margin="10,5,0,0" FontWeight="Bold"/>
                     <DatePicker Name="dpDate" Height="25" Margin="95,0,10,0" BorderBrush="White" Background="White" 
-                                SelectedDateChanged="dpDate_SelectedDateChanged" DisplayDateStart="" DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}">
+                                SelectedDateChanged="dpDate_SelectedDateChanged" DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}">
                         
 
                     </DatePicker>
@@ -212,10 +212,10 @@
         <!-- EroorMsg -->
         <Grid Grid.Row="2" Height="160">
             <Rectangle Name="rct_error" Margin="10,20,10,20" Fill="#5F3463" RadiusX="10" RadiusY="10"/>
-            <Border Name="border_error" BorderBrush="White" BorderThickness="5" CornerRadius="10" Margin="20,30,20,30" >
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,-5,0,-5">
+            <Border Name="border_error" BorderBrush="White" Background="White"  BorderThickness="5" CornerRadius="10" Margin="20,30,20,30" >
+                <ScrollViewer VerticalScrollBarVisibility="auto">
                     <TextBlock Name="errorMsg" HorizontalAlignment="Stretch" TextWrapping="Wrap" Background="White" Text="" 
-                               Padding="10,10,10,12" Margin="-1,0,0,0" Foreground="#FF24142F" FontSize="15" FontWeight="SemiBold" RenderTransformOrigin="0.5,0.5">
+                               Padding="10,10,10,10" Margin="0,0,0,0" Foreground="#FF24142F" FontSize="15" FontWeight="SemiBold" RenderTransformOrigin="0.5,0.5">
 
                     </TextBlock>
                 </ScrollViewer>
