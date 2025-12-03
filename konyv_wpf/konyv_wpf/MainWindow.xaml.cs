@@ -427,6 +427,7 @@ namespace konyv_wpf
                     if (string.IsNullOrWhiteSpace(selectedBook.Genre))
                     {
                         GenreEnglish.IsOpen = true;
+                        cmbGenre.IsEnabled = true;
                         cmbGenre.Text = selectedBook.GenreEn;
                     }
                     else
@@ -439,6 +440,7 @@ namespace konyv_wpf
                     if (string.IsNullOrWhiteSpace(selectedBook.GenreEn))
                     {
                         GenreEnglish.IsOpen = true;
+                        cmbGenre.IsEnabled = true;
                         cmbGenre.Text = selectedBook.Genre;
                     }
                     else
