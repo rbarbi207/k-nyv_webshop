@@ -40,16 +40,18 @@ namespace konyv_wpf
         public List<string> Genre_En = new();
         private List<string> errors = new List<string>();
         private List<char> chars = ['0','1','2','3','4','5','6','7','8','9','*','{',']','}',']','(',')','#','@','˘','^','ˇ','~','°','"','˙','´','¸','¤','_','/','×','$','÷','|','=','+'];
+        private bool ascending = true;
+        private bool hasBeenDone = false;
         public static string currentLanguage = "HU";
         public bool sorted = true;
         public bool exists = false; 
-        private bool hasBeenDone = false;
-        public Book? matchingbook = null;
-        ListBoxItem? item = null;
-        public int idNumber = 0;
-        public Book? lastClicked = null;
         public bool modificationClicked = false;
+        public int idNumber = 0;
+        ListBoxItem? item = null;
+        public Book? matchingbook = null;
+        public Book? lastClicked = null;
         public Book? tobeModified = null;
+        public string? GenreIsEnglish = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -64,6 +66,13 @@ namespace konyv_wpf
         
         }
 
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z)
+            {
+                e.Handled = true; 
+            }
+        }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth < 720)
@@ -97,19 +106,6 @@ namespace konyv_wpf
 
             ToastPopUp.Visibility = Visibility.Collapsed;
         }
-
-        // ---- Még kell??
-
-        /// false -> alap: legkorábbi <summary>
-        /// kiválasztott elem eltárolása ? 
-        // Új könyv hozzáadás biztos mentés 
-        // Mentés mégse
-        // Könyv Módosítás biztos mentés 
-
-        // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
-        // + popup kinézet 
-
-
 
         // ---------- Language  
         private void lbl_lang_MouseEnter(object sender, MouseEventArgs e)
@@ -235,54 +231,61 @@ namespace konyv_wpf
             //// bármi változik akkor ez is változik 
             modificationClicked = false;
             rct_title.Stroke = Brushes.Transparent;
-            rct_title.StrokeThickness = 0;
+            bool IsError = false;
             foreach (char C in chars)
             {
-                if (txtnational.Text.Contains(C))
+                if (txtTitle.Text.Contains(C))
                 {
-                    errors.Add(T("A cím nem tartalmazhat speciális karaktereket!", "The title can't contain special characters!"));
+                    IsError = true;
+                    break;
                 }
-                //show, errors.add
             }
-            if (errors.Count > 0)
+            if (IsError)
             {
+                errors.Add(T("A cím nem tartalmazhat speciális karaktereket!", "The title can't contain special characters!"));
                 ShowError();
-
+                tick1.Visibility = Visibility.Collapsed;
+                rct_title.Stroke = Brushes.Red;
             }
-            if (txtTitle.Text.Trim() != "" && txtTitle.IsEnabled == true)
+            if (txtTitle.Text.Trim() != "" && txtTitle.IsEnabled == true && IsError == false)
             {
                 tick1.Visibility = Visibility.Visible;
             }
-            else
+            if (txtTitle.Text.Trim() == "")
             {
                 tick1.Visibility = Visibility.Collapsed;
+                errors.Remove(T("A cím nem tartalmazhat speciális karaktereket!", "The title can't contain special characters!"));
+                ShowError();
             }
         }
         private void txtAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            bool IsError = false;
             rct_author.Stroke = Brushes.Transparent;
-            rct_author.StrokeThickness = 0;
             foreach (char C in chars)
             {
                 if (txtAuthor.Text.Contains(C))
                 {
-                    errors.Add(T("A szerző nem tartalmazhat speciális karaktereket!", "The author can't contain special characters!"));
+                    IsError = true;
+                    break;
                 }
-                //show, errors.add
             }
-            if (errors.Count > 0)
+            if (IsError)
             {
+                errors.Add(T("A szerző nem tartalmazhat speciális karaktereket!", "The author can't contain special characters!"));
                 ShowError();
-
+                tick2.Visibility = Visibility.Collapsed;
+                rct_author.Stroke = Brushes.Red;
             }
-
-            if (txtAuthor.Text.Trim() != "" && txtAuthor.IsEnabled == true)
+            if (txtAuthor.Text.Trim() != "" && txtAuthor.IsEnabled == true && IsError == false)
             {
                 tick2.Visibility = Visibility.Visible;
             }
-            else
+            if (txtAuthor.Text.Trim() == "")
             {
                 tick2.Visibility = Visibility.Collapsed;
+                errors.Remove(T("A szerző nem tartalmazhat speciális karaktereket!", "The author can't contain special characters!"));
+                ShowError();
             }
         }
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -304,29 +307,34 @@ namespace konyv_wpf
         }
         private void txtGenre_TextChanged(object sender, TextChangedEventArgs e)
         {
+            bool IsError = false;
             foreach (char C in chars)
             {
                 if (txtGenre.Text.Contains(C))
                 {
-                    errors.Add(T("A műfaj nem tartalmazhat speciális karaktereket!", "The genre field can't contain special characters!"));
+                    IsError = true;
+                    break;
                 }
-                //show, errors.add
             }
-            if (errors.Count > 0)
+            if (IsError)
             {
+                errors.Add(T("A műfaj nem tartalmazhat speciális karaktereket!", "The genre field can't contain special characters!"));
+                tick0.Visibility = Visibility.Collapsed;
                 ShowError();
-
+                rct_genre.Stroke = Brushes.Red;
             }
-
-            if (txtGenre.Text.Trim() != "")
+            if (txtGenre.Text.Trim() != "" && txtGenre.IsEnabled == true && IsError == false)
+            {
+                tick3.Visibility = Visibility.Visible;
+                rct_genre.Stroke = Brushes.Transparent;
+                cmbGenre.SelectedItem = null;
+            }
+            if (txtGenre.Text.Trim() == "")
             {
                 txtGenre.BorderBrush = Brushes.Transparent;
-                cmbGenre.SelectedItem = null;
-                tick0.Visibility = Visibility.Visible;
-            }
-            else
-            {
                 tick0.Visibility = Visibility.Collapsed;
+                errors.Remove(T("A műfaj nem tartalmazhat speciális karaktereket!", "The genre field can't contain special characters!"));
+                ShowError();
             }
         }
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
@@ -337,15 +345,35 @@ namespace konyv_wpf
         }
         private void txtPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
+            bool IsError = false;
             rct_publisher.Stroke = Brushes.Transparent;
-            rct_publisher.StrokeThickness = 0;
-            if (txtPublisher.Text.Trim() != "" && txtPublisher.IsEnabled == true)
+            foreach (char C in chars)
+            {
+                if (txtPublisher.Text.Contains(C))
+                {
+                    IsError = true;
+                    break;
+                }
+            }
+            if (IsError)
+            {
+                errors.Add(T("A kiadó neve nem tartalmazhat speciális karaktereket!", "The publisher's name field can't contain special characters!"));
+                rct_publisher.Stroke = Brushes.Red;
+                tick3.Visibility = Visibility.Collapsed;
+                ShowError();
+            }
+            if (txtPublisher.Text.Trim() != "" && txtPublisher.IsEnabled == true && IsError == false)
             {
                 tick3.Visibility = Visibility.Visible;
+                rct_publisher.Stroke = Brushes.Transparent;
+                rct_publisher.StrokeThickness = 0;
             }
-            else
+            if (txtPublisher.Text.Trim() == "")
             {
                 tick3.Visibility = Visibility.Collapsed;
+                rct_publisher.Stroke = Brushes.Transparent;
+                errors.Remove(T("A kiadó neve nem tartalmazhat speciális karaktereket!", "The publisher's name field can't contain special characters!"));
+                ShowError();
             }
         }
         private void rad_ebook_Checked(object sender, RoutedEventArgs e)
@@ -379,29 +407,31 @@ namespace konyv_wpf
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
         {
             rct_national.Stroke = Brushes.Transparent;
-            rct_national.StrokeThickness = 0;
-
+            bool IsError = false;
             foreach(char C in chars)
             {
                 if (txtnational.Text.Contains(C))
                 {
-                    errors.Add(T("A nemzetiség nem tartalmazhat speciális karaktereket!","The nationality field can't contain special characters!"));
+                    IsError = true;
+                    break;
                 }
-                    //show, errors.add
             }
-            if (errors.Count > 0)
+            if (IsError)
             {
-            ShowError();
-
+                rct_national.Stroke = Brushes.Red;
+                errors.Add(T("A nemzetiség nem tartalmazhat speciális karaktereket!", "The nationality field can't contain special characters!"));
+                ShowError();
+                tick4.Visibility = Visibility.Collapsed;
             }
-            if (txtnational.Text.Contains(""))
-            if (txtnational.Text.Trim() != "" && txtnational.IsEnabled == true)
+            if (txtnational.Text.Trim() != "" && txtnational.IsEnabled == true && IsError == false)
             {
                 tick4.Visibility = Visibility.Visible;
             }
-            else
+            if (txtnational.Text.Trim() == "")
             {
                 tick4.Visibility = Visibility.Collapsed;
+                errors.Remove(T("A nemzetiség nem tartalmazhat speciális karaktereket!", "The nationality field can't contain special characters!"));
+                ShowError();
             }
         }
         private void txtCopy_TextChanged(object sender, TextChangedEventArgs e)
@@ -410,43 +440,41 @@ namespace konyv_wpf
             tick5.Visibility = Visibility.Collapsed;
             if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
-                HideError();
                 rct_copy.Stroke = Brushes.Transparent;
-                rct_copy.StrokeThickness = 0;
+                errors.Remove(T("A példányszámnak minimum 1-nek kell lennie!", "The number of copies must be at least 1!"));
+                errors.Remove(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
+                ShowError();
                 return;
             }
             int n;
             if (!int.TryParse(txtcopy.Text, out n) && rad_ebook.IsChecked == false)
             {
-
-                errors.Clear();
+                rct_copy.Stroke = Brushes.Red;
                 errors.Add(T("A példányszámnak számnak kell lennie!", "The number of copies must be a number!"));
                 ShowError();
             }
             else if (n < 1 && rad_ebook.IsChecked == false)
             {
-
-                errors.Clear();
+                rct_copy.Stroke = Brushes.Red;
                 errors.Add(T("A példányszámnak minimum 1-nek kell lennie!", "The number of copies must be at least 1!"));
                 ShowError();
             }
             else
             {
-                errors.Clear();
-                HideError();
-             
+                errors.Remove(T("A példányszámnak minimum 1-nek kell lennie!", "The number of copies must be at least 1!"));
                 rct_copy.Stroke = Brushes.Transparent;
-                rct_copy.StrokeThickness = 0;
             }
 
             if (txtcopy.IsEnabled == true && errors.Count == 0)
             {
+                errors.Remove(T("A példányszámnak minimum 1-nek kell lennie!", "The number of copies must be at least 1!"));
                 tick5.Visibility = Visibility.Visible;
             }
             else
             {
                 tick5.Visibility = Visibility.Collapsed;
             }
+            ShowError();
         }
         private void lbx_books_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -584,7 +612,7 @@ namespace konyv_wpf
         {
             HidePlus();
             ShowError();
-            if (hasBeenDone && matchingbook != null && !modificationClicked)
+            if (hasBeenDone && matchingbook != null && !modificationClicked && errors.Count == 0)
             {
                 int i = books.IndexOf(matchingbook);
                 if (i < 0 && matchingbook.Id != 0)
@@ -615,7 +643,7 @@ namespace konyv_wpf
                     MyPopupNew.IsOpen = true;
                 }
             }
-            else if (hasBeenDone && matchingbook != null && modificationClicked)
+            else if (hasBeenDone && matchingbook != null && modificationClicked && errors.Count == 0)
             {
 
                 int i = books.IndexOf(matchingbook);
@@ -642,6 +670,7 @@ namespace konyv_wpf
                     DateTime.Now.Minute,
                     DateTime.Now.Second, 0
                     );
+            
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
                     // frissítjük a megjelenítést és UI-t
@@ -655,7 +684,7 @@ namespace konyv_wpf
                     MyPopupModify.IsOpen = true;
                 }
             }
-            else
+            else if (errors.Count == 0)
             {
                 bool valid = true;
                 int copy = 0;
@@ -791,133 +820,15 @@ namespace konyv_wpf
 
                 //// új könyv létrehozása
                 int j = books.Count;
-                if (exists == false && valid == true && !modificationClicked)
+                if (exists == false && valid == true && !modificationClicked && errors.Count == 0)
                 {
-                    if (cmbGenre.SelectedItem == null)
-                    {
-                        if (rad_paper.IsChecked == true)
-                        {
-                            if (currentLanguage == "HU") 
-                            {
-                                Genres.Add(txtGenre.Text);
-                            }
-                            else
-                            {
-                                Genre_En.Add(txtGenre.Text);
-                            }
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = txtGenre.Text,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = true,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                        else
-                        {
-                            if (currentLanguage == "HU") 
-                            {
-                                Genres.Add(txtGenre.Text);
-                            }
-                            else
-                            {
-                                Genre_En.Add(txtGenre.Text);
-                            }
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = txtGenre.Text,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = false,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second, 0
-                    )
-                            });
-                        }
-                    }
-                    else
-                    {
-                        if (rad_paper.IsChecked == true)
-                        {
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = cmbGenre.SelectedItem.ToString()!,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = true,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                        else
-                        {
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = cmbGenre.SelectedItem.ToString()!,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = false,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                    }
                     MyPopupNew.IsOpen = true;
                 }
                 
-                if (modificationClicked && valid == true)
+                if (modificationClicked && valid == true && errors.Count == 0)
                 {
-
-                    modificationClicked = false;
-                    if (cmbGenre.SelectedItem == null)
-                    {
-                        Genres.Add(txtGenre.Text);
-                        tobeModified!.Genre = txtGenre.Text;
-                    }
-                    else
-                    {
-                        tobeModified!.Genre = cmbGenre.SelectedItem.ToString()!;
-                    }
-                    if (rad_paper.IsChecked == true)
-                    {
-                        tobeModified!.Paper = true;
-                        tobeModified!.Copies = int.Parse(txtcopy.Text);
-                    }
-                    else
-                    {
-                        tobeModified!.Copies = -1;
-                        tobeModified!.Paper = false;
-                    }
-                    tobeModified.Title = txtTitle.Text;
-                    tobeModified.Author = txtAuthor.Text;
-                    tobeModified.Publisher = txtPublisher.Text;
-                    tobeModified.Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value);
-                    tobeModified.Nationality = txtnational.Text;
-                    tobeModified.DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0);
-
-
-                    books[books.IndexOf(tobeModified)] = tobeModified;
-                    PrintSortedBooks(books,false);
                     MyPopupModify.IsOpen = true;
-
+                    modificationClicked = false;
                 }
                 
            
@@ -1063,6 +974,7 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickNewRUS(object sender, RoutedEventArgs e)
         {
+            IfEnglishNewBook();
             ShowToast("TextNewBook");
             MyPopupNew.IsOpen = false;
         }
@@ -1072,6 +984,50 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickModifyRUS(object sender, RoutedEventArgs e)
         {
+            if (cmbGenre.SelectedItem == null)
+            {
+                if (currentLanguage == "HU")
+                {
+                    Genres.Add(txtGenre.Text);
+                    tobeModified!.Genre = txtGenre.Text;
+                }
+                else
+                {
+                    Genre_En.Add(txtGenre.Text);
+                    tobeModified!.GenreEn = txtGenre.Text;
+                }
+            }
+            else
+            {
+                if (currentLanguage == "HU")
+                {
+                    tobeModified!.Genre = cmbGenre.SelectedItem.ToString()!;
+                }
+                else
+                {
+                    tobeModified!.GenreEn = cmbGenre.SelectedItem.ToString()!;
+                }
+            }
+            if (rad_paper.IsChecked == true)
+            {
+                tobeModified!.Paper = true;
+                tobeModified!.Copies = int.Parse(txtcopy.Text);
+            }
+            else
+            {
+                tobeModified!.Copies = -1;
+                tobeModified!.Paper = false;
+            }
+            tobeModified.Title = txtTitle.Text;
+            tobeModified.Author = txtAuthor.Text;
+            tobeModified.Publisher = txtPublisher.Text;
+            tobeModified.Year = DateOnly.FromDateTime(dpDate.SelectedDate.Value);
+            tobeModified.Nationality = txtnational.Text;
+            tobeModified.DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0);
+
+
+            books[books.IndexOf(tobeModified)] = tobeModified;
+            PrintSortedBooks(books, false);
             ShowToast("ModifyText");
             MyPopupModify.IsOpen = false;
         }
