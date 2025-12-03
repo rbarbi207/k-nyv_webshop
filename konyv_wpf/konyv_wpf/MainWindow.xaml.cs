@@ -40,15 +40,16 @@ namespace konyv_wpf
         public List<string> Genre_En = new();
         private List<string> errors = new List<string>();
         private List<char> chars = ['0','1','2','3','4','5','6','7','8','9','*','{',']','}',']','(',')','#','@','˘','^','ˇ','~','°','"','˙','´','¸','¤','_','/','×','$','÷','|','=','+'];
+        private bool ascending = true;
+        private bool hasBeenDone = false;
         public static string currentLanguage = "HU";
         public bool sorted = true;
         public bool exists = false; 
-        private bool hasBeenDone = false;
-        public Book? matchingbook = null;
-        ListBoxItem? item = null;
-        public int idNumber = 0;
-        public Book? lastClicked = null;
         public bool modificationClicked = false;
+        public int idNumber = 0;
+        ListBoxItem? item = null;
+        public Book? matchingbook = null;
+        public Book? lastClicked = null;
         public Book? tobeModified = null;
         public MainWindow()
         {
@@ -97,19 +98,6 @@ namespace konyv_wpf
 
             ToastPopUp.Visibility = Visibility.Collapsed;
         }
-
-        // ---- Még kell??
-
-        /// false -> alap: legkorábbi <summary>
-        /// kiválasztott elem eltárolása ? 
-        // Új könyv hozzáadás biztos mentés 
-        // Mentés mégse
-        // Könyv Módosítás biztos mentés 
-
-        // + valahogy legyen cancel hogyha selecteltünk itemet a listboxba
-        // + popup kinézet 
-
-
 
         // ---------- Language  
         private void lbl_lang_MouseEnter(object sender, MouseEventArgs e)

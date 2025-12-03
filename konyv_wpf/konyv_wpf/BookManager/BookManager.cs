@@ -80,21 +80,25 @@ namespace konyv_wpf
                 lbl_title.FontWeight = FontWeights.Bold;
 
                 panel.Children.Add(lbl_title);
+                Label lbl_date = new Label();
                 // dátum
                 if (book.DateEdited != null)
                 {
-                Label lbl_date = new Label();
-                lbl_date.Name = "lbl_date";
-                lbl_date.Content = T("módosítva: ", "edited: ") + book.DateEdited;
+                    lbl_date.Name = "lbl_date";
+                    lbl_date.Content = T("módosítva: ", "edited: ") + book.DateEdited;
+                }
+                else
+                {
+                    
+                    lbl_date.Name = "lbl_date";
+                    lbl_date.Content = T("frissítve: ", "Last loaded: ") + DateTime.Now.ToString();
+                }
                 lbl_date.FontSize = 12;
                 lbl_date.HorizontalAlignment = HorizontalAlignment.Right;
                 lbl_date.Margin = new Thickness(0, -5, 0, 0);
                 lbl_date.FontStyle = FontStyles.Italic;
 
                 panel.Children.Add(lbl_date);
-
-                }
-
                 item.Content = panel;
                 item.Tag = book;
                 item.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -108,27 +112,80 @@ namespace konyv_wpf
         {
             List<Book> sortedBooks = new List<Book>();
             lbx_books.Items.Clear();
-            sortedBooks = sort(books);
+            //sortedBooks = sort(books);
+
             if (clicked)
             {
-                if (!sorted)
+                bool foundNotNull = false;
+                foreach(Book book in books)
                 {
-                    sorted = true;
+                    if (book.DateEdited != null)
+                    {
+                        foundNotNull = true;
+                    }
+                }
+                
+                if (!foundNotNull)
+                {
+                    if (ascending)
+                    {
+
+                    sortedBooks = books.OrderByDescending(book => book.Title).ToList();
+                        ascending = false;
+                    }
+                    else
+                    {
+                        sortedBooks = books.OrderBy(book => book.DateEdited).ThenBy(book => book.Title).ToList();
+                        ascending = true;
+                    }
                 }
                 else
                 {
-                    sortedBooks.Reverse();
-                    sorted = false;
+                    if (ascending)
+                    {
+                        sortedBooks = books.OrderBy(book => book.DateEdited).ThenBy(book => book.Title).ToList();
+                        ascending = false;
+                    }
+                    else
+                    {
+                        ascending = true;
+                        sortedBooks = books.OrderByDescending(book => book.DateEdited).ThenBy(book=> book.Title).ToList(); 
+                    }
+
                 }
             }
             else
             {
-                if (!sorted)
-                { 
-                    sortedBooks.Reverse();
+                if (!ascending)
+                {
+                    sortedBooks = books.OrderBy(book => book.DateEdited).ThenBy(book => book.Title).ToList();
+                }
+                else
+                {
+                    sortedBooks = books.OrderByDescending(book => book.DateEdited).ThenBy(book => book.Title).ToList();
                 }
             }
             return sortedBooks;
+            //if (clicked)
+            //{
+            //    if (!sorted)
+            //    {
+            //        sorted = true;
+            //    }
+            //    else
+            //    {
+            //        sortedBooks.Reverse();
+            //        sorted = false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!sorted)
+            //    { 
+            //        sortedBooks.Reverse();
+            //    }
+            //}
+            //return sortedBooks;
         }
         private List<Book> sort(List<Book> books)
         {
