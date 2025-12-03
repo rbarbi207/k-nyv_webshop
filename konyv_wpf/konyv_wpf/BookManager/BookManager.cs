@@ -16,6 +16,166 @@ namespace konyv_wpf
 {
     partial class MainWindow : Window
     {
+        private void IfEnglishNewBook()
+        {
+            int j = books.Count;
+            if (currentLanguage == "HU")
+            {
+                if (cmbGenre.SelectedItem == null)
+                {
+                    if (rad_paper.IsChecked == true)
+                    {
+                        Genres.Add(txtGenre.Text);
+                        GenreIsEnglish = txtGenre.Text;
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            Genre = GenreIsEnglish,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = true,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                    else
+                    {
+                        Genres.Add(txtGenre.Text);
+                        GenreIsEnglish = txtGenre.Text;
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            Genre = GenreIsEnglish,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = false,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                }
+                else
+                {
+                    if (rad_paper.IsChecked == true)
+                    {
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            Genre = cmbGenre.SelectedItem.ToString(),
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = true,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                    else
+                    {
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            Genre = cmbGenre.SelectedItem.ToString()!,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = false,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                }
+
+            }
+            else
+            {
+                if (cmbGenre.SelectedItem == null)
+                {
+                    if (rad_paper.IsChecked == true)
+                    {
+                        Genre_En.Add(txtGenre.Text);
+                        GenreIsEnglish = txtGenre.Text;
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            GenreEn = GenreIsEnglish,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = true,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                    else
+                    {
+                        Genre_En.Add(txtGenre.Text);
+                        GenreIsEnglish = txtGenre.Text;
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            GenreEn = GenreIsEnglish,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = false,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                }
+                else
+                {
+                    if (rad_paper.IsChecked == true)
+                    {
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            GenreEn = cmbGenre.SelectedItem.ToString(),
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = true,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                    else
+                    {
+                        books.Add(new Book()
+                        {
+                            Id = j + 1,
+                            Title = txtTitle.Text,
+                            Author = txtAuthor.Text,
+                            GenreEn = cmbGenre.SelectedItem.ToString()!,
+                            Publisher = txtPublisher.Text,
+                            Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
+                            Copies = 1,
+                            Paper = false,
+                            Nationality = txtnational.Text,
+                            DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
+                        });
+                    }
+                }
+            }
+        }
+
         private void UpdateGenreComboBox()
         {
             if (currentLanguage == "HU")

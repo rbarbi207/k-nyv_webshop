@@ -177,11 +177,19 @@ namespace konyv_wpf
         // --- ErrorMsg
         private void ShowError()
         {
-            errorMsg.Text = "";
-            errorMsg.Foreground = Brushes.Red;
-            errorMsg.Text = string.Join("\n", errors);
-            border_error.Visibility = Visibility.Visible;
-            rct_error.Visibility = Visibility.Visible;
+            if (errors.Count > 0)
+            {
+                errors = errors.Distinct().ToList();
+                errorMsg.Text = "";
+                errorMsg.Foreground = Brushes.Red;
+                errorMsg.Text = string.Join("\n", errors);
+                border_error.Visibility = Visibility.Visible;
+                rct_error.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                HideError();
+            }
         }
         private void HideError()
         {
