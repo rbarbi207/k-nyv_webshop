@@ -50,6 +50,7 @@ namespace konyv_wpf
         public Book? lastClicked = null;
         public bool modificationClicked = false;
         public Book? tobeModified = null;
+        public string? GenreIsEnglish = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -242,7 +243,6 @@ namespace konyv_wpf
                 {
                     errors.Add(T("A cím nem tartalmazhat speciális karaktereket!", "The title can't contain special characters!"));
                 }
-                //show, errors.add
             }
             if (errors.Count > 0)
             {
@@ -268,7 +268,6 @@ namespace konyv_wpf
                 {
                     errors.Add(T("A szerző nem tartalmazhat speciális karaktereket!", "The author can't contain special characters!"));
                 }
-                //show, errors.add
             }
             if (errors.Count > 0)
             {
@@ -310,7 +309,6 @@ namespace konyv_wpf
                 {
                     errors.Add(T("A műfaj nem tartalmazhat speciális karaktereket!", "The genre field can't contain special characters!"));
                 }
-                //show, errors.add
             }
             if (errors.Count > 0)
             {
@@ -387,7 +385,6 @@ namespace konyv_wpf
                 {
                     errors.Add(T("A nemzetiség nem tartalmazhat speciális karaktereket!","The nationality field can't contain special characters!"));
                 }
-                    //show, errors.add
             }
             if (errors.Count > 0)
             {
@@ -793,131 +790,13 @@ namespace konyv_wpf
                 int j = books.Count;
                 if (exists == false && valid == true && !modificationClicked)
                 {
-                    if (cmbGenre.SelectedItem == null)
-                    {
-                        if (rad_paper.IsChecked == true)
-                        {
-                            if (currentLanguage == "HU") 
-                            {
-                                Genres.Add(txtGenre.Text);
-                            }
-                            else
-                            {
-                                Genre_En.Add(txtGenre.Text);
-                            }
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = txtGenre.Text,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = true,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                        else
-                        {
-                            if (currentLanguage == "HU") 
-                            {
-                                Genres.Add(txtGenre.Text);
-                            }
-                            else
-                            {
-                                Genre_En.Add(txtGenre.Text);
-                            }
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = txtGenre.Text,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = false,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second, 0
-                    )
-                            });
-                        }
-                    }
-                    else
-                    {
-                        if (rad_paper.IsChecked == true)
-                        {
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = cmbGenre.SelectedItem.ToString()!,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = true,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                        else
-                        {
-                            books.Add(new Book()
-                            {
-                                Id = j + 1,
-                                Title = txtTitle.Text,
-                                Author = txtAuthor.Text,
-                                Genre = cmbGenre.SelectedItem.ToString()!,
-                                Publisher = txtPublisher.Text,
-                                Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value),
-                                Copies = 1,
-                                Paper = false,
-                                Nationality = txtnational.Text,
-                                DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0)
-                            });
-                        }
-                    }
                     MyPopupNew.IsOpen = true;
                 }
                 
                 if (modificationClicked && valid == true)
                 {
-
-                    modificationClicked = false;
-                    if (cmbGenre.SelectedItem == null)
-                    {
-                        Genres.Add(txtGenre.Text);
-                        tobeModified!.Genre = txtGenre.Text;
-                    }
-                    else
-                    {
-                        tobeModified!.Genre = cmbGenre.SelectedItem.ToString()!;
-                    }
-                    if (rad_paper.IsChecked == true)
-                    {
-                        tobeModified!.Paper = true;
-                        tobeModified!.Copies = int.Parse(txtcopy.Text);
-                    }
-                    else
-                    {
-                        tobeModified!.Copies = -1;
-                        tobeModified!.Paper = false;
-                    }
-                    tobeModified.Title = txtTitle.Text;
-                    tobeModified.Author = txtAuthor.Text;
-                    tobeModified.Publisher = txtPublisher.Text;
-                    tobeModified.Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value);
-                    tobeModified.Nationality = txtnational.Text;
-                    tobeModified.DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0);
-
-
-                    books[books.IndexOf(tobeModified)] = tobeModified;
-                    PrintSortedBooks(books,false);
                     MyPopupModify.IsOpen = true;
-
+                    modificationClicked = false;
                 }
                 
            
@@ -1063,6 +942,7 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickNewRUS(object sender, RoutedEventArgs e)
         {
+            IfEnglishNewBook();
             ShowToast("TextNewBook");
             MyPopupNew.IsOpen = false;
         }
@@ -1072,6 +952,50 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickModifyRUS(object sender, RoutedEventArgs e)
         {
+            if (cmbGenre.SelectedItem == null)
+            {
+                if (currentLanguage == "HU")
+                {
+                    Genres.Add(txtGenre.Text);
+                    tobeModified!.Genre = txtGenre.Text;
+                }
+                else
+                {
+                    Genre_En.Add(txtGenre.Text);
+                    tobeModified!.GenreEn = txtGenre.Text;
+                }
+            }
+            else
+            {
+                if (currentLanguage == "HU")
+                {
+                    tobeModified!.Genre = cmbGenre.SelectedItem.ToString()!;
+                }
+                else
+                {
+                    tobeModified!.GenreEn = cmbGenre.SelectedItem.ToString()!;
+                }
+            }
+            if (rad_paper.IsChecked == true)
+            {
+                tobeModified!.Paper = true;
+                tobeModified!.Copies = int.Parse(txtcopy.Text);
+            }
+            else
+            {
+                tobeModified!.Copies = -1;
+                tobeModified!.Paper = false;
+            }
+            tobeModified.Title = txtTitle.Text;
+            tobeModified.Author = txtAuthor.Text;
+            tobeModified.Publisher = txtPublisher.Text;
+            tobeModified.Year = DateOnly.FromDateTime(dpDate.SelectedDate!.Value);
+            tobeModified.Nationality = txtnational.Text;
+            tobeModified.DateEdited = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, 0);
+
+
+            books[books.IndexOf(tobeModified)] = tobeModified;
+            PrintSortedBooks(books, false);
             ShowToast("ModifyText");
             MyPopupModify.IsOpen = false;
         }
