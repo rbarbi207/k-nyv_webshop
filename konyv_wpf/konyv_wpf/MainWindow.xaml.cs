@@ -193,9 +193,13 @@ namespace konyv_wpf
         private void tbx_searchbar_TextChanged(object sender, TextChangedEventArgs e)
         {
             List<Book> filteredBooks = filterBooks();
+
             if (filteredBooks.Count > 0 && tbx_searchbar.Text != "")
             {
-                PrintSortedBooks(filteredBooks, false);
+                
+                    PrintSortedBooks(filteredBooks, false);
+           
+
             }
             else if (tbx_searchbar.Text == "")
             {
@@ -211,6 +215,9 @@ namespace konyv_wpf
                 item.Focusable = false;
                 lbx_books.Items.Add(item);
             }
+            HideForm();
+
+            Delete();
         }
         private void tbx_searchbar_KeyDown(object sender, KeyEventArgs e)
         {
@@ -219,9 +226,9 @@ namespace konyv_wpf
         }
         private void tbx_searchbar_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            tbx_searchbar.Text = " ";
+            tbx_searchbar.Text = "";
+           
 
-            PrintSortedBooks(books, false);
         }
 
 
@@ -625,6 +632,7 @@ namespace konyv_wpf
                     DateTime.Now.Minute,
                     DateTime.Now.Second, 0
                     );
+                    books = books.OrderBy(book => book.Id).ToList();
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
                     // frissítjük a megjelenítést és UI-t
@@ -665,7 +673,7 @@ namespace konyv_wpf
                     DateTime.Now.Minute,
                     DateTime.Now.Second, 0
                     );
-            
+                    books = books.OrderBy(book => book.Id).ToList();
                     File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
                     // frissítjük a megjelenítést és UI-t
@@ -928,6 +936,7 @@ namespace konyv_wpf
                 }
             }
             books = newBooks;
+            books = books.OrderBy(book =>book.Id).ToList();
             File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
 
@@ -960,6 +969,7 @@ namespace konyv_wpf
         }
         private void PopupOk_ClickNewRUS(object sender, RoutedEventArgs e)
         {
+            books = books.OrderBy(book => book.Id).ToList();
             File.WriteAllText(jsonPath,
             JsonConvert.SerializeObject(books, Formatting.Indented));
             IfEnglishNewBook();
@@ -1023,7 +1033,7 @@ namespace konyv_wpf
             Delete();
             HideForm();
 
-
+            books = books.OrderBy(book => book.Id).ToList();
             File.WriteAllText(jsonPath,
             JsonConvert.SerializeObject(books, Formatting.Indented));
         }

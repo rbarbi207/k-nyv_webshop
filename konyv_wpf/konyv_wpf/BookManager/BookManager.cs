@@ -18,7 +18,16 @@ namespace konyv_wpf
     {
         private void IfEnglishNewBook()
         {
-            int j = books.Count;
+            int j;
+            if (books.Count > 0)
+            {
+                j = books[-1].Id;
+
+            }
+            else
+            {
+                j = -1;
+            }
             if (currentLanguage == "HU")
             {
                 if (cmbGenre.SelectedItem == null)
@@ -186,8 +195,12 @@ namespace konyv_wpf
 
         private void loadBooks(string filename)
         {
+
+
             string json = File.ReadAllText(jsonPath);
             books = JsonConvert.DeserializeObject<List<Book>>(json)!;
+            books = books.OrderBy(book => book.Id).ToList();
+            File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
 
             foreach (Book book in books)
             {
@@ -200,7 +213,9 @@ namespace konyv_wpf
             PrintSortedBooks(books, false);
             Genres = Genres.Distinct().ToList();
             cmbGenre.ItemsSource = Genres;
-            Genre_En = Genre_En.Distinct().ToList();         }
+            Genre_En = Genre_En.Distinct().ToList();         
+        
+        }
 
         // --- Listbox
         private void PrintSortedBooks(List<Book> books, bool clicked)
@@ -263,7 +278,7 @@ namespace konyv_wpf
                 lbx_books.Items.Add(item);
             }
 
-            File.WriteAllText(jsonPath, JsonConvert.SerializeObject(books, Formatting.Indented));
+     
         }
         private List<Book> makeSortList(List<Book> books, bool clicked)
         {
@@ -292,7 +307,7 @@ namespace konyv_wpf
                     }
                     else
                     {
-                    sortedBooks = books.OrderBy(book => book.Title).ToList();
+                    sortedBooks = books.OrderBy(book => book.DateEdited).ThenBy(book => book.Title).ToList();
                         ascending = true;
                     }
                 }
@@ -374,6 +389,8 @@ namespace konyv_wpf
         private List<Book> filterBooks()
         {
             List<Book> filteredBooks = new List<Book>();
+            ListBoxItem item = new ListBoxItem();
+
             string text = tbx_searchbar.Text;
             foreach (Book book in books)
             {
@@ -383,6 +400,8 @@ namespace konyv_wpf
                 }
             }
 
+
+            
             return filteredBooks;
         }
         
