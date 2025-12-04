@@ -203,7 +203,12 @@ namespace konyv_wpf
             }
             else if (tbx_searchbar.Text == "")
             {
+
                 PrintSortedBooks(books, false);
+            }
+            else if(tbx_searchbar.Text == null)
+            {
+                Delete();
             }
             else
             {
@@ -217,7 +222,6 @@ namespace konyv_wpf
             }
             HideForm();
 
-            Delete();
         }
         private void tbx_searchbar_KeyDown(object sender, KeyEventArgs e)
         {
