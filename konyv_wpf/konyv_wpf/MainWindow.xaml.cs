@@ -239,6 +239,9 @@ namespace konyv_wpf
         // ---------- Elemek change funkciója - form rész
         private void txtTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv címét! ", "Please enter a book title! "));
+            ShowError();
+
             //// bármi változik akkor ez is változik 
             modificationClicked = false;
             rct_title.Stroke = Brushes.Transparent;
@@ -271,6 +274,9 @@ namespace konyv_wpf
         }
         private void txtAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv szerzőjét! ", "Please enter the author of the book!"));
+            ShowError();
+
             bool IsError = false;
             rct_author.Stroke = Brushes.Transparent;
             foreach (char C in chars)
@@ -301,6 +307,8 @@ namespace konyv_wpf
         }
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv műfaját! ", "Please enter the genre of the book!"));
+            ShowError();
 
             txtGenre.Text = "";
             rct_genre.Stroke = Brushes.Transparent;
@@ -318,6 +326,9 @@ namespace konyv_wpf
         }
         private void txtGenre_TextChanged(object sender, TextChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv műfaját! ", "Please enter the genre of the book!"));
+            ShowError();
+
             bool IsError = false;
             foreach (char C in chars)
             {
@@ -350,10 +361,16 @@ namespace konyv_wpf
         }
         private void dpDate_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv kiadási dátumát! ", "Please enter the book's publication date!"));
+            ShowError();
+
             rct_Date.Stroke = Brushes.Transparent;
         }
         private void txtPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg a könyv kiadóját! ", "Please enter the publisher of the book!"));
+            ShowError();
+
             bool IsError = false;
             rct_publisher.Stroke = Brushes.Transparent;
             foreach (char C in chars)
@@ -387,6 +404,8 @@ namespace konyv_wpf
         }
         private void rad_ebook_Checked(object sender, RoutedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg hogy a könyv ebbok vagy papír! ", "Please select whether the book is an ebook or paperback!"));
+            ShowError();
             rct_ebook.Stroke = Brushes.Transparent;
             rct_ebook.StrokeThickness = 0;
 
@@ -395,6 +414,9 @@ namespace konyv_wpf
         }
         private void rad_paper_Checked(object sender, RoutedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg hogy a könyv ebbok vagy papír! ", "Please select whether the book is an ebook or paperback!"));
+            ShowError();
+
             rct_ebook.Stroke = Brushes.Transparent;
             rct_ebook.StrokeThickness = 0;
 
@@ -415,6 +437,8 @@ namespace konyv_wpf
         }
         private void txtNatioal_TextChanged(object sender, TextChangedEventArgs e)
         {
+            errors.Remove(T("Kérem adja meg hogy milyen nyelven íródott a könyv! ", "Please enter the language in which the book was written!"));
+            ShowError();
             rct_national.Stroke = Brushes.Transparent;
             bool IsError = false;
             foreach(char C in chars)
@@ -445,7 +469,9 @@ namespace konyv_wpf
         }
         private void txtCopy_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            errors.Remove(T("Kérem adja meg a példányszámot! ", "Please enter the number of copies!"));
+            ShowError();
+
             tick5.Visibility = Visibility.Collapsed;
             if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
@@ -709,7 +735,6 @@ namespace konyv_wpf
                     rct_author.Stroke = color;
                     rct_author.StrokeThickness = 1;
                     errors.Add(T("Kérem adja meg a könyv szerzőjét! ", "Please enter the author of the book!"));
-
                 }
                 if ((cmbGenre.SelectedItem == null && txtGenre.Text.Trim() == ""))
                 {
@@ -717,7 +742,6 @@ namespace konyv_wpf
                     rct_genre.Stroke = color;
                     rct_genre.StrokeThickness = 1;
                     errors.Add(T("Kérem adja meg a könyv műfaját! ", "Please enter the genre of the book!"));
-
                 }
                 if (txtPublisher.Text.Trim() == "")
                 {
@@ -725,7 +749,6 @@ namespace konyv_wpf
                     rct_publisher.Stroke = color;
                     rct_publisher.StrokeThickness = 1;
                     errors.Add(T("Kérem adja meg a könyv kiadóját! ", "Please enter the publisher of the book!"));
-
                 }
                 if (rad_ebook.IsChecked == false && rad_paper.IsChecked == false)
                 {
