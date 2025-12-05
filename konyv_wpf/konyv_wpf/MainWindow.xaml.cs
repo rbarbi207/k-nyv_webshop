@@ -471,7 +471,6 @@ namespace konyv_wpf
         {
             errors.Remove(T("Kérem adja meg a példányszámot! ", "Please enter the number of copies!"));
             ShowError();
-
             tick5.Visibility = Visibility.Collapsed;
             if (string.IsNullOrWhiteSpace(txtcopy.Text))
             {
