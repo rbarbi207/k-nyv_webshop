@@ -21,8 +21,7 @@ namespace konyv_wpf
             int j;
             if (books.Count > 0)
             {
-                j = books[-1].Id;
-
+                j = books[books.Count-1].Id;
             }
             else
             {
