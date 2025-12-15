@@ -5,6 +5,10 @@
         <Setter Property="Background" Value="#D4D5DB"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Margin" Value="5"/>
+        <Setter Property="Height" Value="740"/>
+        <Setter Property="Width" Value="800"/>
+        <Setter Property="MinHeight" Value="480"/>
+        <Setter Property="MinWidth" Value="640"/>
     </Style>
 
     <Style TargetType="Thumb" x:Key="RoundedThumb">
@@ -79,7 +83,117 @@
         </Setter>
 
     </Style>
+
+    <Style TargetType="Popup" x:Key="popUpStyle">
+        <Setter Property="Placement" Value="Center"/>
+        <Setter Property="StaysOpen" Value="False"/>
+    </Style>
+        
+    <Style TargetType="TextBlock" x:Key="popupText">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="choiceButton">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="#FFCCCCCC"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+    </Style>
+
+
+
+
+    <Style TargetType="Rectangle" x:Key="rctStyle">
+        <Setter Property="Grid.Row" Value="0"/>
+        <Setter Property="Panel.ZIndex" Value="-1"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Margin" Value="-20,-40,-20,0"/>
+        <Setter Property="Fill" Value="#FF27213E"/>
+        <Setter Property="Stroke" Value="#FF27213E"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+    </Style>
+    
+    <Style TargetType="Button" x:Key="popupButton">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="0,-20,-10,0"/>
+        <Setter Property="Content" Value="✖"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="spStyle">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+    
+    <Style TargetType="TextBlock"  x:Key="ToastText">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+    <Style TargetType="Border" x:Key="ToastPopUp">
+        <Setter Property="Background" Value="#CC323232"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+    </Style>
+
+    <Style TargetType="Rectangle" x:Key="rctStyleError">
+        <Setter Property="Margin" Value="10,20,10,20"/>
+        <Setter Property="Fill" Value="#5F3463"/>
+        <Setter Property="RadiusX" Value="10"/>
+        <Setter Property="RadiusY" Value="10"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="borderError">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="5"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Margin" Value="20,30,20,30"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="errorMsgStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Text" Value=""/>
+        <Setter Property="Padding" Value="10,10,10,10"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Foreground" Value="#FF24142F"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+    </Style>
+    
+    
+    <Style TargetType="Border" x:Key="popupBorder">
+        <Setter Property="Background" Value="Lavender"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="functionButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Thin"/>
+
+    </Style>
+
     <Style TargetType="Border" x:Key="HoverBorder">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
         <Setter Property="RenderTransform">
             <Setter.Value>
@@ -95,8 +209,181 @@
         </Style.Triggers>
     </Style>
 
+
+
+    <Style x:Key="rct_border" TargetType="Border">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="20,60,20,20"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="2"/>
+    </Style>
+    
+    <Style x:Key="rct_box" TargetType="Rectangle">
+        <Setter Property="RadiusX" Value="10"/>
+        <Setter Property="RadiusY" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="20,10,70,0"/>
+        <Setter Property="Fill" Value="White"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="38"/>
+    </Style>
+    
+    <Style x:Key="sortIcon" TargetType="TextBlock">
+        <Setter Property="Text" Value="⇅"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,-3,-10,0"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="45"/>
+        <Setter Property="Width" Value="70"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="82"/>
+    </Style>
+    <Style x:Key="searchIcon" TargetType="TextBlock">
+        <Setter Property="Text" Value="🔎"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="25,13,0,0"/>
+        <Setter Property="Panel.ZIndex" Value="10"/>
+        <Setter Property="FontSize" Value="22"/>
+    </Style>
+    <Style x:Key="lbx_books_style" TargetType="ListBox">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="7,7,-3,0"/>
+        <Setter Property="MinHeight" Value="250"/>
+    </Style>
+    <Style x:Key="searchbarStyle" TargetType="TextBox">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Margin" Value="65,18,80,0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="MaxLines" Value="1"/>
+        <Setter Property="Height" Value="33"/>
+        <Setter Property="Foreground" Value="#FF2D272B"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="Panel.ZIndex" Value="50"/>
+    </Style>
+    
+    <Style x:Key="searchbarGrid" TargetType="Grid">
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
+
+    <Style x:Key="rct_list_Style" TargetType="Rectangle">
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="Fill" Value="#FFC1BCC8"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="RadiusX" Value="10"/>
+        <Setter Property="RadiusY" Value="10"/>
+    </Style>
+    <Style x:Key="lngLbl" TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="25,-10,10,0"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Opacity" Value="0.6"/>
+        <Setter Property="RenderTransformOrigin" Value="0.296,0.046"/>
+    </Style>
+    <Style x:Key="languageButton" TargetType="TextBlock">
+        <Setter Property="Text" Value="🌐"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="0,-10,0,10"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Opacity" Value="0.6"/>
+
+    </Style>
+
+    <Style x:Key="logo" TargetType="TextBlock">
+        <Setter Property="Text" Value="📖"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,-15,0,0"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Panel.ZIndex" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+
+    <Style x:Key="h1" TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="7,-10,0,0"/>
+        <Setter Property="Grid.Column" Value="0"/>
+        <Setter Property="Opacity" Value="0.63"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+    </Style>
+
+    <Style x:Key="img_background" TargetType="Image">
+        <Setter Property="Source" Value="images/books.png"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Grid.RowSpan" Value="3"/>
+        <Setter Property="Margin" Value="0,0,0,20"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Opacity" Value="0.15"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+    </Style>
+
+
+
+    <Style x:Key="rct_background" TargetType="Rectangle">
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Grid.RowSpan" Value="2"/>
+        <Setter Property="Margin" Value="-20,-10,-20,-10"/>
+    </Style>
+
+    <Style x:Key="rb_form" TargetType="RadioButton">
+        <Setter Property="Background" Value="#FFCCA5E8"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+
+    </Style>
+    <Style x:Key="rct_genre_style" TargetType="Rectangle">
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Fill" Value="White"/>
+        <Setter Property="RadiusX" Value="10"/>
+        <Setter Property="RadiusY" Value="10"/>
+    </Style>
+
+    <Style x:Key="datepicker_form" TargetType="DatePicker">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="95,0,10,0"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+
+    <Style x:Key="form_text" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Text" Value=""/>
+    </Style>
     <Style x:Key="MyComboBoxStyle" TargetType="ComboBox">
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="60,-43,10,0"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
@@ -165,6 +452,19 @@
         </Setter>
 
     </Style>
+
+    <Style TargetType="ScrollViewer" x:Key="formscroll">
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="Grid.Column" Value="2"></Setter>
+        <Setter Property="Grid.Row" Value="1"></Setter>
+        <Setter Property="Margin" Value="0,10,0,0"></Setter>
+    </Style>
+    
+
+    <Style TargetType="Grid" x:Key="gridform">
+        <Setter Property="Margin" Value="0,18,0,0"></Setter>
+    </Style>
+
     <Style TargetType="{x:Type Rectangle}" x:Key="field">
         <Setter Property="Height" Value="33"></Setter>
         <Setter Property="Fill" Value="White"></Setter>
